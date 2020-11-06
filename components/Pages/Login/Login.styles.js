@@ -1,5 +1,21 @@
 import styled from "styled-components";
 
+export const StyledLogin = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  align-content: center;
+  justify-content: center;
+  width: 100%;
+  background: #f3f6fd;
+
+  img {
+    width: 80px;
+    margin: 0 auto;
+    margin-bottom: 40px;
+  }
+`;
+
 export const Form = styled.form`
   position: relative;
   width: 400px;

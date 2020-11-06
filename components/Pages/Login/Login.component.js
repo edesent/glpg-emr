@@ -1,17 +1,13 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Error, Form, Links } from "./Login.styles";
+import { StyledLogin, Error, Form, Links } from "./Login.styles";
 
 const Login = () => {
   const { register, handleSubmit, watch, errors } = useForm();
   const onSubmit = (data) => console.log(data);
   return (
-    <div className="flex flex-col h-screen content-center w-full justify-center bg-gray-100">
-      <img
-        src="/logo.svg"
-        alt="Great Lakes Psychology Group"
-        className="w-20 mx-auto mb-10"
-      />
+    <StyledLogin>
+      <img src="/logo.svg" alt="Great Lakes Psychology Group" />
       <Form onSubmit={handleSubmit(onSubmit)}>
         {Object.entries(errors).length !== 0 ? (
           <Error>All fields are required!</Error>
@@ -41,7 +37,7 @@ const Login = () => {
           <button>Login</button>
         </Links>
       </Form>
-    </div>
+    </StyledLogin>
   );
 };
 
