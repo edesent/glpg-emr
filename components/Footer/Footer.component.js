@@ -7,7 +7,7 @@ const Footer = () => (
       target="_blank"
       rel="noopener noreferrer"
     >
-      &copy; Great Lakes Psychology Group
+      {/* &copy; Great Lakes Psychology Group */}
     </a>
   </footer>
 );
