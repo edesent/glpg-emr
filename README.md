@@ -1,14 +1,20 @@
 <img src="./frontend/public/logo.svg" alt="GLPG" width="100" style="margin: 0 auto; display: block;"/>
 **README is under construction.**
 
+**Contents**
+
+- [Git Workflow](#git-workflow-gitflow)
+- [Linting & Prettier](#git-workflow-gitflow)
+
 ## Git Workflow (Gitflow)
 
 This repository uses the [Gitflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) method for workflow design.  
 **Please note** that you are _not_ required to use the git-flow CLI.
 
-### Develop and Master Branches
+### Develop & Master Branches
 
 Instead of a single master branch, this workflow uses two branches to record the history of the project. The master branch stores the official release history, and the develop branch serves as an integration branch for features.
+<br/>
 
 <p align="center">
 <img src="https://wac-cdn.atlassian.com/dam/jcr:2bef0bef-22bc-4485-94b9-a9422f70f11c/02%20(2).svg?cdnVersion=1324" alt="" width="500" style="max-width: 100%;"/>
@@ -19,6 +25,7 @@ The develop branch will contain the complete history of the project, whereas mas
 ### Feature Branches
 
 Each new feature should reside in its own branch, which can be pushed to the central repository for backup/collaboration. But, instead of branching off of master, feature branches use develop as their parent branch. When a feature is complete, it gets merged back into develop. Features should never interact directly with master.
+<br/>
 
 <p align="center">
 <img src="https://wac-cdn.atlassian.com/dam/jcr:b5259cce-6245-49f2-b89b-9871f9ee3fa4/03%20(2).svg?cdnVersion=1324" alt="" width="500" style="max-width: 100%;"/>
