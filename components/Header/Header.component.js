@@ -1,11 +1,9 @@
-import React from "react";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import PageLink from "./PageLink.component";
-import { StyledHeader, Logo, Links } from "./Header.styles";
+import React from 'react'
+import Link from 'next/link'
+import PageLink from './PageLink.component'
+import { StyledHeader, Logo, Links } from './Header.styles'
 
 const Header = () => {
-  const router = useRouter();
   return (
     <StyledHeader>
       <Logo>
@@ -93,7 +91,7 @@ const Header = () => {
         </PageLink>
       </Links>
     </StyledHeader>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

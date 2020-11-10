@@ -1,8 +1,8 @@
-import React from "react";
-import Head from "next/head";
+import React from 'react'
+import Head from 'next/head'
 
 const Layout = (props) => {
-  const { children, title } = props;
+  const { children, title } = props
   return (
     <>
       <Head>
@@ -11,7 +11,7 @@ const Layout = (props) => {
       </Head>
       <main>{children}</main>
     </>
-  );
-};
+  )
+}
 
-export default Layout;
+export default Layout

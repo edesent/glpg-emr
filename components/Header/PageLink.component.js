@@ -1,10 +1,10 @@
-import React from "react";
-import Link from "next/link";
-import { useRouter } from "next/router";
+import React from 'react'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 const PageLink = (props) => {
-  const router = useRouter();
-  const { name, url, children, className } = props;
+  const router = useRouter()
+  const { name, url, children, className } = props
   return (
     <Link href={`/${url}`}>
       <a
@@ -16,7 +16,7 @@ const PageLink = (props) => {
         {children}
       </a>
     </Link>
-  );
-};
+  )
+}
 
-export default PageLink;
+export default PageLink

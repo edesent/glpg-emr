@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const StyledHeader = styled.header`
   position: fixed;
@@ -7,7 +7,7 @@ export const StyledHeader = styled.header`
   bottom: 0;
   width: 90px;
   border-right: 1px solid #e1e6f1;
-`;
+`
 
 export const Logo = styled.div`
   border-bottom: 1px solid #f2f3f6;
@@ -20,7 +20,7 @@ export const Logo = styled.div`
   img {
     width: 60px;
   }
-`;
+`
 
 export const Links = styled.div`
   margin-top: 50px;
@@ -53,4 +53,4 @@ export const Links = styled.div`
       }
     }
   }
-`;
+`

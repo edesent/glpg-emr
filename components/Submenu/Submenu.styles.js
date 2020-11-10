@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const StyledSubmenu = styled.aside`
   position: fixed;
@@ -17,10 +17,10 @@ export const StyledSubmenu = styled.aside`
     font-weight: 600;
     font-size: 24px;
   }
-`;
+`
 
 export const SubLinks = styled.div`
   padding: 30px;
   display: flex;
   flex-direction: column;
-`;
+`

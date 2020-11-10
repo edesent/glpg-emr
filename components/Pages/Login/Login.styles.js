@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const StyledLogin = styled.div`
   display: flex;
@@ -14,7 +14,7 @@ export const StyledLogin = styled.div`
     margin: 0 auto;
     margin-bottom: 40px;
   }
-`;
+`
 
 export const Form = styled.form`
   position: relative;
@@ -79,7 +79,7 @@ export const Form = styled.form`
       transition: 0.2s top ease;
     }
   }
-`;
+`
 
 export const Error = styled.span`
   position: absolute;
@@ -91,7 +91,7 @@ export const Error = styled.span`
   display: block;
   color: #ef3737;
   font-size: 14px;
-`;
+`
 
 export const Links = styled.span`
   display: flex;
@@ -124,4 +124,4 @@ export const Links = styled.span`
       box-shadow: 0 0 5px rgba(81, 203, 238, 1);
     }
   }
-`;
+`

@@ -1,8 +1,8 @@
-import React from "react";
-import { StyledSubmenu, SubLinks } from "./Submenu.styles";
+import React from 'react'
+import { StyledSubmenu, SubLinks } from './Submenu.styles'
 
 const Submenu = (props) => {
-  const { title } = props;
+  const { title } = props
   return (
     <StyledSubmenu>
       <h1>{title}</h1>
@@ -13,7 +13,7 @@ const Submenu = (props) => {
         <a href="">Link</a>
       </SubLinks>
     </StyledSubmenu>
-  );
-};
+  )
+}
 
-export default Submenu;
+export default Submenu

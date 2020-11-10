@@ -1,10 +1,10 @@
-import React from "react";
-import { useForm } from "react-hook-form";
-import { StyledLogin, Error, Form, Links } from "./Login.styles";
+import React from 'react'
+import { useForm } from 'react-hook-form'
+import { StyledLogin, Error, Form, Links } from './Login.styles'
 
 const Login = () => {
-  const { register, handleSubmit, watch, errors } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const { register, handleSubmit, watch, errors } = useForm()
+  const onSubmit = (data) => console.log(data)
   return (
     <StyledLogin>
       <img src="/logo.svg" alt="Great Lakes Psychology Group" />
@@ -38,7 +38,7 @@ const Login = () => {
         </Links>
       </Form>
     </StyledLogin>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login

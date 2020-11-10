@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 const Footer = () => (
   <footer className="fixed bottom-0 inset-x-auto">
@@ -10,6 +10,6 @@ const Footer = () => (
       {/* &copy; Great Lakes Psychology Group */}
     </a>
   </footer>
-);
+)
 
-export default Footer;
+export default Footer

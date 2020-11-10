@@ -1,14 +1,44 @@
 {
   "extends": [
     "react-app",
-    "airbnb",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
     "plugin:jsx-a11y/recommended",
+    "plugin:prettier/recommended",
+    "plugin:prettier/react",
+    "airbnb",
     "prettier",
     "prettier/react"
   ],
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es6": true,
+    "node": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
   "plugins": ["jsx-a11y", "prettier"],
   "rules": {
+    "no-console": "warn",
+    "no-eval": "error",
+    "import/first": "error",
     "semi": 0,
+    // NextJs specific fix: suppress errors for missing 'import React' in files for nextjs
+    "react/react-in-jsx-scope": "off",
     "import/prefer-default-export": 0,
     "react/jsx-filename-extension": [
       1,
@@ -19,8 +49,15 @@
     "prettier/prettier": [
       "error",
       {
-        "semi": false
+        "endOfLine": "lf",
+        "semi": false,
+        "singleQuote": true,
+        "tabWidth": 2,
+        "trailingComma": "es5"
       }
     ]
+  },
+  "globals": {
+    "React": "writable"
   }
 }
