@@ -1,9 +1,9 @@
 <p align="center">
-<img src="./frontend/public/logo.svg" alt="GLPG" width="100" style="margin: 0 auto; display: block;"/>
+<img src="./frontend/public/logo.svg" alt="GLPG" width="100"/>
 </p>
 
 <p align="center" style="font-weight: bold;">
-**README is under construction**
+<strong>README is under construction</strong>
 </p>
 
 **Contents**
