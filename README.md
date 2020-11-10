@@ -38,11 +38,17 @@ Feature branches are generally created off to the latest develop branch.
 
 #### Creating a Feature Branch
 
-Without git-flow:  
-`git checkout develop git checkout -b feature_branch`
+Without git-flow:
 
-With git-flow:  
-`git flow feature start feature_branch`
+```
+git checkout develop git checkout -b feature_branch
+```
+
+With git-flow:
+
+```
+git flow feature start feature_branch
+```
 
 Continue your work and use Git like you normally would.
 
@@ -50,11 +56,17 @@ Continue your work and use Git like you normally would.
 
 When you’re done with the development work on the feature, the next step is to merge the feature_branch into develop.
 
-Without git-flow:  
-`git checkout develop git merge feature_branch`
+Without git-flow:
 
-With git-flow:  
-`git flow feature finish feature_branch`
+```
+git checkout develop git merge feature_branch
+```
+
+With git-flow:
+
+```
+git flow feature finish feature_branch
+```
 
 ### Release & Hotfix Branches
 
