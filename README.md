@@ -4,7 +4,7 @@
 **Contents**
 
 - [Git Workflow](#git-workflow-gitflow)
-- [Linting & Prettier](#git-workflow-gitflow)
+- [Linting & Prettier](#linting--prettier)
 
 ## Git Workflow (Gitflow)
 
