@@ -1,5 +1,10 @@
+<p align="center">
 <img src="./frontend/public/logo.svg" alt="GLPG" width="100" style="margin: 0 auto; display: block;"/>
-**README is under construction.**
+</p>
+
+<p align="center" style="font-weight: bold;">
+**README is under construction**
+</p>
 
 **Contents**
 
