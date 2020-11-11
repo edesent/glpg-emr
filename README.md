@@ -9,6 +9,8 @@
 </p>
 
 - [Getting Started](#getting-started)
+  - [Working with `backend/`](#)
+  - [Working with `frontend/`](#)
 - [Git Workflow](#git-workflow-gitflow)
   - [Develop & Master Branches](#develop--master-branches)
   - [Feature Branches](#feature-branches)
@@ -30,17 +32,25 @@ Enter the project directory
 $ cd glpg-emr
 ```
 
-### npm scripts
+### Working with `backend/`
 
-This project is broken into different directories. Both `frontend/` and `backend/` have their own development environments. When cloning this project, neither will include the `node_modules` directory. Be sure to install the packages for **EACH** directory by navigating to each and typing:
+This section is under construction.
+
+### Working with `frontend/`
+
+Navigate to the `frontend/` directory:
+
+```
+$ cd frontend
+```
+
+Install the node packages:
 
 ```
 $ npm install
 ```
 
-_Note: This may be simplified in the future_
-
-After the node packages are installed, to work on the front-end, be sure you're in the `frontend/` directory and start the NextJS development environment:
+Start the NextJS development environment:
 
 ```
 $ npm run dev
