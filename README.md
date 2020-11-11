@@ -88,6 +88,26 @@ The `release` branch. With every new release, you'll create a stable branch from
 
 Merging everything into the master branch, and deploying often, means you limit the amount of code in "inventory", which is in line with lean and continuous delivery best practices. **_The goal is to minimize the amount of unreleased code._**
 
+### Production Branch
+
+Under construction
+
+### Production Branch
+
+Under construction
+
+<p align="center">
+<img src="./docs/images/production-branch.png" alt="GLPG" width="600" style="max-width: 100%;"/>
+</p>
+
+### Release Branch
+
+Under construction
+
+### Pull Requests
+
+If you work on a feature branch for more than a few hours, it's good to share the immediate result with the rest of your team. You can @mention your teammates, and mark the merge request as a "work-in-progress" (WIP). This means it's not ready to be merged, but feedback is welcome. Your teammates can comment on the pull request. The merge request serves as a code review tool. If the review reveals shortcomings, anyone can commit and push a fix. When you feel comfortable with it to be merged, you can assign it to the person who knows the most about the codebase, or who is in charge with approving pull requests into the master branch.
+
 ### The Rules
 
 - **Use feature branches, no direct commits on master**: You should create a branch for whatever you’re working on, so that you end up doing a code review during a pull request before you merge.
@@ -97,12 +117,6 @@ Merging everything into the master branch, and deploying often, means you limit 
 - **Everyone starts from master, and targets master**: This means you don’t have any long branches. You check out master, build your feature, create your pull request, and target master again. You should do your complete review before you merge, and not have any intermediate stages.
 - **Fix bugs in master first and release branches second**: If you find a bug, always fix forward. Fix it in master, then cherry-pick it into another patch-release branch.
 - **Commit messages reflect intent**: You should not only say what you did, but also why you did it.
-
-### Pull Requests
-
-If you work on a feature branch for more than a few hours, it's good to share the immediate result with the rest of your team. You can @mention your teammates, and mark the merge request as a "work-in-progress" (WIP). This means it's not ready to be merged, but feedback is welcome. Your teammates can comment on the pull request. The merge request serves as a code review tool. If the review reveals shortcomings, anyone can commit and push a fix. When you feel comfortable with it to be merged, you can assign it to the person who knows the most about the codebase, or who is in charge with approving pull requests into the master branch.
-
-### Production Branch
 
 ### Examples
 
