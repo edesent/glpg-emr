@@ -65,15 +65,15 @@ Please refer to the [Examples](#examples) section for examples on how to make ch
 
 #### Directories
 
-`pages/` This directory contains React components exported from files. Pages are associated with a route based on their file name.
-`assets/` Assets is a container directory to organize styles, fonts, etc.
+`pages/` This directory contains React components exported from files. Pages are associated with a route based on their file name.  
+`assets/` Assets is a container directory to organize styles, fonts, etc.  
 `components/` Houses the application's components such as headers, footers, navigation, etc.
 
 #### Files
 
-`next.config.js` For custom advanced behavior of Next.js
-`postcss.config.js` For custom behavior of PostCSS
-`tailwind.config.js` For custom behavior of Tailwind
+`next.config.js` For custom advanced behavior of Next.js  
+`postcss.config.js` For custom behavior of PostCSS  
+`tailwind.config.js` For custom behavior of Tailwind  
 `.babelrc` Babel is used for backwards compatible JavaScript. This file is for custom configuration.
 
 ## Git Workflow (Gitflow)
