@@ -2,21 +2,51 @@
 <img src="./frontend/public/logo.svg" alt="GLPG" width="100"/>
 </p>
 
-<p align="center" style="font-weight: bold;">
-<strong>README is under construction</strong>
+<p align="center">
+<strong>🚧 README is under construction 🚧</strong>
 </p>
 
-**Contents**
-
-- [Git Workflow](#git-workflow-gitflow)
 - [Getting Started](#getting-started)
-  - [Examples](#examples)
+- [Git Workflow](#git-workflow-gitflow)
+  - [Develop & Master Branches](#develop--master-branches)
+  - [Feature Branches](#feature-branches)
+  - [Release & Hotfix Branches](#release--hotfix-branches)
+- [Examples](#examples)
 - [Linting & Prettier](#linting--prettier)
+
+## Getting Started
+
+To get started working on this project, you will need to clone this repository to your local machine. Open your terminal and navigate to the directory you would like to clone this project to.
+
+```
+$ git clone https://github.com/good3n/glpg-emr.git
+```
+
+Enter the project directory
+
+```
+$ cd glpg-emr
+```
+
+Please refer to the [Examples](#examples)
+
+### npm scripts
+
+The repository does not come with the `node_modules` directory. From the project directory, install the node packages:
+
+```
+$ npm install
+```
+
+After the node packages are installed, start the NextJS development environment:
+
+```
+$ npm run dev
+```
 
 ## Git Workflow (Gitflow)
 
-This repository uses the [Gitflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) method for workflow design.  
-**Please note** that you are _not_ required to use the git-flow CLI.
+This repository uses the [Gitflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) method for workflow design. **Please note** that you are _not_ required to use the git-flow CLI.
 
 ### Develop & Master Branches
 
@@ -79,39 +109,7 @@ $ git flow feature finish feature_branch
 
 Please see the following guide: https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow
 
-## Getting Started
-
-To get started working on this project, you will need to clone this repository to your local machine. Open your terminal and navigate to the directory you would like to clone this project to.
-
-```
-$ git clone https://github.com/good3n/glpg-emr.git
-```
-
-Enter the project directory
-
-```
-$ cd glpg-emr
-```
-
-Please refer to the [Examples](#examples)
-
-### npm scripts
-
-The repository does not come with the `node_modules` directory. From the project directory, install the node packages:
-
-```
-$ rm -rf node_modules && npm install
-```
-
-_\*`rm -rf node_modules` simply removes any existing `node_modules` directory_
-
-After the node packages are installed, start the NextJS development environment:
-
-```
-$ npm run dev
-```
-
-### Examples
+## Examples
 
 This section will feature an example or two on making a change to repository.
 
