@@ -16,7 +16,7 @@
   - [Develop & Master Branches](#develop--master-branches)
   - [Feature Branches](#feature-branches)
   - [Release & Hotfix Branches](#release--hotfix-branches)
-- [Examples](#examples)
+  - [Examples](#examples)
 - [Linting & Prettier](#linting--prettier)
 
 ## Getting Started
@@ -76,72 +76,35 @@ Please refer to the [Examples](#examples) section for examples on how to make ch
 `tailwind.config.js` For custom behavior of Tailwind  
 `.babelrc` Babel is used for backwards compatible JavaScript. This file is for custom configuration.
 
-## Git Workflow (Gitflow)
+## Git Workflow
 
-This repository uses the [Gitflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) method for workflow design. **Please note** that you are _not_ required to use the git-flow CLI.
+This workflow consists of three main areas: `feature` branch, `production` branch, and `release` branch.
 
-### Develop & Master Branches
+A `feature` branch (a copy of the master branch) is where the serious development work occurs. A developer creates a feature or bug fix branch and does all the work there rather than on a master branch. Once the work is complete, the developer creates a pull request to merge the work into the master branch.
 
-Instead of a single master branch, this workflow uses two branches to record the history of the project. The master branch stores the official release history, and the develop branch serves as an integration branch for features.
-<br/>
+The `production` branch is essentially a monolith – a single long-running production release branch rather than individual branches. It's possible to create a tag for each deployable version to keep track of those details easily.
 
-<p align="center">
-<img src="https://wac-cdn.atlassian.com/dam/jcr:2bef0bef-22bc-4485-94b9-a9422f70f11c/02%20(2).svg?cdnVersion=1324" alt="" width="500" style="max-width: 100%;"/>
-</p>
-<br/>
-The develop branch will contain the complete history of the project, whereas master will contain an abridged version. Other developers should now clone the central repository and create a tracking branch for develop.
+The `release` branch. With every new release, you'll create a stable branch from master and decide on a tag. If you need to do a patch release, be sure to cherry-pick critical bug fixes first, and don't commit them directly to the stable branch.
 
-### Feature Branches
+Merging everything into the master branch, and deploying often, means you limit the amount of code in "inventory", which is in line with lean and continuous delivery best practices. **_The goal is to minimize the amount of unreleased code._**
 
-Each new feature should reside in its own branch, which can be pushed to the central repository for backup/collaboration. But, instead of branching off of master, feature branches use develop as their parent branch. When a feature is complete, it gets merged back into develop. Features should never interact directly with master.
-<br/>
+### The Rules
 
-<p align="center">
-<img src="https://wac-cdn.atlassian.com/dam/jcr:b5259cce-6245-49f2-b89b-9871f9ee3fa4/03%20(2).svg?cdnVersion=1324" alt="" width="500" style="max-width: 100%;"/>
-</p>
-<br/>
+- **Use feature branches, no direct commits on master**: You should create a branch for whatever you’re working on, so that you end up doing a code review during a pull request before you merge.
+- **Perform code reviews before merges into master, not afterwards**: Don't test everything at the end of your week. Do it on the spot, because you'll be more likely to catch things that could cause problems and others will also be working to come up with solutions.
+- **Deployments are automatic, based on production branch**
+- **Releases are based on tags**: If you tag something, that creates a new release.
+- **Everyone starts from master, and targets master**: This means you don’t have any long branches. You check out master, build your feature, create your pull request, and target master again. You should do your complete review before you merge, and not have any intermediate stages.
+- **Fix bugs in master first and release branches second**: If you find a bug, always fix forward. Fix it in master, then cherry-pick it into another patch-release branch.
+- **Commit messages reflect intent**: You should not only say what you did, but also why you did it.
 
-Note that feature branches combined with the develop branch is, for all intents and purposes, the Feature Branch Workflow. But, the Gitflow Workflow doesn’t stop there.
+### Pull Requests
 
-Feature branches are generally created off to the latest develop branch.
+If you work on a feature branch for more than a few hours, it's good to share the immediate result with the rest of your team. You can @mention your teammates, and mark the merge request as a "work-in-progress" (WIP). This means it's not ready to be merged, but feedback is welcome. Your teammates can comment on the pull request. The merge request serves as a code review tool. If the review reveals shortcomings, anyone can commit and push a fix. When you feel comfortable with it to be merged, you can assign it to the person who knows the most about the codebase, or who is in charge with approving pull requests into the master branch.
 
-#### Creating a Feature Branch
+### Production Branch
 
-Without git-flow:
-
-```
-$ git checkout develop git checkout -b feature_branch
-```
-
-With git-flow:
-
-```
-$ git flow feature start feature_branch
-```
-
-Continue your work and use Git like you normally would.
-
-#### Finishing a feature branch
-
-When you’re done with the development work on the feature, the next step is to merge the feature_branch into develop.
-
-Without git-flow:
-
-```
-$ git checkout develop git merge feature_branch
-```
-
-With git-flow:
-
-```
-$ git flow feature finish feature_branch
-```
-
-### Release & Hotfix Branches
-
-Please see the following guide: https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow
-
-## Examples
+### Examples
 
 This section will feature an example or two on making a change to repository.
 
