@@ -88,7 +88,7 @@ The `release` branch. With every new release, you'll create a stable branch from
 
 Merging everything into the master branch, and deploying often, means you limit the amount of code in "inventory", which is in line with lean and continuous delivery best practices. **_The goal is to minimize the amount of unreleased code._**
 
-### Production Branch
+### Feature Branch
 
 Under construction
 
@@ -97,7 +97,7 @@ Under construction
 Under construction
 
 <p align="center">
-<img src="./docs/images/production-branch.png" alt="GLPG" width="600" style="max-width: 100%;"/>
+<img src="./docs/images/production-branch.png" alt="GLPG" width="450" style="max-width: 100%;"/>
 </p>
 
 ### Release Branch
