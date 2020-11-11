@@ -9,6 +9,8 @@
 **Contents**
 
 - [Git Workflow](#git-workflow-gitflow)
+- [Getting Started](#getting-started)
+  - [Examples](#examples)
 - [Linting & Prettier](#linting--prettier)
 
 ## Git Workflow (Gitflow)
@@ -46,13 +48,13 @@ Feature branches are generally created off to the latest develop branch.
 Without git-flow:
 
 ```
-git checkout develop git checkout -b feature_branch
+$ git checkout develop git checkout -b feature_branch
 ```
 
 With git-flow:
 
 ```
-git flow feature start feature_branch
+$ git flow feature start feature_branch
 ```
 
 Continue your work and use Git like you normally would.
@@ -64,18 +66,54 @@ When you’re done with the development work on the feature, the next step is to
 Without git-flow:
 
 ```
-git checkout develop git merge feature_branch
+$ git checkout develop git merge feature_branch
 ```
 
 With git-flow:
 
 ```
-git flow feature finish feature_branch
+$ git flow feature finish feature_branch
 ```
 
 ### Release & Hotfix Branches
 
 Please see the following guide: https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow
+
+## Getting Started
+
+To get started working on this project, you will need to clone this repository to your local machine. Open your terminal and navigate to the directory you would like to clone this project to.
+
+```
+$ git clone https://github.com/good3n/glpg-emr.git
+```
+
+Enter the project directory
+
+```
+$ cd glpg-emr
+```
+
+Please refer to the [Examples](#examples)
+
+### npm scripts
+
+The repository does not come with the `node_modules` directory. From the project directory, install the node packages:
+
+```
+$ rm -rf node_modules && npm install
+```
+
+_\*`rm -rf node_modules` simply removes any existing `node_modules` directory_
+
+After the node packages are installed, start the NextJS development environment:
+
+```
+$ npm run dev
+```
+
+### Examples
+
+This section will feature an example or two on making a change to repository.
 
 ## Linting & Prettier
 
