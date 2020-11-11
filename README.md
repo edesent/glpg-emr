@@ -3,7 +3,9 @@
 </p>
 
 <p align="center">
-<strong>🚧 README is under construction 🚧</strong>
+<strong>🚧&nbsp;&nbsp;This document is under construction&nbsp;&nbsp;🚧</strong>
+<br/>
+<em>Nov 11, 2020</em>
 </p>
 
 - [Getting Started](#getting-started)
@@ -28,21 +30,23 @@ Enter the project directory
 $ cd glpg-emr
 ```
 
-Please refer to the [Examples](#examples)
-
 ### npm scripts
 
-The repository does not come with the `node_modules` directory. From the project directory, install the node packages:
+This project is broken into different directories. Both `frontend/` and `backend/` have their own development environments. When cloning this project, neither will include the `node_modules` directory. Be sure to install the packages for **EACH** directory by navigating to each and typing:
 
 ```
 $ npm install
 ```
 
-After the node packages are installed, start the NextJS development environment:
+_Note: This may be simplified in the future_
+
+After the node packages are installed, to work on the front-end, be sure you're in the `frontend/` directory and start the NextJS development environment:
 
 ```
 $ npm run dev
 ```
+
+Please refer to the [Examples](#examples) section for examples on how to make changes to this project.
 
 ## Git Workflow (Gitflow)
 
