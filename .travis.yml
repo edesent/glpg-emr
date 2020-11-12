@@ -7,3 +7,5 @@ cache:
 script:
   - cd frontend
   - npm build
+notifications:
+  slack: glpg-hq:OIznQNWGQIGXE4DbypgODTcP
