@@ -74,10 +74,11 @@ Merging everything into the master branch, and deploying often, means you limit 
 
 A feature branch is a copy of the master branch.
 
-1. Before you start, be sure to sync the remote master to ensure you have the latest, up-to-date copy via `$ git pull`
+1. Make sure you have a latest up-to-date copy of the `master` via `$ git pull`
 2. Checkout a new branch for your commits to live on without disrupting the master `$ git checkout -b feature_branch`
 3. Commit often as you develop with `$ git add .` then `$ git commit -m "this is a sample commit"`
-4. Push your new `feature_branch` to the repository
+4. Push your new `feature_branch` to the repository with `$ git push -u origin feature_branch`
+5. See [Pull Requests](#pull-requests) section.
 
 ### Bugs & Hotfix Branches
 
