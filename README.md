@@ -13,7 +13,6 @@
 - [Getting Started](#getting-started)
   - [Working with `backend/`](#working-with-backend)
   - [Working with `frontend/`](#working-with-frontend)
-    - [Frontend Structure](#frontend-structure)
 - [Git Workflow](#git-workflow)
   - [Master Branch](#master-branch-the-mainline)
   - [Feature Branch](#feature-branch-making-changes)
@@ -62,8 +61,8 @@ This workflow is modeled after [GitHub Flow](https://guides.github.com/introduct
 
 Our core philosophy is simplicity. Some of the key points to this workflow are:
 
-**Code close to the master**: This helps eliminate excessive branch types that provide little benefit.  
-**Make small, simple changes**: Commit, pull request, and deploy often. This will help reduce merge conflicts, make code easier to review, and makes our package easier to ship; faster velocity.
+- **Code close to the master**: This helps eliminate excessive branch types that provide little benefit.
+- **Make small, simple changes**: Commit, pull request, and deploy often. This will help reduce merge conflicts, make code easier to review, and makes our package easier to ship; faster velocity.
 
 ### Master Branch (The Mainline)
 
@@ -82,7 +81,7 @@ A feature branch is a copy of the master branch.
 
 ### Bugs & Hotfix Branches
 
-Under construction
+_Under construction_
 
 ### Pull Requests
 
@@ -92,7 +91,7 @@ If you work on a feature branch for more than a few hours, it's good practice to
 
 Commit messages should adequately communicate why a change was made, which is important for making development and collaboration more efficient.
 
-Check out 👉[this](https://chris.beams.io/posts/git-commit/)👈 this 🔥 article on how to write better commit messages.
+Check out 👉[this](https://chris.beams.io/posts/git-commit/)👈 🔥 article on how to write better commit messages.
 
 1. Separate subject from body with a blank line (if body is necessary)
 2. Limit the subject line to 50 characters
@@ -106,7 +105,7 @@ Check out 👉[this](https://chris.beams.io/posts/git-commit/)👈 this 🔥 art
 _\*Note that in most cases, a commit does not require a subject AND a body. Usually a single subject line is fine._
 
 <p align="center">
-<img src="./docs/images/commit-messages.png" alt="Commit Messages" width="450" style="max-width: 100%;"/>
+<img src="./docs/images/commit-messages.png" alt="Commit Messages" width="550" style="max-width: 100%;"/>
 </p>
 
 ### In Summary
@@ -118,8 +117,8 @@ _\*Note that in most cases, a commit does not require a subject AND a body. Usua
 
 ### Resources & Guides
 
-**GitHub Flow**: https://guides.github.com/introduction/flow/
-**How to code review a pull request**: https://www.youtube.com/watch?v=HW0RPaJqm4g
+**GitHub Flow**: https://guides.github.com/introduction/flow/  
+**How to code review a pull request**: https://www.youtube.com/watch?v=HW0RPaJqm4g  
 **Continuous Integration & Delivery (CI/CD)**: https://www.youtube.com/watch?v=xSv_m3KhUO8
 
 ## Linting & Prettier
