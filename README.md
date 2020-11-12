@@ -86,7 +86,27 @@ _Under construction_
 
 ### Pull Requests
 
-If you work on a feature branch for more than a few hours, it's good practice to share the immediate result with the rest of your team. You can @mention your teammates, and mark the merge request as a "work-in-progress" (WIP). This means it's not ready to be merged, but feedback is welcome. Your teammates can comment on the pull request. The merge request serves as a code review tool. If the review reveals shortcomings, anyone can commit and push a fix. When you feel comfortable with it to be merged, you can assign it to the person who knows the most about the codebase, or who is in charge with approving pull requests into the master branch.
+Pull requests serve as a code review tool, as well as the proper way to update the `master` branch.
+
+After you've pushed your `feature_branch` to the repository, you will need to start a pull request in order to merge your changes into the master branch.
+
+<p align="center">
+<img src="./docs/images/pull-request-1.png" alt="Pull Request" width="750" style="max-width: 100%;"/>
+</p>
+
+It's important to describe _why_ you've made the changes you did. This does not need to be incredibly detailed, but it's good to assume the reviewer does not understand what the original problem was. This is where you can tag or @mention reviewers, assign the request, add a label (e.g. bugfix, enhancement, etc.), or link an open issue.
+
+<p align="center">
+<img src="./docs/images/pull-request-2.png" alt="Pull Request" width="750" style="max-width: 100%;"/>
+</p>
+
+After the pull request is created, do **NOT** merge it until it has been reviewed. Here your teammates will be able to review the changes you've made.
+
+<p align="center">
+<img src="./docs/images/pull-request-3.png" alt="Pull Request" width="750" style="max-width: 100%;"/>
+</p>
+
+If you work on a feature branch for more than a few hours, it's good practice to share the immediate result with the rest of your team. You can @mention your teammates, and mark the pull request as a "work-in-progress" (WIP). This means it's not ready to be merged, but feedback is welcome. Your teammates can comment on the pull request. If the review reveals shortcomings, anyone can commit and push a fix. When you feel comfortable with it to be merged, you can assign it to the person who knows the most about the codebase, or who is in charge with approving pull requests into the `master` branch.
 
 ### Commit Messages
 
