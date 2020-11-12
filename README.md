@@ -7,7 +7,7 @@
 <p align="center">
 <strong>🚧&nbsp;&nbsp;This document is under construction&nbsp;&nbsp;🚧</strong>
 <br/>
-<em>Nov 11, 2020</em>
+<em>Nov 12, 2020</em>
 </p>
 
 - [Getting Started](#getting-started)
@@ -91,21 +91,21 @@ If you work on a feature branch for more than a few hours, it's good practice to
 
 Commit messages should adequately communicate why a change was made, which is important for making development and collaboration more efficient.
 
-Check out 👉[this](https://chris.beams.io/posts/git-commit/)👈 🔥 article on how to write better commit messages.
+Check out 👉&nbsp;[this](https://chris.beams.io/posts/git-commit/)&nbsp;👈 article on how to write better commit messages.
 
-1. Separate subject from body with a blank line (if body is necessary)
+1. Separate subject from body with a blank line (_\* if body is necessary_)
 2. Limit the subject line to 50 characters
 3. Capitalize the subject line
 4. Do not end the subject line with a period
 5. Use the imperative mood in the subject line
-6. Wrap the body at 72 characters (if body is necessary)
-7. Use the body to explain what and why vs. how (if body is necessary)
+6. Wrap the body at 72 characters (_\* if body is necessary_)
+7. Use the body to explain what and why vs. how (_\* if body is necessary_)
 8. Do not assume the reviewer understands what the original problem was, ensure you add it.
 
 _\*Note that in most cases, a commit does not require a subject AND a body. Usually a single subject line is fine._
 
 <p align="center">
-<img src="./docs/images/commit-messages.png" alt="Commit Messages" width="550" style="max-width: 100%;"/>
+<img src="./docs/images/commit-messages.png" alt="Commit Messages" width="600" style="max-width: 100%;"/>
 </p>
 
 ### In Summary
