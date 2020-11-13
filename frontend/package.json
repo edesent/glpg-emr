@@ -20,6 +20,5 @@
     "react-hook-form": "^6.10.1",
     "styled-components": "^5.2.1",
     "tailwindcss": "^1.9.6"
-  },
-  "devDependencies": {}
+  }
 }

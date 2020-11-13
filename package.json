@@ -1,7 +1,7 @@
 {
   "name": "glpg-emr",
   "version": "0.0.1",
-  "description": "<img src=\"./public/logo.svg\" alt=\"GLPG\" width=\"100\" style=\"margin: 0 auto; display: block;\"/> <p style=\"text-align: center; margin-top: 20px;\">README is under construction.</p>",
+  "description": "GLPG EMR Project",
   "author": "@good3n",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,9 +15,8 @@
   },
   "homepage": "https://github.com/good3n/glpg-emr#readme",
   "devDependencies": {
-    "babel-eslint": "^10.1.0",
     "eslint": "^7.13.0",
-    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-airbnb-base": "^14.2.1",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
