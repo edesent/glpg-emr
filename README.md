@@ -30,13 +30,17 @@ To get started working on this project, you will need to clone this repository t
 
 This section is under construction.
 
+#### Backend Structure
+
+This section is under construction.
+
 ### Working with `frontend/`
 
 1. Clone project `$ git clone https://github.com/good3n/glpg-emr.git`
 2. Install dependencies `$ cd glpg-emr/frontend && npm install`
 3. Fire it up with `$ npm dev` and see it on `localhost:3000`
 
-### Frontend Structure
+#### Frontend Structure
 
 ```
 .
@@ -112,7 +116,7 @@ If you work on a feature branch for more than a few hours, it's good practice to
 
 Commit messages should adequately communicate why a change was made, which is important for making development and collaboration more efficient.
 
-Check out 👉&nbsp;[this](https://chris.beams.io/posts/git-commit/)&nbsp;👈 article on how to write better commit messages.
+Check out 👉&nbsp;[this](https://chris.beams.io/posts/git-commit/)&nbsp;👈&nbsp;&nbsp;article on how to write better commit messages.
 
 1. Separate subject from body with a blank line (_\* if body is necessary_)
 2. Limit the subject line to 50 characters
