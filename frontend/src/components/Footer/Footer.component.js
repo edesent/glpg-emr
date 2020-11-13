@@ -4,8 +4,8 @@ const Footer = () => (
   <footer className="fixed bottom-0 inset-x-auto">
     <a
       href="https://greatlakespsychologygroup.com"
-      target="_blank"
       rel="noopener noreferrer"
+      target="_blank"
     >
       {/* &copy; Great Lakes Psychology Group */}
     </a>

@@ -18,22 +18,24 @@ const Login = () => {
           <input
             name="email"
             type="email"
+            id="email"
             placeholder=" "
             ref={register({ required: true })}
           />
-          <label htmlFor="">Email</label>
+          <label htmlFor="email">Email</label>
         </div>
         <div>
           <input
             name="password"
             type="password"
+            id="password"
             placeholder=" "
             ref={register({ required: true })}
           />
-          <label htmlFor="">Password</label>
+          <label htmlFor="password">Password</label>
         </div>
         <Links>
-          <a href="">Forgot password?</a>
+          <a href="/">Forgot password?</a>
           <button>Login</button>
         </Links>
       </Form>
