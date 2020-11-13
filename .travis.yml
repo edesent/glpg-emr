@@ -9,3 +9,7 @@ script:
   - npm build
 notifications:
   slack: glpg-hq:OIznQNWGQIGXE4DbypgODTcP
+    template:
+      - "Build <%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}>) of **%{repository_slug}@%{branch}** by %{author}"
+      - "Time: **%{duration}**"
+      - "Status: Build **%{result}**"
