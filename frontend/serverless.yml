@@ -1,0 +1,5 @@
+glpgEmrNext:
+  component: '@sls-next/serverless-component@1.18.0'
+  inputs:
+    domain: ['dev', 'glpg.cloud']
+    memory: 2048
