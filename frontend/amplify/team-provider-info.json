@@ -1,0 +1,23 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-glpgemr-dev-135722-authRole",
+            "UnauthRoleArn": "arn:aws:iam::854398083755:role/amplify-glpgemr-dev-135722-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::854398083755:role/amplify-glpgemr-dev-135722-authRole",
+            "Region": "us-east-2",
+            "DeploymentBucketName": "amplify-glpgemr-dev-135722-deployment",
+            "UnauthRoleName": "amplify-glpgemr-dev-135722-unauthRole",
+            "StackName": "amplify-glpgemr-dev-135722",
+            "StackId": "arn:aws:cloudformation:us-east-2:854398083755:stack/amplify-glpgemr-dev-135722/91620b90-283d-11eb-b92a-020f5a4b9a82",
+            "AmplifyAppId": "d24ynw77u3fpcu"
+        },
+        "categories": {
+            "hosting": {
+                "amplifyhosting": {
+                    "appId": "d24ynw77u3fpcu",
+                    "type": "cicd"
+                }
+            }
+        }
+    }
+}
