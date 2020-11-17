@@ -38,7 +38,7 @@ This section is under construction.
 
 1. Clone project `$ git clone https://github.com/good3n/glpg-emr.git`
 2. Install dependencies `$ cd glpg-emr/frontend && npm install`
-3. Fire it up with `$ npm dev` and see it on `localhost:3000`
+3. Fire it up with `$ npm run dev` and see it on `localhost:3000`
 
 #### Frontend Structure
 
