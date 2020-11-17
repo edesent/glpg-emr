@@ -31,13 +31,16 @@ notifications:
   slack:
     rooms:
       - glpg-hq:OIznQNWGQIGXE4DbypgODTcP
-    if: type = pull_request
-    template:
-      - 'Pull Request <%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}>) of *%{repository_name}@%{branch}* by `%{author}` *%{result}*'
-      - 'Time: *%{duration}*'
-      - 'Commit: _%{message}_'
     if: type = push
     template:
-      - 'Pull Request <%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}>) of *%{repository_name}@%{branch}* by `%{author}` *%{result}*'
+      - 'Build <%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}>) of *%{repository_name}@%{branch}* by _%{author}_ `%{result}`'
       - 'Time: *%{duration}*'
-      - 'Commit: _%{message}_'
+      - 'Commit: _%{commit_subject}_'
+  slack:
+    rooms:
+      - glpg-hq:OIznQNWGQIGXE4DbypgODTcP
+    if: type = pull_request
+    template:
+      - 'Pull Request <%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}>) of *%{repository_name}@%{branch}* by _%{author}_ `%{result}`'
+      - 'Time: *%{duration}*'
+      - 'Commit: _%{commit_subject}_'
