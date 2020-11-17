@@ -29,18 +29,39 @@ jobs:
 
 notifications:
   slack:
-    rooms:
-      - glpg-hq:OIznQNWGQIGXE4DbypgODTcP
-    if: type = push
-    template:
-      - 'Build <%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}>) of *%{repository_name}@%{branch}* by _%{author}_ `%{result}`'
-      - 'Time: *%{duration}*'
-      - 'Commit: _%{commit_subject}_'
-  slack:
-    rooms:
-      - glpg-hq:OIznQNWGQIGXE4DbypgODTcP
-    if: type = pull_request
-    template:
-      - 'Pull Request <%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}>) of *%{repository_name}@%{branch}* by _%{author}_ `%{result}`'
-      - 'Time: *%{duration}*'
-      - 'Commit: _%{commit_subject}_'
+    - rooms:
+        - glpg-hq:OIznQNWGQIGXE4DbypgODTcP
+      on_success: always
+      on_failure: never
+      if: type = push
+      template:
+        - 'Build <%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}>) of *%{repository_name}@%{branch}* by _%{author}_ *%{result}*! :white_check_mark:'
+        - 'Time: *%{duration}*'
+        - 'Commit: _%{commit_subject}_'
+    - rooms:
+        - glpg-hq:OIznQNWGQIGXE4DbypgODTcP
+      on_success: always
+      on_failure: never
+      if: type = pull_request
+      template:
+        - 'Pull Request <%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}>) of *%{repository_name}@%{branch}* by _%{author}_ *%{result}*! :white_check_mark:'
+        - 'Time: *%{duration}*'
+        - 'Commit: _%{commit_subject}_'
+    - rooms:
+        - glpg-hq:OIznQNWGQIGXE4DbypgODTcP
+      on_success: never
+      on_failure: always
+      if: type = push
+      template:
+        - 'Build <%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}>) of *%{repository_name}@%{branch}* by _%{author}_ *%{result}*! :rotating_light:'
+        - 'Time: *%{duration}*'
+        - 'Commit: _%{commit_subject}_'
+    - rooms:
+        - glpg-hq:OIznQNWGQIGXE4DbypgODTcP
+      on_success: never
+      on_failure: always
+      if: type = pull_request
+      template:
+        - 'Pull Request <%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}>) of *%{repository_name}@%{branch}* by _%{author}_ *%{result}*! :rotating_light:'
+        - 'Time: *%{duration}*'
+        - 'Commit: _%{commit_subject}_'
