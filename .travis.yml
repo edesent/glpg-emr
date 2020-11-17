@@ -32,6 +32,6 @@ notifications:
     rooms:
       - glpg-hq:OIznQNWGQIGXE4DbypgODTcP
     template:
-      - 'Build <%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}>) of **%{repository_slug}@%{branch}** by %{author}'
-      - 'Time: **%{duration}**'
-      - 'Status: Build **%{result}**'
+      - 'Build <%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}>) of *%{repository_name}@%{branch}* by `%{author}` *%{result}*'
+      - 'Time: *%{duration}*'
+      - 'Commit: _%{message}_'
