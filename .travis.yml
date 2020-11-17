@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - 15
+  - '15.2.1'
 
 deploy_service_job: &DEPLOY_SERVICE_JOB
   cache:
@@ -10,7 +10,7 @@ deploy_service_job: &DEPLOY_SERVICE_JOB
 
   install:
     - npm install -g serverless
-    - travis_retry npm install
+    # - travis_retry npm install
     - cd ${SERVICE_PATH}
     - travis_retry npm install
     - cd -
@@ -18,8 +18,17 @@ deploy_service_job: &DEPLOY_SERVICE_JOB
   script:
     - cd ${SERVICE_PATH}
     # - serverless deploy -s ${TRAVIS_BRANCH} --component
-    - serverless deploy
+    - serverless deploy --component
     - cd -
+
+environments:
+  - &PRODUCTION_ENV
+    - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+    - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+
+  - &DEVELOPMENT_ENV
+    - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+    - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
 
 jobs:
   include:
@@ -27,6 +36,8 @@ jobs:
       name: 'Deploy Frontend'
       env:
         - SERVICE_PATH="frontend"
+        - STAGE_NAME=prod
+        - *PRODUCTION_ENV
 
 notifications:
   slack:
