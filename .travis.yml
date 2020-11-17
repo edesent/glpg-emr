@@ -18,7 +18,7 @@ deploy_service_job: &DEPLOY_SERVICE_JOB
   script:
     - cd ${SERVICE_PATH}
     # - serverless deploy -s ${TRAVIS_BRANCH} --component
-    - serverless
+    - serverless deploy --component
     - cd -
 
 jobs:
@@ -26,7 +26,7 @@ jobs:
     - <<: *DEPLOY_SERVICE_JOB
       name: 'Deploy Frontend'
       env:
-        - SERVICE_PATH="frontend"
+        - SERVICE_PATH="frontend/"
 
 notifications:
   slack:
