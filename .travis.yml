@@ -17,7 +17,8 @@ deploy_service_job: &DEPLOY_SERVICE_JOB
 
   script:
     - cd ${SERVICE_PATH}
-    - serverless deploy -s ${TRAVIS_BRANCH} --component
+    # - serverless deploy -s ${TRAVIS_BRANCH} --component
+    - serverless
     - cd -
 
 jobs:
