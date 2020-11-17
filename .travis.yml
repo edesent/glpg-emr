@@ -23,13 +23,45 @@ deploy_service_job: &DEPLOY_SERVICE_JOB
 jobs:
   include:
     - <<: *DEPLOY_SERVICE_JOB
-      name: "Deploy Frontend"
+      name: 'Deploy Frontend'
       env:
         - SERVICE_PATH="frontend"
 
 notifications:
-  slack: glpg-hq:OIznQNWGQIGXE4DbypgODTcP
-    template:
-      - "Build <%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}>) of **%{repository_slug}@%{branch}** by %{author}"
-      - "Time: **%{duration}**"
-      - "Status: Build **%{result}**"
+  slack:
+    - rooms:
+        - glpg-hq:OIznQNWGQIGXE4DbypgODTcP
+      on_success: always
+      on_failure: never
+      if: type = push
+      template:
+        - 'Build <%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}>) of *%{repository_name}@%{branch}* by _%{author}_ *%{result}*! :white_check_mark:'
+        - 'Time: *%{duration}*'
+        - 'Commit: _%{commit_subject}_'
+    - rooms:
+        - glpg-hq:OIznQNWGQIGXE4DbypgODTcP
+      on_success: always
+      on_failure: never
+      if: type = pull_request
+      template:
+        - 'Pull Request <%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}>) of *%{repository_name}@%{branch}* by _%{author}_ *%{result}*! :white_check_mark:'
+        - 'Time: *%{duration}*'
+        - 'Commit: _%{commit_subject}_'
+    - rooms:
+        - glpg-hq:OIznQNWGQIGXE4DbypgODTcP
+      on_success: never
+      on_failure: always
+      if: type = push
+      template:
+        - 'Build <%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}>) of *%{repository_name}@%{branch}* by _%{author}_ *%{result}*! :rotating_light:'
+        - 'Time: *%{duration}*'
+        - 'Commit: _%{commit_subject}_'
+    - rooms:
+        - glpg-hq:OIznQNWGQIGXE4DbypgODTcP
+      on_success: never
+      on_failure: always
+      if: type = pull_request
+      template:
+        - 'Pull Request <%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}>) of *%{repository_name}@%{branch}* by _%{author}_ *%{result}*! :rotating_light:'
+        - 'Time: *%{duration}*'
+        - 'Commit: _%{commit_subject}_'
