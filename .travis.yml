@@ -23,13 +23,15 @@ deploy_service_job: &DEPLOY_SERVICE_JOB
 jobs:
   include:
     - <<: *DEPLOY_SERVICE_JOB
-      name: "Deploy Frontend"
+      name: 'Deploy Frontend'
       env:
         - SERVICE_PATH="frontend"
 
 notifications:
-  slack: glpg-hq:OIznQNWGQIGXE4DbypgODTcP
+  slack:
+    rooms:
+      - glpg-hq:OIznQNWGQIGXE4DbypgODTcP
     template:
-      - "Build <%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}>) of **%{repository_slug}@%{branch}** by %{author}"
-      - "Time: **%{duration}**"
-      - "Status: Build **%{result}**"
+      - 'Build <%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}>) of **%{repository_slug}@%{branch}** by %{author}'
+      - 'Time: **%{duration}**'
+      - 'Status: Build **%{result}**'
