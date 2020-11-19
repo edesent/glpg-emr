@@ -18,13 +18,15 @@ deploy_service_job: &DEPLOY_SERVICE_JOB
     - npm install -g serverless ## Install Serverless globally
     # - travis_retry npm install
     - cd ${SERVICE_PATH} ## Change Directory to ./frontend 
+    - ls -i
     - npm install # could this be just npm install 
+    - serverless -v
     - cd -  # does is reset the directory
 
   script:
     - cd ${SERVICE_PATH} ## Change Directory to ./frontend 
     # - serverless deploy -s ${TRAVIS_BRANCH} --component
-    - serverless --component # what is --component should it just be serverless
+    - serverless deploy --component # what is --component should it just be serverless
     - cd -
 
 environments:
