@@ -20,11 +20,11 @@ deploy_service_job: &DEPLOY_SERVICE_JOB
     - cd ${SERVICE_PATH} ## Change Directory to ./frontend 
     - ls -i
     - npm install # could this be just npm install 
-    - serverless -v 
     - cd -  # does is reset the directory
 
   script:
     - cd ${SERVICE_PATH} ## Change Directory to ./frontend 
+    - serverless -v 
     # - serverless deploy -s ${TRAVIS_BRANCH} --component
     - serverless deploy --component # what is --component should it just be serverless
     - cd -
