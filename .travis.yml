@@ -19,6 +19,7 @@ deploy_service_job: &DEPLOY_SERVICE_JOB
     - cd ${SERVICE_PATH}
     - pwd
     - serverless deploy -s ${STAGE_NAME} --component
+    # - serverless deploy --component
     - cd -
 
 environments:
