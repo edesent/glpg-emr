@@ -10,15 +10,16 @@ deploy_service_job: &DEPLOY_SERVICE_JOB
 
   install:
     - npm install -g serverless
-    # - travis_retry npm install
+    - travis_retry npm install
     - cd ${SERVICE_PATH}
     - travis_retry npm install
     - cd -
 
   script:
     - cd ${SERVICE_PATH}
-    # - serverless deploy -s ${TRAVIS_BRANCH} --component
-    - serverless deploy --component
+    - pwd
+    - serverless deploy -s ${STAGE_NAME} --component
+    # - serverless deploy --component
     - cd -
 
 environments:
@@ -34,6 +35,7 @@ jobs:
   include:
     - <<: *DEPLOY_SERVICE_JOB
       name: 'Deploy Frontend'
+      if: branch = master
       env:
         - SERVICE_PATH="frontend"
         - STAGE_NAME=prod
