@@ -26,7 +26,16 @@ deploy_service_job: &DEPLOY_SERVICE_JOB
     - cd ${SERVICE_PATH} ## Change Directory to ./frontend 
     # - serverless -v 
     # - serverless deploy -s ${TRAVIS_BRANCH} --component
-    - serverless deploy --component # what is --component should it just be serverless
+    # try to create folder
+    - mkdir -p /home/travis/.serverless/components/registry/npm/@sls-next/serverless-component@1.18.0
+    # dive in make sure it exists
+    - cd /home/travis/.serverless/components/registry/npm/@sls-next/serverless-component@1.18.0
+    #li
+    - li -i
+    # will this work
+    - cd -
+    - cd ${SERVICE_PATH} 
+    - serverless # what is --component should it just be serverless
     - cd -
 
 environments:
