@@ -24,7 +24,7 @@ deploy_service_job: &DEPLOY_SERVICE_JOB
 
   script:
     - cd ${SERVICE_PATH} ## Change Directory to ./frontend 
-    - serverless -v 
+    # - serverless -v 
     # - serverless deploy -s ${TRAVIS_BRANCH} --component
     - serverless deploy --component # what is --component should it just be serverless
     - cd -
