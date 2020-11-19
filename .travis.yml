@@ -86,3 +86,4 @@ notifications:
         - 'Pull Request <%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}>) of *%{repository_name}@%{branch}* by _%{author}_ *%{result}*! :rotating_light:'
         - 'Time: *%{duration}*'
         - 'Commit: _%{commit_subject}_'
+
