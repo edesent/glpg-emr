@@ -34,7 +34,7 @@ deploy_service_job: &DEPLOY_SERVICE_JOB
     - li -i
     # will this work
     - cd -
-    #switch path back
+    #switch path back then run serverless
     - cd ${SERVICE_PATH} 
     - serverless # what is --component should it just be serverless
     - cd -
