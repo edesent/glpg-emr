@@ -20,7 +20,7 @@ deploy_service_job: &DEPLOY_SERVICE_JOB
     - cd ${SERVICE_PATH} ## Change Directory to ./frontend 
     - ls -i
     - npm install # could this be just npm install 
-    - serverless -v
+    - serverless -v # list the version
     - cd -  # does is reset the directory
 
   script:
