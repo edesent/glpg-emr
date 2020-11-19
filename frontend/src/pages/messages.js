@@ -9,7 +9,7 @@ const MessagesPage = () => {
     <Layout title="Messages">
       <Header />
       <Submenu title="Messages" />
-      Test2
+      Test3
       <Footer />
     </Layout>
   )
