@@ -18,7 +18,6 @@ deploy_service_job: &DEPLOY_SERVICE_JOB
     - npm install -g serverless ## Install Serverless globally
     # - travis_retry npm install
     - cd ${SERVICE_PATH} ## Change Directory to ./frontend 
-    - ls -i
     - npm install # could this be just npm install 
     - cd -  # does is reset the directory
 
@@ -30,9 +29,6 @@ deploy_service_job: &DEPLOY_SERVICE_JOB
     - mkdir -p /home/travis/.serverless/components/registry/npm/@sls-next/serverless-component@1.18.0
     # dive in make sure it exists
     - cd /home/travis/.serverless/components/registry/npm/@sls-next/serverless-component@1.18.0
-    #li
-    - li -i
-    # will this work
     - cd -
     #switch path back then run serverless
     - cd ${SERVICE_PATH} 
