@@ -4,10 +4,11 @@ glpgEmrNext:
     distributionId: E2YSC2PNMO9TE
     domain: ['dev', 'glpg.cloud']
     memory: 2048
+    bucketRegion: "us-east-1"
     bucketName: "dev-glpg-cloud-static"
 ## May need this for serverless
-#   name:
-#     defaultLambda: fooDefaultLambda
-#     apiLambda: fooApiLambda
+    name:
+     defaultLambda: yekxaw-rping0bk
+     apiLambda: yekxaw-891q8wk
 
     
