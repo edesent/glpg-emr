@@ -2,7 +2,8 @@ glpgEmrNext:
   component: '@sls-next/serverless-component@1.18.0'
   inputs:
     distributionId: E2YSC2PNMO9TE
-    domain: ['dev', 'glpg.cloud']
+## if i leave this out does it not try to set cname
+ #   domain: ['dev', 'glpg.cloud']
     memory: 2048
     bucketRegion: "us-east-1"
     bucketName: "dev-glpg-cloud-static"
