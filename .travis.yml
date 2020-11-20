@@ -10,7 +10,7 @@ deploy_service_job: &DEPLOY_SERVICE_JOB
   #   - ${SERVICE_PATH}/.serverless # I think we can cache this
 
   install:
-    - npm install -g aws-cli #install aws
+    - pip install --quiet --user awscli  #install aws
     - npm install -g serverless ## Install Serverless globally
     # - travis_retry npm install
     - cd ${SERVICE_PATH} ## Change Directory to ./frontend 
@@ -19,7 +19,7 @@ deploy_service_job: &DEPLOY_SERVICE_JOB
 
   script:
     - cd ${SERVICE_PATH} ## Change Directory to ./frontend 
-    # - serverless -v 
+    - aws --version
     # - serverless deploy -s ${TRAVIS_BRANCH} --component
     # try to create folder
     - mkdir -p /home/travis/.serverless/components/registry/npm/@sls-next/serverless-component@1.18.0
