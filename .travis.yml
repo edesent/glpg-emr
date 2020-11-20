@@ -13,7 +13,7 @@ deploy_service_job: &DEPLOY_SERVICE_JOB
     directories:
       - node_modules ## Seems right
       - ${SERVICE_PATH}/node_modules #this would be essentially ./frontend/ node_modules there is nothing there would this brake the script
-  #    - ${SERVICE_PATH}/.serverless # I think we can cache this
+  #cd ..    - ${SERVICE_PATH}/.serverless # I think we can cache this
 
   install:
     - npm install -g aws-cli #install aws
@@ -31,14 +31,14 @@ deploy_service_job: &DEPLOY_SERVICE_JOB
     - mkdir -p /home/travis/.serverless/components/registry/npm/@sls-next/serverless-component@1.18.0
     # dive in make sure it exists
     - cd /home/travis/.serverless/components/registry/npm/@sls-next/serverless-component@1.18.0
-    #back to frontenf
+    #back to frontend
     - cd -
     ## Sync Serverless Files
     - mkdir .serverless
     - aws s3 sync .serverless s3://dev-glpg-cloud-static/.serverless --delete
     - cd .serverless
     - ls
-     #back to frontenf
+     #back to frontend
     - cd -
     - serverless # what is --component should it just be serverless
 
