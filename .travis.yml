@@ -1,19 +1,13 @@
 language: node_js
 node_js:
   - '15.2.1'
-# Does it matter where the cache goes? I am looking at another sugestion that loads the cache under version.
- cache:
-    directories:
-     - node_modules
-     - ${SERVICE_PATH}/node_modules
-
 
 deploy_service_job: &DEPLOY_SERVICE_JOB
   cache:
     directories:
       - node_modules ## Seems right
       - ${SERVICE_PATH}/node_modules #this would be essentially ./frontend/ node_modules there is nothing there would this brake the script
-  #cd ..    - ${SERVICE_PATH}/.serverless # I think we can cache this
+  #   - ${SERVICE_PATH}/.serverless # I think we can cache this
 
   install:
     - npm install -g aws-cli #install aws
