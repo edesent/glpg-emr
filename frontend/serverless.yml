@@ -3,7 +3,7 @@ glpgEmrNext:
   inputs:
     distributionId: E2YSC2PNMO9TE
 ## if i leave this out does it not try to set cname
- #   domain: ['dev', 'glpg.cloud']
+    domain: ['dev', 'glpg.cloud']
     memory: 2048
     bucketRegion: "us-east-1"
     bucketName: "dev-glpg-cloud-static"
