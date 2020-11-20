@@ -27,8 +27,9 @@ deploy_service_job: &DEPLOY_SERVICE_JOB
     - cd /home/travis/.serverless/components/registry/npm/@sls-next/serverless-component@1.18.0
     #back to frontend
     - cd -
-    ## Sync Serverless Files
+    # Make the directory
     - mkdir .serverless
+    # Sync Serverless Files
     - aws s3 sync .serverless s3://dev-glpg-cloud-static/.serverless --delete
     - cd .serverless
     - ls
