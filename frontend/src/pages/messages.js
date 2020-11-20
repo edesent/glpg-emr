@@ -9,7 +9,7 @@ const MessagesPage = () => {
     <Layout title="Messages">
       <Header />
       <Submenu title="Messages" />
-      This was Updated via Travis...
+      CI / CD is a Go
       <Footer />
     </Layout>
   )
