@@ -1,0 +1,16 @@
+{
+    "collection": "test.groups",
+    "database": "test",
+    "id": "5fb8349aad9bea205aad9e71",
+    "roles": [
+        {
+            "name": "default",
+            "apply_when": {},
+            "insert": true,
+            "delete": true,
+            "search": true,
+            "additional_fields": {}
+        }
+    ],
+    "schema": {}
+}

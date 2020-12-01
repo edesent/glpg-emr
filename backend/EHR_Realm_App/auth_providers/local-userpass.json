@@ -1,0 +1,12 @@
+{
+    "id": "5fb82fe8e72ffcfde83edd8a",
+    "name": "local-userpass",
+    "type": "local-userpass",
+    "config": {
+        "autoConfirm": true,
+        "resetPasswordSubject": "Generic Reset Password",
+        "resetPasswordUrl": "http://example.com/reset",
+        "runConfirmationFunction": false
+    },
+    "disabled": false
+}
