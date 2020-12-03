@@ -27,7 +27,6 @@ deploy_service_job: &DEPLOY_SERVICE_JOB
     - realm-cli login --api-key="${MONGO_API_KEY}" --private-api-key="${MONGO_PRIVATE_KEY}"
     #Import the Realm app
     - realm-cli import --app-id=ehr_realm_app-lfyfr --path=EHR_Realm_App --strategy=merge --yes
-    #Reset command line
     - cd -
 
     #Start Frontend
