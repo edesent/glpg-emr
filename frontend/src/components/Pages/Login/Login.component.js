@@ -57,6 +57,7 @@ const Login = () => {
               id="email"
               name="email"
               onChange={(e) => setEmail(e.target.value)}
+              placeholder=" "
               ref={register({ required: true })}
               type="email"
               value={email}
@@ -68,6 +69,7 @@ const Login = () => {
               id="password"
               name="password"
               onChange={(e) => setPassword(e.target.value)}
+              placeholder=" "
               ref={register({ required: true })}
               type="password"
               value={password}
