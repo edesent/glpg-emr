@@ -1,12 +1,16 @@
 import React from 'react'
-import Layout from '../components/layout'
+import Head from 'next/head'
 import { Login } from '../components/Pages/Login'
 
 const LoginPage = () => {
   return (
-    <Layout title="Login">
+    <>
+      <Head>
+        <title>Login - GLPG EMR</title>
+        <link href="/favicon.ico" rel="icon" />
+      </Head>
       <Login />
-    </Layout>
+    </>
   )
 }
 
