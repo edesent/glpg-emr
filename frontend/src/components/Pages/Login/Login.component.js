@@ -11,10 +11,6 @@ const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  useEffect(() => {
-    setApp(new Realm.App(appId))
-  }, [appId])
-
   async function logIn(credentials) {
     await app.logIn(credentials)
     setCurrentUser(app.currentUser)
