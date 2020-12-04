@@ -6,13 +6,8 @@ import { StyledLogin, Error, Form, Links } from './Login.styles'
 const Login = () => {
   // Setup Realm
   const appId = 'ehr_realm_app-lfyfr'
-  const [app, setApp] = React.useState(new Realm.App(appId))
-  React.useEffect(() => {
-    setApp(new Realm.App(appId))
-  }, [appId])
-
-  const [currentUser, setCurrentUser] = React.useState(app.currentUser)
-
+  const [app, setApp] = useState(new Realm.App(appId))
+  const [currentUser, setCurrentUser] = useState(app.currentUser)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
@@ -20,6 +15,7 @@ const Login = () => {
     await app.logIn(credentials)
     setCurrentUser(app.currentUser)
   }
+
   async function logOut() {
     await app.currentUser?.logOut()
     setCurrentUser(app.currentUser)
@@ -39,58 +35,49 @@ const Login = () => {
     // console.log(currentUser)
   }
 
-  useEffect(() => {
-    // We can check the values of our variables here.
-    // console.log(email);
-  })
-
-  if (currentUser?.profile?.email) {
-    return (
-      <StyledLogin>
-        <img alt="Great Lakes Psychology Group" src="/logo.svg" />
-        <div className="welcomemsg">
-          <h1>Welcome {currentUser.profile.email}</h1>
-          <button onClick={logOut}>Logout</button>
-        </div>
-      </StyledLogin>
-    )
-  }
   return (
     <StyledLogin>
-      <img alt="Great Lakes Psychology Group" src="/logo.svg" />
-      <Form onSubmit={handleSubmit(onLoginSubmit)}>
-        {Object.entries(errors).length !== 0 ? (
-          <Error>All fields are required!</Error>
-        ) : (
-          ``
-        )}
-        <div>
-          <input
-            id="email"
-            name="email"
-            onChange={(e) => setEmail(e.target.value)}
-            ref={register({ required: true })}
-            type="email"
-            value={email}
-          />
-          <label htmlFor="email">Email</label>
-        </div>
-        <div>
-          <input
-            id="password"
-            name="password"
-            onChange={(e) => setPassword(e.target.value)}
-            ref={register({ required: true })}
-            type="password"
-            value={password}
-          />
-          <label htmlFor="password">Password</label>
-        </div>
-        <Links>
-          <a href="/">Forgot password?</a>
-          <button>Login</button>
-        </Links>
-      </Form>
+      <img alt="Great Lakes Psychology Group" src="./logo.svg" />
+      {currentUser?.profile?.email ? (
+        <>
+          <h1>Welcome {currentUser.profile.email}</h1>
+          <button onClick={logOut}>Logout</button>
+        </>
+      ) : (
+        <Form onSubmit={handleSubmit(onLoginSubmit)}>
+          {Object.entries(errors).length !== 0 && (
+            <Error>All fields are required!</Error>
+          )}
+          <div>
+            <input
+              id="email"
+              name="email"
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder=" "
+              ref={register({ required: true })}
+              type="email"
+              value={email}
+            />
+            <label htmlFor="email">Email</label>
+          </div>
+          <div>
+            <input
+              id="password"
+              name="password"
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder=" "
+              ref={register({ required: true })}
+              type="password"
+              value={password}
+            />
+            <label htmlFor="password">Password</label>
+          </div>
+          <Links>
+            <a href="/">Forgot password?</a>
+            <button>Login</button>
+          </Links>
+        </Form>
+      )}
     </StyledLogin>
   )
 }
