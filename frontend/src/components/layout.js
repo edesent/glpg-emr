@@ -1,16 +1,23 @@
 import React from 'react'
 import Head from 'next/head'
 import PropTypes from 'prop-types'
+import { SidebarMenu } from './SidebarMenu'
+import { Header } from './Header'
+import { Footer } from './Footer'
 
 const Layout = ({ title, children }) => {
-  // const { children, title } = props
   return (
     <>
       <Head>
         <title>{title}</title>
         <link href="/favicon.ico" rel="icon" />
       </Head>
-      <main>{children}</main>
+      <SidebarMenu />
+      <main>
+        <Header />
+        <div>{children}</div>
+        <Footer />
+      </main>
     </>
   )
 }
