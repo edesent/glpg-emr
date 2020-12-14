@@ -4,41 +4,37 @@ node_js:
 
 deploy_service_job: &DEPLOY_SERVICE_JOB
   cache:
-    #caching directories we assume speeds up later install.
     directories:
-      - node_modules ## Seems right
-      - ${SERVICE_PATH}/node_modules #this would be essentially ./frontend/ node_modules there is nothing there would this brake the script
-  #   - ${SERVICE_PATH}/.serverless # I think we can cache this
+      - node_modules
+      - ${SERVICE_PATH}/node_modules
 
   install:
-    - pip install --quiet --user awscli #install aws
-    - npm install -g serverless ## Install Serverless globally
-    - npm install -g mongodb-realm-cli # Install MongoDB CLI
-    - cd ${SERVICE_PATH} # Change Directory to ./frontend
+    - pip install --quiet --user awscli
+    - npm install -g serverless
+    - npm install -g mongodb-realm-cli
+    - cd ${SERVICE_PATH}
     - npm install
     - cd -
 
   script:
-    #This will now be 2 parts fronted / backend
-
-    #Start Backend
+    # Start Backend
     - cd backend
-    #Login to RealmCLI with enviroment variables
+    # Login to RealmCLI with enviroment variables
     - realm-cli login --api-key="${MONGO_API_KEY}" --private-api-key="${MONGO_PRIVATE_KEY}"
-    #Import the Realm app
+    # Import the Realm app
     - realm-cli import --app-id=ehr_realm_app-lfyfr --path=EHR_Realm_App --strategy=merge --yes
     - cd -
 
-    #Start Frontend
+    # Start Frontend
     - cd ${SERVICE_PATH} # Change Directory to ./frontend
-    #- aws --version  # - serverless deploy -s ${TRAVIS_BRANCH} --component
     # Try to create folder may not be necessary anymore
     - mkdir -p /home/travis/.serverless/components/registry/npm/@sls-next/serverless-component@1.18.0
     # Make the .serverless directory inside ./frontend
     - mkdir .serverless
     # Sync Serverless Files
     - aws s3 sync s3://dev-glpg-cloud-static/.serverless .serverless
-    - serverless # Run serverless to push frontend to AWS Lambda Edge
+    # Run serverless to push frontend to AWS Lambda Edge
+    - serverless
 
 environments:
   ## Accessing Keys set in Travis.  Dev / Prod the same for now

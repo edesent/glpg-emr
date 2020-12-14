@@ -24,6 +24,9 @@ build
 *.excalidraw
 .DS_Store
 
+# cache
+.eslintcache
+
 # logs
 npm-debug.log*
 yarn-debug.log*
