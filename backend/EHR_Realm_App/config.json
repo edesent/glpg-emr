@@ -1,0 +1,25 @@
+{
+    "app_id": "ehr_realm_app-lfyfr",
+    "config_version": 20200603,
+    "name": "EHR_Realm_App",
+    "location": "US-VA",
+    "deployment_model": "GLOBAL",
+    "security": {  },
+    "hosting": {
+        "enabled": true,
+        "custom_domain": "listen.glpg.online",
+        "app_default_domain": "ehr-realm-app-lfyfr-zznrr.mongodbstitch.com",
+        "default_error_path": "",
+        "default_error_code": ""
+    },
+    "custom_user_data_config": {
+        "enabled": true,
+        "mongo_service_name": "mongodb-atlas",
+        "database_name": "test",
+        "collection_name": "test.users",
+        "user_id_field": "Email"
+    },
+    "sync": {
+        "development_mode_enabled": false
+    }
+}
