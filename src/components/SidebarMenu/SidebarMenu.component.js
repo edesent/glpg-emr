@@ -1,12 +1,9 @@
-// import { useContext } from 'react'
-// import Link from 'next/link'
-// import PageLink from './PageLink.component'
+import React from 'react'
+import { NavLink } from 'react-router-dom'
 import logo from '../../assets/images/logo.svg'
 import { StyledHeader, Logo, Links, StyledLogout } from './SidebarMenu.styles'
-// import UserContext from '../../context/UserContext'
 
 const SidebarMenu = () => {
-  // const context = useContext(UserContext)
   return (
     <StyledHeader>
       <Logo>
@@ -15,7 +12,7 @@ const SidebarMenu = () => {
         </a>
       </Logo>
       <Links>
-        {/* <PageLink name="Dashboard" url="dashboard">
+        <NavLink to="/dashboard">
           <svg
             fill="none"
             viewBox="0 0 28 28"
@@ -29,8 +26,8 @@ const SidebarMenu = () => {
               fillRule="evenodd"
             />
           </svg>
-        </PageLink>
-        <PageLink name="Patients" url="patients">
+        </NavLink>
+        <NavLink to="/patients">
           <svg
             fill="none"
             viewBox="0 0 30 32"
@@ -44,8 +41,8 @@ const SidebarMenu = () => {
               fillRule="evenodd"
             />
           </svg>
-        </PageLink>
-        <PageLink name="Schedule" url="schedule">
+        </NavLink>
+        <NavLink to="/schedule">
           <svg
             fill="none"
             viewBox="0 0 31 32"
@@ -59,8 +56,8 @@ const SidebarMenu = () => {
               fillRule="evenodd"
             />
           </svg>
-        </PageLink>
-        <PageLink name="Messages" url="messages">
+        </NavLink>
+        <NavLink to="/messages">
           <svg
             fill="none"
             viewBox="0 0 32 32"
@@ -74,7 +71,7 @@ const SidebarMenu = () => {
               fillRule="evenodd"
             />
           </svg>
-        </PageLink> */}
+        </NavLink>
       </Links>
       <StyledLogout>
         <svg fill="none" viewBox="0 0 32 31" xmlns="http://www.w3.org/2000/svg">
