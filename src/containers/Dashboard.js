@@ -4,7 +4,7 @@ import { Submenu } from '../components/Submenu'
 
 const DashboardPage = () => {
   return (
-    <Layout title="Dashboard">
+    <Layout>
       <Submenu title="Dashboard" />
     </Layout>
   )

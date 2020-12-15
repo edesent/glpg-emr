@@ -4,7 +4,7 @@ import { Submenu } from '../components/Submenu'
 
 const PatientsPage = () => {
   return (
-    <Layout title="GLPG Notes">
+    <Layout>
       <Submenu title="Patients" />
     </Layout>
   )

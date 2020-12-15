@@ -4,7 +4,7 @@ import { Submenu } from '../components/Submenu'
 
 const SchedulePage = () => {
   return (
-    <Layout title="Schedule">
+    <Layout>
       <Submenu title="Schedule" />
     </Layout>
   )

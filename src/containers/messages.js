@@ -4,7 +4,7 @@ import { Submenu } from '../components/Submenu'
 
 const MessagesPage = () => {
   return (
-    <Layout title="Messages">
+    <Layout>
       <Submenu title="Messages" />
     </Layout>
   )
