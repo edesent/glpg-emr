@@ -10,7 +10,8 @@ const Logout = ({ className, children }) => {
       await app.currentUser?.logOut()
       setUserAuthenticated(false)
     } catch (error) {
-      console.error('crap!')
+      // eslint-disable-next-line no-console
+      console.error(error)
     }
   }
 
