@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import * as Realm from 'realm-web'
-import { useHistory } from 'react-router-dom'
-import AppContext from './context/AppContext'
+import { AppContext } from './context/AppContext'
 import Routes from './Routes'
 import GlobalStyle from './assets/styles/globalStyles'
 
@@ -12,13 +11,11 @@ function App() {
   const [currentUser, setCurrentUser] = useState()
   const [userAuthenticating, setUserAuthenticating] = useState(true)
   const [userAuthenticated, setUserAuthenticated] = useState(false)
-  const history = useHistory()
 
   async function onLoad() {
     try {
       await app.currentUser
       setUserAuthenticated(true)
-      history.push('/dashboard')
     } catch (error) {
       if (error !== 'No current user') {
         // eslint-disable-next-line no-alert
@@ -39,6 +36,7 @@ function App() {
       {!userAuthenticating && (
         <AppContext.Provider
           value={{
+            app,
             currentUser,
             setCurrentUser,
             userAuthenticated,

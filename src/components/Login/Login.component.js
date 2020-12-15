@@ -1,8 +1,8 @@
-import { useContext } from 'react'
+import React, { useEffect } from 'react'
 import * as Realm from 'realm-web'
 import { useForm } from 'react-hook-form'
 import { useHistory } from 'react-router-dom'
-import AppContext from '../../context/AppContext'
+import { useAppContext } from '../../context/AppContext'
 import { BackgroundImg, StyledLogin, Error, Form, Links } from './Login.styles'
 import background from '../../assets/images/login-background.jpg'
 
@@ -11,7 +11,7 @@ const Login = () => {
   const app = new Realm.App({ id: REALM_APP_ID })
 
   // hooks
-  const { setCurrentUser } = useContext(AppContext)
+  const { setCurrentUser, setUserAuthenticated } = useAppContext()
   const { register, handleSubmit, errors } = useForm()
   const history = useHistory()
 
@@ -35,13 +35,15 @@ const Login = () => {
     userLogin(email, password).then((user) => {
       if (user && user !== null) {
         setCurrentUser(app.currentUser)
+        setUserAuthenticated(true)
         history.push('/dashboard')
       }
     })
   }
 
-  // test_therapist@glpg.net
-  // testglpg1
+  useEffect(() => {
+    setUserAuthenticated(false)
+  }, [setUserAuthenticated])
 
   return (
     <>

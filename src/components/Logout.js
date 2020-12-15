@@ -1,18 +1,15 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
-import { useHistory } from 'react-router-dom'
-import AppContext from '../context/AppContext'
+import { useAppContext } from '../context/AppContext'
 
 const Logout = ({ className, children }) => {
-  const { setUserAuthenticated } = useContext(AppContext)
-  const history = useHistory()
+  const { setUserAuthenticated } = useAppContext()
 
   return (
     <button
       className={className}
       onClick={() => {
         setUserAuthenticated(false)
-        history.push('/')
       }}
     >
       {children}
