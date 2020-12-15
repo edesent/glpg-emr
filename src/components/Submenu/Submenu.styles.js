@@ -13,6 +13,7 @@ export const StyledSubmenu = styled.aside`
     height: 90px;
     line-height: 90px;
     border-bottom: 1px solid #e1e6f1;
+    margin: 0;
     padding: 0 30px;
     font-weight: 600;
     font-size: 24px;

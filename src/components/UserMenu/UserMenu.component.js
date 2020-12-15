@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import { Menu, Avatar, Dropdown } from './UserMenu.styles'
+import { StyledUserMenu, Menu, Avatar, Dropdown } from './UserMenu.styles'
 
 const UserMenu = () => {
   const [userMenuOpen, setUserMenuOpen] = useState(false)
   return (
-    <div className="relative justify-self-end">
+    <StyledUserMenu>
       <Menu
         onClick={() => {
           setUserMenuOpen(!userMenuOpen)
@@ -42,7 +42,7 @@ const UserMenu = () => {
         </svg>
       </Menu>
       <Dropdown className={userMenuOpen ? `is-open` : ``}>Beep boop</Dropdown>
-    </div>
+    </StyledUserMenu>
   )
 }
 

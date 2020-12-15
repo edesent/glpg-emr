@@ -1,5 +1,10 @@
 import styled from 'styled-components'
 
+export const StyledUserMenu = styled.div`
+  position: relative;
+  justify-self: end;
+`
+
 export const Menu = styled.menu`
   display: grid;
   grid-template-columns: 40px 1fr 10px;
@@ -22,7 +27,8 @@ export const Menu = styled.menu`
 `
 
 export const Avatar = styled.div`
-  width: 100%;
+  width: 40px;
+  height: 40px;
   padding: 5px;
   background-color: #0f5ef7;
   border-radius: 20px;

@@ -19,6 +19,7 @@ export const Logo = styled.div`
   justify-content: center;
 
   img {
+    display: block;
     width: 60px;
   }
 `
