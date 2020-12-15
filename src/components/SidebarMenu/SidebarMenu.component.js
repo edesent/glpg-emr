@@ -12,7 +12,7 @@ const SidebarMenu = () => {
         </a>
       </Logo>
       <Links>
-        <NavLink to="/dashboard">
+        <NavLink title="Dashboard" to="/dashboard">
           <svg
             fill="none"
             viewBox="0 0 28 28"
@@ -27,7 +27,7 @@ const SidebarMenu = () => {
             />
           </svg>
         </NavLink>
-        <NavLink to="/patients">
+        <NavLink title="Patients" to="/patients">
           <svg
             fill="none"
             viewBox="0 0 30 32"
@@ -42,7 +42,7 @@ const SidebarMenu = () => {
             />
           </svg>
         </NavLink>
-        <NavLink to="/schedule">
+        <NavLink title="Schedule" to="/schedule">
           <svg
             fill="none"
             viewBox="0 0 31 32"
@@ -57,7 +57,7 @@ const SidebarMenu = () => {
             />
           </svg>
         </NavLink>
-        <NavLink to="/messages">
+        <NavLink title="Messages" to="/messages">
           <svg
             fill="none"
             viewBox="0 0 32 32"
