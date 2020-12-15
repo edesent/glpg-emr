@@ -13,5 +13,5 @@ export default function UnauthenticatedRoute({ children, ...rest }) {
 }
 
 UnauthenticatedRoute.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
 }
