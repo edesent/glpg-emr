@@ -16,7 +16,6 @@ exports = async function(arg) {
     const userEmail = context.user.data.email;
     let hasAccess = false;
 
-    console.log(`args ${permissionName} ${userEmail}`)
     try {
         if(permissionName && userEmail) {
             const userCollection = context.services.get("mongodb-atlas").db("test").collection("test.users")
@@ -63,4 +62,9 @@ function isPermissionValid(groupPermissions, permissionName) {
   }
   
   return false
+}
+
+// ! Used for allowing the function above to be exported for Unit Tests
+if (typeof module === 'object') {
+    module.exports = exports;
 }
