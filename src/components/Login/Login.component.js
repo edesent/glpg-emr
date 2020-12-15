@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import * as Realm from 'realm-web'
 import { useForm } from 'react-hook-form'
 import { useHistory } from 'react-router-dom'
@@ -7,22 +7,22 @@ import { BackgroundImg, StyledLogin, Error, Form, Links } from './Login.styles'
 import background from '../../assets/images/login-background.jpg'
 
 const Login = () => {
-  const REALM_APP_ID = 'ehr_realm_app-lfyfr'
-  const app = new Realm.App({ id: REALM_APP_ID })
-
   // hooks
-  const { setCurrentUser, setUserAuthenticated } = useAppContext()
+  const { app, setUserAuthenticated } = useAppContext()
   const { register, handleSubmit, errors } = useForm()
   const history = useHistory()
 
-  // eslint-disable-next-line consistent-return
+  function assert(condition, message) {
+    if (!condition) {
+      throw new Error(message || 'Assertion failed')
+    }
+  }
+
   async function userLogin(email, password) {
     const credentials = Realm.Credentials.emailPassword(email, password)
-    // eslint-disable-next-line no-useless-catch
     try {
       const user = await app.logIn(credentials)
-      // eslint-disable-next-line no-console
-      console.log('Successfully logged in! User: ', user.id)
+      assert(user.id === app.currentUser.id, 'Asserting User')
       return user
     } catch (error) {
       // eslint-disable-next-line no-alert
@@ -34,16 +34,11 @@ const Login = () => {
   const onSubmit = ({ email, password }) => {
     userLogin(email, password).then((user) => {
       if (user && user !== null) {
-        setCurrentUser(app.currentUser)
         setUserAuthenticated(true)
         history.push('/dashboard')
       }
     })
   }
-
-  useEffect(() => {
-    setUserAuthenticated(false)
-  }, [setUserAuthenticated])
 
   return (
     <>

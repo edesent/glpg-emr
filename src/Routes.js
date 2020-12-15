@@ -12,7 +12,10 @@ export default function Routes() {
       <UnauthenticatedRoute exact path="/">
         <LoginPage />
       </UnauthenticatedRoute>
-      <AuthenticatedRoute component={DashboardPage} exact path="/dashboard" />
+      {/* <AuthenticatedRoute component={DashboardPage} exact path="/dashboard" /> */}
+      <AuthenticatedRoute exact path="/dashboard">
+        <DashboardPage />
+      </AuthenticatedRoute>
       <Route component={NotFound} />
     </Switch>
   )

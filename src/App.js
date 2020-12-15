@@ -8,16 +8,16 @@ function App() {
   const REALM_APP_ID = 'ehr_realm_app-lfyfr'
   const app = new Realm.App({ id: REALM_APP_ID })
 
-  const [currentUser, setCurrentUser] = useState()
   const [userAuthenticating, setUserAuthenticating] = useState(true)
   const [userAuthenticated, setUserAuthenticated] = useState(false)
 
   async function onLoad() {
     try {
       await app.currentUser
-      setUserAuthenticated(true)
+      // eslint-disable-next-line no-unused-expressions
+      app?.currentUser && setUserAuthenticated(true)
     } catch (error) {
-      if (error !== 'No current user') {
+      if (error) {
         // eslint-disable-next-line no-alert
         alert(error)
       }
@@ -37,8 +37,6 @@ function App() {
         <AppContext.Provider
           value={{
             app,
-            currentUser,
-            setCurrentUser,
             userAuthenticated,
             setUserAuthenticated,
           }}
