@@ -1,12 +1,13 @@
 import React from 'react'
 import { UserMenu } from '../UserMenu'
+import { StyledHeader } from './Header.styles'
 
 const Header = () => {
   return (
-    <header>
+    <StyledHeader>
       <input type="text" />
       <UserMenu />
-    </header>
+    </StyledHeader>
   )
 }
 
