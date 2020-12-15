@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import * as Realm from 'realm-web'
 import { AppContext } from './context/AppContext'
-import Routes from './Routes'
+import Routes from './routes/Routes'
 import GlobalStyle from './assets/styles/globalStyles'
 
 function App() {
