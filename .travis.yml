@@ -14,11 +14,17 @@ deploy_service_job: &DEPLOY_SERVICE_JOB
     - npm install -g mongodb-realm-cli
     - cd ${SERVICE_PATH}
     - npm install
+    - cd ${SERVICE_PATH}/backend/EHR_Realm_App/unit_tests
+    - npm install
     - cd -
 
   script:
     # Start Backend
-    - cd backend
+    # Start Unit Tests
+    - cd ${SERVICE_PATH}/backend/EHR_Realm_App/unit_tests
+    - npm run test
+    # Import App to Realm
+    - cd ${SERVICE_PATH}/backend
     # Login to RealmCLI with enviroment variables
     - realm-cli login --api-key="${MONGO_API_KEY}" --private-api-key="${MONGO_PRIVATE_KEY}"
     # Import the Realm app
