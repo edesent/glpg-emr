@@ -1,13 +1,13 @@
 [![Build Status](https://travis-ci.com/good3n/glpg-emr.svg?token=Ajhq2zsPfJntvQq82mND&branch=master)](https://travis-ci.com/good3n/glpg-emr)
 
 <p align="center">
-<img src="./frontend/public/logo.svg" alt="GLPG" width="100"/>
+<img src="./src/assets/images/logo.svg" alt="GLPG" width="100"/>
 </p>
 
 <p align="center">
 <strong>🚧&nbsp;&nbsp;This document is under construction&nbsp;&nbsp;🚧</strong>
 <br/>
-<em>Nov 12, 2020</em>
+<em>Dec 16, 2020</em>
 </p>
 
 - [Getting Started](#getting-started)
@@ -44,18 +44,25 @@ This section is under construction.
 
 ```
 .
+├── public/                 # React public files
 ├── src/
+│   ├── assets/
+│   │   ├── images/
+│   │   └── styles/         # Global styles
 │   ├── components/         # React components
-│   ├── pages/              # Next.js pages (React components)
-│   └── assets/
-│       └── styles/         # Global styles
-├── static/                 # Static assets served by Next.js
+│   ├── containers/         # Application "Pages"
+│   ├── context/            # Context API
+│   └── routes/             # Routing
 ├── .babelrc                # Babel config
+├── .eslintignore
+├── .eslintrc               # ESLint config
+├── .prettierrc             # Prettier config
 ├── .gitignore
-├── next.config.js          # Next.js config
+├── .prettierrc             # Prettier config
+├── .travis.yml             # TravisCI config
 ├── package.json
 ├── postcss.config.js       # PostCss config
-├── tailwind.config.js      # TailwindCSS config
+├── serverless.yml          # Serverless config
 └── README.md
 ```
 
