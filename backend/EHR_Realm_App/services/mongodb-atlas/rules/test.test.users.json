@@ -6,7 +6,7 @@
         {
             "name": "owner",
             "apply_when": {
-                "Email": "%%user.id"
+                
             },
             "fields": {
                 "Authorization": {
@@ -74,7 +74,7 @@
         {
             "name": "CanAdminViewUsers",
             "query": {
-                "Email": "%%user.Email"
+                "Email": "%%user.data.email"
             },
             "apply_when": {
                 "%%false": {

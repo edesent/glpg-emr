@@ -10,13 +10,10 @@
             "delete": true,
             "search": true,
             "fields": {
-                "Name": {
-                    "write": true
-                },
-                "Permissions": {
-                    "write": true
-                }
+                "Name": { },
+                "Permissions": { }
             },
+            "read": true,
             "additional_fields": {}
         }
     ],
