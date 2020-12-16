@@ -1,13 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Route, Redirect } from 'react-router-dom'
-import { useAppContext } from '../context/AppContext'
+// import { useAppContext } from '../context/AppContext'
+import { useRealmApp } from '../context/RealmContext'
 
 export default function UnauthenticatedRoute({ children, ...rest }) {
-  const { userAuthenticated } = useAppContext()
+  const app = useRealmApp()
   return (
     <Route {...rest}>
-      {!userAuthenticated ? children : <Redirect to="/dashboard" />}
+      {!app.currentUser ? children : <Redirect to="/dashboard" />}
     </Route>
   )
 }

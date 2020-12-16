@@ -1,49 +1,24 @@
-import React, { useState, useEffect } from 'react'
-import * as Realm from 'realm-web'
-import { AppContext } from './context/AppContext'
+import React from 'react'
+// import * as Realm from 'realm-web'
+// import { AppContext } from './context/AppContext'
 import Routes from './routes/Routes'
+import { RealmAppProvider } from './context/RealmContext'
+import { RealmApolloProvider } from './context/ApolloContext'
+import { UserAuth } from './context/UserAuthContext'
 import GlobalStyle from './assets/styles/globalStyles'
 
 function App() {
-  const REALM_APP_ID = 'ehr_realm_app-lfyfr'
-  const app = new Realm.App({ id: REALM_APP_ID })
-
-  const [userAuthenticating, setUserAuthenticating] = useState(true)
-  const [userAuthenticated, setUserAuthenticated] = useState(false)
-
-  async function onLoad() {
-    try {
-      await app.currentUser
-      // eslint-disable-next-line no-unused-expressions
-      app?.currentUser && setUserAuthenticated(true)
-    } catch (error) {
-      if (error) {
-        // eslint-disable-next-line no-alert
-        alert(error)
-      }
-    }
-    setUserAuthenticating(false)
-  }
-
-  useEffect(() => {
-    onLoad()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
+  const APP_ID = 'ehr_realm_app-lfyfr'
   return (
     <>
       <GlobalStyle />
-      {!userAuthenticating && (
-        <AppContext.Provider
-          value={{
-            app,
-            userAuthenticated,
-            setUserAuthenticated,
-          }}
-        >
-          <Routes />
-        </AppContext.Provider>
-      )}
+      <RealmAppProvider appId={APP_ID}>
+        <UserAuth>
+          <RealmApolloProvider>
+            <Routes />
+          </RealmApolloProvider>
+        </UserAuth>
+      </RealmAppProvider>
     </>
   )
 }

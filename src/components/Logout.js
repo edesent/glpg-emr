@@ -1,25 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { useAppContext } from '../context/AppContext'
+import { useRealmApp } from '../context/RealmContext'
 
 const Logout = ({ className, children }) => {
-  const { app, setUserAuthenticated } = useAppContext()
-
-  async function logOut() {
-    try {
-      await app.currentUser?.logOut()
-      setUserAuthenticated(false)
-    } catch (error) {
-      // eslint-disable-next-line no-console
-      console.error(error)
-    }
-  }
+  const app = useRealmApp()
 
   return (
     <button
       className={className}
       onClick={() => {
-        logOut()
+        app.logOut()
       }}
     >
       {children}
