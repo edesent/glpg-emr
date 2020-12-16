@@ -9,8 +9,24 @@
                 "Email": "%%user.id"
             },
             "fields": {
-                "Email": {},
-                "Password": {}
+                "Authorization": {
+                    "write": true
+                },
+                "Email": {
+                    "write": true
+                },
+                "FirstName": {
+                    "write": true
+                },
+                "LastName": {
+                    "write": true
+                },
+                "Password": {
+                    "write": true
+                },
+                "Role": {
+                    "write": true                    
+                }
             },
             "read": true,
             "write": true,
@@ -20,5 +36,56 @@
             "additional_fields": {}
         }
     ],
-    "schema": {}
+    "schema": {
+        "properties": {
+            "Authorization": {
+                "bsonType": "object",
+                "properties": {
+                    "Groups": {
+                        "bsonType": "array",
+                        "items": {
+                            "bsonType": "string"
+                        }
+                    }
+                }
+            },
+            "Email": {
+                "bsonType": "string"
+            },
+            "FirstName": {
+                "bsonType": "string"
+            },
+            "LastName": {
+                "bsonType": "string"
+            },
+            "Password": {
+                "bsonType": "string"
+            },
+            "Role": {
+                "bsonType": "string"
+            },
+            "_id": {
+                "bsonType": "objectId"
+            }
+        },
+        "title": "test.user"
+    },
+    "filters": [
+        {
+            "name": "CanAdminViewUsers",
+            "query": {
+                "Email": "%%user.Email"
+            },
+            "apply_when": {
+                "%%false": {
+                    "%function": {
+                        "name": "hasUserAccess",
+                        "arguments": [
+                            "ehr/manageUsers"
+                        ]
+                    }
+                }
+            }
+        }
+    ]
 }

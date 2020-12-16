@@ -9,8 +9,32 @@
             "insert": true,
             "delete": true,
             "search": true,
+            "fields": {
+                "Name": {
+                    "write": true
+                },
+                "Permissions": {
+                    "write": true
+                }
+            },
             "additional_fields": {}
         }
     ],
-    "schema": {}
+    "schema": {
+        "properties": {
+            "Name": {
+                "bsonType": "string"
+            },
+            "Permissions": {
+                "bsonType": "array",
+                "items": {
+                    "bsonType": "string"
+                }
+            },
+            "_id": {
+                "bsonType": "objectId"
+            }
+        },
+        "title": "test.group"
+    }
 }

@@ -4,7 +4,7 @@
     "name": "EHR_Realm_App",
     "location": "US-VA",
     "deployment_model": "GLOBAL",
-    "security": {},
+    "security": {  },
     "hosting": {
         "enabled": true,
         "custom_domain": "listen.glpg.online",

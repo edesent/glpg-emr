@@ -29,6 +29,7 @@
     "react/jsx-sort-props": 1,
     "react/react-in-jsx-scope": "off", // NextJs specific fix: suppress errors for missing 'import React' in files for Next.js
     "import/prefer-default-export": 0,
+    "prefer-const": 2,
     "react/jsx-filename-extension": [
       1,
       {
