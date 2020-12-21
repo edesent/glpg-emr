@@ -29,9 +29,9 @@ beforeEach(() => {
         }
     }
     mockCollection = (collectionName) => {
-        if(collectionName === 'test.users') {
+        if(collectionName === 'authorization.users') {
             return { find: mockFindUsers }
-        } else if (collectionName === 'test.groups') {
+        } else if (collectionName === 'authorization.groups') {
             return { find: mockFindGroups }
         }
     }
