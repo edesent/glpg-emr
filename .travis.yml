@@ -6,25 +6,23 @@ deploy_service_job: &DEPLOY_SERVICE_JOB
   cache:
     directories:
       - node_modules
-      - ${SERVICE_PATH}/node_modules
+      - ${SERVICE_PATH}/EHR_Realm_App/unit_tests/node_modules
 
   install:
     - pip install --quiet --user awscli
-    - npm install -g serverless
-    - npm install -g mongodb-realm-cli
-    - cd ${SERVICE_PATH}
+    - npm install -g serverless mongodb-realm-cli
     - npm install
-    - cd ${SERVICE_PATH}/backend/EHR_Realm_App/unit_tests
+    - cd ${SERVICE_PATH}/EHR_Realm_App/unit_tests
     - npm install
     - cd -
 
   script:
     # Start Backend
     # Start Unit Tests
-    - cd ${SERVICE_PATH}/backend/EHR_Realm_App/unit_tests
+    - cd ${SERVICE_PATH}/EHR_Realm_App/unit_tests
     - npm run test
     # Import App to Realm
-    - cd ${SERVICE_PATH}/backend
+    - cd ../..
     # Login to RealmCLI with enviroment variables
     - realm-cli login --api-key="${MONGO_API_KEY}" --private-api-key="${MONGO_PRIVATE_KEY}"
     # Import the Realm app for TEST environment
@@ -32,10 +30,10 @@ deploy_service_job: &DEPLOY_SERVICE_JOB
     - cd -
 
     # Start Frontend
-    - cd ${SERVICE_PATH} # Change Directory to ./frontend
+    # - cd ${SERVICE_PATH} # Change Directory to root
     # Try to create folder may not be necessary anymore
     - mkdir -p /home/travis/.serverless/components/registry/npm/@sls-next/serverless-component@1.18.0
-    # Make the .serverless directory inside ./frontend
+    # Make the .serverless directory inside root
     - mkdir .serverless
     # Sync Serverless Files
     - aws s3 sync s3://dev-glpg-cloud-static/.serverless .serverless
@@ -55,10 +53,10 @@ environments:
 jobs:
   include:
     - <<: *DEPLOY_SERVICE_JOB
-      name: 'Deploy Frontend'
+      name: 'Deploy'
       if: branch = master
       env:
-        - SERVICE_PATH="frontend"
+        - SERVICE_PATH="backend"
         - STAGE_NAME=prod
         - *PRODUCTION_ENV
 
