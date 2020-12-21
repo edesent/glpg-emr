@@ -1,6 +1,6 @@
 {
-    "collection": "test.users",
-    "database": "test",
+    "collection": "authorization.users",
+    "database": "ehr",
     "id": "5fa9703304cbd66eb9906d21",
     "roles": [
         {
@@ -68,7 +68,7 @@
                 "bsonType": "objectId"
             }
         },
-        "title": "test.user"
+        "title": "authorization.user"
     },
     "filters": [
         {

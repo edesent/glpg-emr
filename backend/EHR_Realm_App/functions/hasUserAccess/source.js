@@ -18,7 +18,7 @@ exports = async function(arg) {
 
     try {
         if(permissionName && userEmail) {
-            const userCollection = context.services.get("mongodb-atlas").db("test").collection("test.users")
+            const userCollection = context.services.get("mongodb-atlas").db("ehr").collection("authorization.users")
             const userQuery = await userCollection.find({ Email: userEmail  }).toArray()
             let currentUser = null
 
@@ -27,7 +27,7 @@ exports = async function(arg) {
             }
 
             if(currentUser && currentUser.Authorization && currentUser.Authorization.Groups) {
-                const groupCollection = context.services.get("mongodb-atlas").db("test").collection("test.groups")
+                const groupCollection = context.services.get("mongodb-atlas").db("ehr").collection("authorization.groups")
                 
                 for(let group of currentUser.Authorization.Groups) {
                     const groupQuery = await groupCollection.find({ Name: group }).toArray()
