@@ -1,14 +1,13 @@
 {
-    "app_id": "%%values.app_id",
+    "app_id": "ehr_realm_app_test-qfdpg",
     "config_version": 20200603,
-    "name": "%%values.app_name",
-    "location": "%%values.app_location",
+    "name": "EHR_Realm_App_Test",
+    "location": "US-VA",
     "deployment_model": "GLOBAL",
-    "security": {  },
+    "security": {},
     "hosting": {
         "enabled": true,
-        "custom_domain": "%%values.custom_domain",
-        "app_default_domain": "%%values.default_app_domain",
+        "app_default_domain": "ehr-realm-app-test-qfdpg-nwjnj.mongodbstitch.com",
         "default_error_path": "",
         "default_error_code": ""
     },
@@ -20,6 +19,6 @@
         "user_id_field": "Email"
     },
     "sync": {
-        "development_mode_enabled": "%%values.development_mode_enabled"
+        "development_mode_enabled": false
     }
 }
