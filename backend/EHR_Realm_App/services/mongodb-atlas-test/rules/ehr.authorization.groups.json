@@ -1,18 +1,19 @@
 {
     "collection": "authorization.groups",
     "database": "ehr",
+    "id": "5fe10926d22183d861015601",
     "roles": [
         {
             "name": "default",
             "apply_when": {},
+            "fields": {
+                "Name": {},
+                "Permissions": {}
+            },
+            "read": true,
             "insert": true,
             "delete": true,
             "search": true,
-            "fields": {
-                "Name": { },
-                "Permissions": { }
-            },
-            "read": true,
             "additional_fields": {}
         }
     ],

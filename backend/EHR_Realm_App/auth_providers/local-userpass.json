@@ -1,11 +1,11 @@
 {
-    "id": "5fb82fe8e72ffcfde83edd8a",
+    "id": "5fe10926d22183d861015607",
     "name": "local-userpass",
     "type": "local-userpass",
     "config": {
         "autoConfirm": true,
         "resetPasswordSubject": "Generic Reset Password",
-        "resetPasswordUrl": "%%values.resetPasswordUrl",
+        "resetPasswordUrl": "https://dev.glpg.cloud/ResetPassword",
         "runConfirmationFunction": false
     },
     "disabled": false
