@@ -1,6 +1,6 @@
 {
-    "collection": "test.groups",
-    "database": "test",
+    "collection": "authorization.groups",
+    "database": "ehr",
     "id": "5fb8349aad9bea205aad9e71",
     "roles": [
         {
@@ -32,6 +32,6 @@
                 "bsonType": "objectId"
             }
         },
-        "title": "test.group"
+        "title": "authorization.group"
     }
 }

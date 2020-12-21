@@ -5,7 +5,7 @@
     "config": {
         "autoConfirm": true,
         "resetPasswordSubject": "Generic Reset Password",
-        "resetPasswordUrl": "https://dev.glpg.cloud/ResetPassword",
+        "resetPasswordUrl": "%%values.resetPasswordUrl",
         "runConfirmationFunction": false
     },
     "disabled": false

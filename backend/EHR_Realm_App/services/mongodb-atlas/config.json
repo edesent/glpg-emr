@@ -3,7 +3,7 @@
     "name": "mongodb-atlas",
     "type": "mongodb-atlas",
     "config": {
-        "clusterName": "EHR-BASE",
+        "clusterName": "%%values.clusterName",
         "readPreference": "primary",
         "wireProtocolEnabled": false
     },
