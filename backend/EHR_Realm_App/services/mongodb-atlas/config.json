@@ -1,9 +1,7 @@
 {
-    "id": "5fe0f4c7d22183d861f18ecd",
     "name": "mongodb-atlas",
     "type": "mongodb-atlas",
     "config": {
-        "clusterName": "EHR-BASE",
         "readPreference": "primary",
         "wireProtocolEnabled": false
     },

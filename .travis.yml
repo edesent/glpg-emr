@@ -26,7 +26,7 @@ deploy_service_job: &DEPLOY_SERVICE_JOB
     # Login to RealmCLI with enviroment variables
     - realm-cli login --api-key="${MONGO_API_KEY}" --private-api-key="${MONGO_PRIVATE_KEY}"
     # Import the Realm app for TEST environment
-    - realm-cli import --app-id=ehr_realm_app_test-qfdpg --path=EHR_Realm_App --strategy=merge --yes
+    - realm-cli import --app-id=ehr_realm_app_test-jquik --path=EHR_Realm_App --strategy=replace-by-name --yes
     - cd -
 
     # Start Frontend

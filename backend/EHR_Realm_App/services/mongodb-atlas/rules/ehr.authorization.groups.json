@@ -5,14 +5,14 @@
         {
             "name": "default",
             "apply_when": {},
+            "fields": {
+                "Name": {},
+                "Permissions": {}
+            },
+            "read": true,
             "insert": true,
             "delete": true,
             "search": true,
-            "fields": {
-                "Name": { },
-                "Permissions": { }
-            },
-            "read": true,
             "additional_fields": {}
         }
     ],

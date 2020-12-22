@@ -1,7 +1,6 @@
 {
     "collection": "authorization.groups",
     "database": "ehr",
-    "id": "5fe10926d22183d861015601",
     "roles": [
         {
             "name": "default",

@@ -1,6 +1,0 @@
-{
-    "id": "5fe0f5b00e79eabd4571ae7f",
-    "name": "default_app_domain",
-    "value": "ehr_realm_app_test-qfdpg.mongodbstitch.com",
-    "from_secret": false
-}
