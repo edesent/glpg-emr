@@ -1,12 +1,28 @@
 {
     "collection": "authorization.users",
     "database": "ehr",
+    "filters": [
+        {
+            "name": "CanAdminViewUsers",
+            "query": {
+                "Email": "%%user.data.email"
+            },
+            "apply_when": {
+                "%%false": {
+                    "%function": {
+                        "arguments": [
+                            "ehr/manageUsers"
+                        ],
+                        "name": "hasUserAccess"
+                    }
+                }
+            }
+        }
+    ],
     "roles": [
         {
             "name": "owner",
-            "apply_when": {
-                
-            },
+            "apply_when": {},
             "fields": {
                 "Authorization": {
                     "write": true
@@ -24,7 +40,7 @@
                     "write": true
                 },
                 "Role": {
-                    "write": true                    
+                    "write": true
                 }
             },
             "read": true,
@@ -68,23 +84,5 @@
             }
         },
         "title": "authorization.user"
-    },
-    "filters": [
-        {
-            "name": "CanAdminViewUsers",
-            "query": {
-                "Email": "%%user.data.email"
-            },
-            "apply_when": {
-                "%%false": {
-                    "%function": {
-                        "name": "hasUserAccess",
-                        "arguments": [
-                            "ehr/manageUsers"
-                        ]
-                    }
-                }
-            }
-        }
-    ]
+    }
 }

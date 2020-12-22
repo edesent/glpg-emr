@@ -1,15 +1,7 @@
 {
-    "app_id": "ehr_realm_app_test-qfdpg",
     "config_version": 20200603,
-    "name": "EHR_Realm_App_Test",
-    "location": "US-VA",
-    "deployment_model": "GLOBAL",
     "security": {},
     "hosting": {
-        "enabled": true,
-        "app_default_domain": "ehr-realm-app-test-qfdpg-nwjnj.mongodbstitch.com",
-        "default_error_path": "",
-        "default_error_code": ""
     },
     "custom_user_data_config": {
         "enabled": true,
