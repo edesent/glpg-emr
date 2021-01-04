@@ -49,7 +49,7 @@ const UserMenu = () => {
         </svg>
       </Menu>
       <Dropdown className={userMenuOpen ? `is-open` : ``}>
-        <Link to="/" onClick={(e) => e.preventDefault}>
+        <Link onClick={(e) => e.preventDefault} to="/">
           <svg
             fill="none"
             stroke="currentColor"
