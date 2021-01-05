@@ -30,7 +30,7 @@ exports = async function(arg) {
                 const groupCollection = context.services.get("mongodb-atlas").db("ehr").collection("authorization.groups")
                 
                 for(let group of currentUser.Authorization.Groups) {
-                    const groupQuery = await groupCollection.find({ Name: group }).toArray()
+                    const groupQuery = await groupCollection.find({ _id: group }).toArray()
                     let currentGroup = null
                     
                     if(groupQuery && groupQuery.length > 0) {
@@ -56,7 +56,7 @@ exports = async function(arg) {
 
 function isPermissionValid(groupPermissions, permissionName) {
   for(let i = 0; i < groupPermissions.length; i++) {
-    if(groupPermissions[i] === permissionName) {
+    if(String(groupPermissions[i]) === permissionName) {
       return true
     }
   }

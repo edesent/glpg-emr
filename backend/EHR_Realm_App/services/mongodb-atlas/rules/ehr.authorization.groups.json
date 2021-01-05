@@ -24,7 +24,7 @@
             "Permissions": {
                 "bsonType": "array",
                 "items": {
-                    "bsonType": "string"
+                    "bsonType": "objectId"
                 }
             },
             "_id": {
