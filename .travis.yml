@@ -9,8 +9,7 @@ deploy_service_job: &DEPLOY_SERVICE_JOB
       - ${SERVICE_PATH}/EHR_Realm_App/unit_tests/node_modules
 
   install:
-    - pip install --quiet --user awscli
-    - npm install -g serverless mongodb-realm-cli
+    - npm install -g mongodb-realm-cli
     - npm install
     - cd ${SERVICE_PATH}/EHR_Realm_App/unit_tests
     - npm install
@@ -30,15 +29,8 @@ deploy_service_job: &DEPLOY_SERVICE_JOB
     - cd -
 
     # Start Frontend
-    # - cd ${SERVICE_PATH} # Change Directory to root
-    # Try to create folder may not be necessary anymore
-    - mkdir -p /home/travis/.serverless/components/registry/npm/@sls-next/serverless-component@1.18.0
-    # Make the .serverless directory inside root
-    - mkdir .serverless
-    # Sync Serverless Files
-    - aws s3 sync s3://dev-glpg-cloud-static/.serverless .serverless
-    # Run serverless to push frontend to AWS Lambda Edge
-    - serverless
+    # Trigger Build By Url.  Automatic Builds are Disabled.
+    - curl -X POST -d {} "https://webhooks.amplify.us-east-2.amazonaws.com/prod/webhooks?id=6a3b284a-63a0-45af-91e1-507e2d4083b7&token=8ufZNvK4wenDxyy5Q21arECChzYWqzkp0GyjqssPE&operation=startbuild" -H "Content-Type:application/json"
 
 environments:
   ## Accessing Keys set in Travis.  Dev / Prod the same for now
@@ -56,7 +48,7 @@ jobs:
       name: 'Deploy'
       if: branch = master
       env:
-        - SERVICE_PATH="backend"
+        - SERVICE_PATH="backend"`
         - STAGE_NAME=prod
         - *PRODUCTION_ENV
 
