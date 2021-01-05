@@ -11,7 +11,7 @@
                 "%%false": {
                     "%function": {
                         "arguments": [
-                            "ehr/manageUsers"
+                            "5ff4bb5f83fee8af46be0b9c"
                         ],
                         "name": "hasUserAccess"
                     }
@@ -59,7 +59,7 @@
                     "Groups": {
                         "bsonType": "array",
                         "items": {
-                            "bsonType": "string"
+                            "bsonType": "objectId"
                         }
                     }
                 }

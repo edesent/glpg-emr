@@ -1,0 +1,29 @@
+{
+    "collection": "authorization.permissions",
+    "database": "ehr",
+    "roles": [
+        {
+            "name": "default",
+            "apply_when": {},
+            "read": true,
+            "insert": true,
+            "delete": true,
+            "search": true,
+            "additional_fields": {}
+        }
+    ],
+    "schema": {
+        "properties": {
+            "_id": {
+                "bsonType": "objectId"
+            },
+            "description": {
+                "bsonType": "string"
+            },
+            "name": {
+                "bsonType": "string"
+            }
+        },
+        "title": "authorization.permission"
+    }
+}

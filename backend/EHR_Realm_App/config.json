@@ -1,8 +1,7 @@
 {
     "config_version": 20200603,
     "security": {},
-    "hosting": {
-    },
+    "hosting": {},
     "custom_user_data_config": {
         "enabled": true,
         "mongo_service_name": "mongodb-atlas",
