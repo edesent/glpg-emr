@@ -30,8 +30,7 @@ deploy_service_job: &DEPLOY_SERVICE_JOB
 
     # Start Frontend
     # Trigger Build By Url.  Automatic Builds are Disabled.
-    - curl -X POST -d {} "https://webhooks.amplify.us-east-2.amazonaws.com/prod/webhooks?id=6a3b284a-63a0-45af-91e1-507e2d4083b7&token=8ufZNvK4wenDxyy5Q21arECChzYWqzkp0GyjqssPE&operation=startbuild" -H "Content-Type:application/json"
-
+    - curl -X POST -d {} "https://webhooks.amplify.us-east-2.amazonaws.com/prod/webhooks?id=6a3b284a-63a0-45af-91e1-507e2d4083b7&token=8ufZNvK4wenDxyy5Q21arECChzYWqzkp0GyjqssPE&operation=startbuild" -H "Content-Type:text/plain"
 environments:
   ## Accessing Keys set in Travis.  Dev / Prod the same for now
   - &PRODUCTION_ENV
