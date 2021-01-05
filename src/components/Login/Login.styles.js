@@ -23,7 +23,7 @@ export const StyledLogin = styled.div`
   }
 `
 
-export const Form = styled.form`
+export const FormWrapper = styled.div`
   position: relative;
   max-width: 100%;
   margin: 0 auto;
@@ -69,11 +69,21 @@ export const Form = styled.form`
       font-weight: 600;
       outline: none;
 
+      &:-webkit-autofill,
+      &:-webkit-autofill:hover,
+      &:-webkit-autofill:focus,
+      &:-webkit-autofill:active {
+        box-shadow: 0 0 0 30px #fff inset !important;
+        -webkit-box-shadow: 0 0 0 30px #fff inset !important;
+        border-radius: 5px;
+      }
+
       &:focus,
       &:not(:placeholder-shown) {
         + label {
           font-size: 12px;
           top: 3px;
+          z-index: 1;
         }
 
         padding-top: 10px;
