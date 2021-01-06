@@ -22,8 +22,8 @@ export const UserAuth = ({ children }) => {
       if (error) {
         // eslint-disable-next-line no-alert
         // We will probably need a full error handling suite
-        // eslint-disable-next-line no-alert
         app.setUserAuthenticated(false)
+        // eslint-disable-next-line no-alert
         alert(error)
       }
     }
