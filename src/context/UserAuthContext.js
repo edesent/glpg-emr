@@ -14,12 +14,15 @@ export const UserAuth = ({ children }) => {
   async function onLoad() {
     try {
       await app.currentUser
-      app?.currentUser && setUserAuthenticated(true)
+      if (app.currentUser) {
+        app.setUserAuthenticated(true)
+      }
       // console.log(app.currentUser)
     } catch (error) {
       if (error) {
         // eslint-disable-next-line no-alert
-        setUserAuthenticated(false)
+        app.setUserAuthenticated(false)
+        // We will probably need a full error handling suite
         alert(error)
       }
     }
