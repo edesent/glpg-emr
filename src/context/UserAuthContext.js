@@ -14,14 +14,14 @@ export const UserAuth = ({ children }) => {
   async function onLoad() {
     try {
       await app.currentUser
-      if (app.currentUser) {
-        app.setUserAuthenticated(true)
+      if (app.userAuthenticated) {
+        console.log(app)
       }
       // console.log(app.currentUser)
     } catch (error) {
       if (error) {
         // eslint-disable-next-line no-alert
-        app.setUserAuthenticated(false)
+        app.userAuthenticated(false)
         // We will probably need a full error handling suite
         // eslint-disable-next-line no-alert
         alert(error)

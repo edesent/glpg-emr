@@ -2,27 +2,23 @@ import React from 'react'
 import * as Realm from 'realm-web'
 import { useForm } from 'react-hook-form'
 import { useHistory } from 'react-router-dom'
-import { useAppContext } from '../../context/AppContext'
+import { useRealmApp } from '../../context/RealmContext'
 import { Error, Links } from './Login.styles'
 
 const Login = () => {
   // hooks
-  const { app, setUserAuthenticated } = useAppContext()
+  const app = useRealmApp()
   const { register, handleSubmit, errors } = useForm()
   const history = useHistory()
-
-  function assert(condition, message) {
-    if (!condition) {
-      throw new Error(message || 'Assertion failed')
-    }
-  }
 
   async function userLogin(email, password) {
     const credentials = Realm.Credentials.emailPassword(email, password)
     try {
       const user = await app.logIn(credentials)
-      assert(user.id === app.currentUser.id, 'Asserting User')
-      return user
+      if (user) {
+        return user
+      }
+      return null
     } catch (error) {
       // eslint-disable-next-line no-alert
       alert('Invalid Login Credientials')
@@ -33,7 +29,6 @@ const Login = () => {
   const onSubmit = ({ email, password }) => {
     userLogin(email, password).then((user) => {
       if (user && user !== null) {
-        setUserAuthenticated(true)
         history.push('/dashboard')
       }
     })
