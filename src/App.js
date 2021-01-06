@@ -11,7 +11,7 @@ function App() {
   /** Notes on global wrappers
    * E.Desent 1.6.2021
    * We need a style throughout the app ie: <GlobalStyle
-   * We need access to Realm App throughout the app <RealmAppProvider
+   * We need access to Realm App throughout the app <RealmAppProvider see context/RealmContext.js
    * We need access to GraphQl throughout the app <RealmApolloProvider
    * To keep code out of the app.js I created an Auth Context that basically contains what was in app.js
    * */
