@@ -14,3 +14,14 @@ export const useRealmApp = () => {
   }
   return app
 }
+// We need to setup functions and variables inside realm app
+export const RealmAppProvider = ({ appId, children }) => {
+    const [app, setApp] = useState(new Realm.App(appId))
+    useEffect(() => {
+      setApp(new Realm.App(appId))
+    }, [appId])
+    // we need to have access to the current logged in user
+    const [currentUser, setCurrentUser] = useState(app.currentUser)
+    // we want to have a simple true/false variable if user is logged in
+    const [userAuthenticated, setUserAuthenticated] = useState(false)
+    
