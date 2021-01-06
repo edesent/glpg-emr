@@ -25,3 +25,15 @@ export const RealmAppProvider = ({ appId, children }) => {
     // we want to have a simple true/false variable if user is logged in
     const [userAuthenticated, setUserAuthenticated] = useState(false)
     
+    async function logIn(credentials) {
+        await app.logIn(credentials)
+        // If successful, app.currentUser is the user that just logged in
+        setCurrentUser(app.currentUser)
+        setUserAuthenticated(true)
+      }
+      async function logOut() {
+        // Log out the currently active user
+        await app.currentUser?.logOut()
+        setCurrentUser()
+        setUserAuthenticated(false)
+      }
