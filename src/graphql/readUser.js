@@ -5,7 +5,7 @@ function readUserData(email) {
   const { data, loading, error } = useQuery(
     gql`
       query($em: String!) {
-        testUser(query: { Email: $em }) {
+        authorizationUser(query: { Email: $em }) {
           Role
           FirstName
           LastName

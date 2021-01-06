@@ -40,7 +40,15 @@ export const RealmAppProvider = ({ appId, children }) => {
     setUserAuthenticated(false)
   }
   // We want to send all functions to deeper parts of the app
-  const wrapped = { ...app, currentUser, userAuthenticated, logIn, logOut }
+  const wrapped = {
+    ...app,
+    currentUser,
+    setCurrentUser,
+    userAuthenticated,
+    setUserAuthenticated,
+    logIn,
+    logOut,
+  }
   return (
     <RealmAppContext.Provider value={wrapped}>
       {children}

@@ -6,7 +6,7 @@ import Routes from './routes/Routes'
 import GlobalStyle from './assets/styles/globalStyles'
 
 function App() {
-  const APP_ID = 'ehr_realm_app-lfyfr'
+  const APP_ID = 'ehr_realm_app_test-jquik'
 
   /** Notes on global wrappers
    * E.Desent 1.6.2021
