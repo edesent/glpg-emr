@@ -41,7 +41,8 @@
                 },
                 "Role": {
                     "write": true
-                }
+                },
+                "_id": {}
             },
             "read": true,
             "write": true,
