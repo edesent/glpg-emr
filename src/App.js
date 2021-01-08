@@ -16,7 +16,7 @@ const options = {
 }
 
 function App() {
-  const APP_ID = 'ehr_realm_app_test-jquik' // TODO: add to configuration settings file
+  const APP_ID = process.env.REACT_APP_REALMAPP
 
   /** Notes on global wrappers
    * E.Desent 1.6.2021
