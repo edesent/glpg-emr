@@ -37,9 +37,7 @@ const UserMenu = () => {
         </Avatar>
 
         <div className="role-name">
-          <span>
-            Role:{console.log(userData)} {userData.authorizationUser.Role}
-          </span>
+          <span>{userData.authorizationUser.Role}</span>
           {userData.authorizationUser.FirstName}{' '}
           {userData.authorizationUser.LastName}
         </div>
