@@ -1,14 +1,54 @@
-import PropTypes from 'prop-types'
-import { Input } from '../Forms/Input'
+import * as Realm from 'realm-web'
+import { useForm } from 'react-hook-form'
+import { useHistory } from 'react-router-dom'
+import { useAlert } from 'react-alert'
+import { useRealmApp } from '../../context/RealmContext'
 import { Error, Links } from './Login.styles'
+import { Input } from '../Forms/Input'
 
-const LoginComponent = ({ errors, onSubmit, register }) => {
+const Login = () => {
+  // hooks
+  const app = useRealmApp()
+  const { register, handleSubmit, errors } = useForm()
+  const history = useHistory()
+  const alert = useAlert()
+
+  async function userLogin(email, password) {
+    const credentials = Realm.Credentials.emailPassword(email, password)
+    try {
+      const user = await app.logIn(credentials)
+      if (user) return
+    } catch (error) {
+      alert.error('Invalid Login Credientials')
+    }
+  }
+
+  const onSubmit = ({ email, password }) => {
+    userLogin(email, password).then((user) => {
+      if (user && user !== null) {
+        history.push('/dashboard')
+      }
+    })
+  }
+
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <h1>Sign in to your account</h1>
-      {errors.length !== 0 && <Error>All fields are required!</Error>}
-      <Input label="Email" name="email" ref={register} type="email" />
-      <Input label="Password" name="password" ref={register} type="password" />
+      {Object.entries(errors).length !== 0 && (
+        <Error>All fields are required!</Error>
+      )}
+      <Input
+        label="Email"
+        name="email"
+        register={register({ required: true })}
+        type="email"
+      />
+      <Input
+        label="Password"
+        name="password"
+        register={register({ required: true })}
+        type="password"
+      />
       <Links>
         <a href="/?forgotPassword">Forgot password?</a>
         <button>Login</button>
@@ -17,10 +57,4 @@ const LoginComponent = ({ errors, onSubmit, register }) => {
   )
 }
 
-LoginComponent.propTypes = {
-  errors: PropTypes.string.isRequired,
-  onSubmit: PropTypes.func.isRequired,
-  register: PropTypes.string.isRequired,
-}
-
-export default LoginComponent
+export default Login

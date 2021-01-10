@@ -1,1 +1,1 @@
-export { default as Login } from './Login.container'
+export { default as Login } from './Login.component'
