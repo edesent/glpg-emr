@@ -1,9 +1,19 @@
 import React from 'react'
+import AlertTemplate from 'react-alert-template-basic'
+import { transitions, positions, Provider as AlertProvider } from 'react-alert'
 import { RealmAppProvider } from './context/RealmContext'
 import { RealmApolloProvider } from './context/ApolloContext'
 import { UserAuth } from './context/UserAuthContext'
 import Routes from './routes/Routes'
 import GlobalStyle from './assets/styles/globalStyles'
+
+// alert options
+const options = {
+  position: positions.TOP_RIGHT,
+  timeout: 5000,
+  offset: '30px',
+  transition: transitions.SCALE,
+}
 
 function App() {
   const APP_ID = 'ehr_realm_app_test-jquik' // TODO: add to configuration settings file
@@ -19,13 +29,15 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <RealmAppProvider appId={APP_ID}>
-        <UserAuth>
-          <RealmApolloProvider>
-            <Routes />
-          </RealmApolloProvider>
-        </UserAuth>
-      </RealmAppProvider>
+      <AlertProvider template={AlertTemplate} {...options}>
+        <RealmAppProvider appId={APP_ID}>
+          <UserAuth>
+            <RealmApolloProvider>
+              <Routes />
+            </RealmApolloProvider>
+          </UserAuth>
+        </RealmAppProvider>
+      </AlertProvider>
     </>
   )
 }

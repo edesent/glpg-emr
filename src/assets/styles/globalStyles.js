@@ -37,6 +37,11 @@ const GlobalStyle = createGlobalStyle`
   input {
     border: none;
   }
+
+  #__react-alert__ span {
+    text-transform: none;
+    font-weight: 500;
+  }
 `
 
 export default GlobalStyle
