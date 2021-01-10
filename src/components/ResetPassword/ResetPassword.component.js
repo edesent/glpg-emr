@@ -1,23 +1,22 @@
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { useAppContext } from '../../context/AppContext'
+import { useRealmApp } from '../../context/RealmContext'
 import { Error, Links } from '../Login/Login.styles'
+import { Input } from '../Forms/Input'
 
 // eslint-disable-next-line react/prop-types
 const ResetPassword = () => {
-  const { app } = useAppContext()
+  const app = useRealmApp()
   const { register, handleSubmit, errors } = useForm()
-  const [resetPass, setResetPass] = useState(null)
+  const [resetPass, setResetPass] = useState(false)
 
   async function passwordReset(email) {
     try {
       const reset = await app.emailPasswordAuth.sendResetPasswordEmail(email)
-      setResetPass(email)
-      return reset
+      setResetPass(true)
+      if (reset) return
     } catch (error) {
-      // eslint-disable-next-line no-alert
-      alert('Email address not found.')
-      return null
+      setResetPass(true)
     }
   }
 
@@ -33,16 +32,12 @@ const ResetPassword = () => {
           {Object.entries(errors).length !== 0 && (
             <Error>All fields are required!</Error>
           )}
-          <div>
-            <input
-              id="email"
-              name="email"
-              placeholder=" "
-              ref={register({ required: true })}
-              type="email"
-            />
-            <label htmlFor="email">Email</label>
-          </div>
+          <Input
+            label="Email"
+            name="email"
+            register={register({ required: true })}
+            type="email"
+          />
           <Links>
             <a href="/">Back</a>
             <button>Get New Password</button>
@@ -52,8 +47,8 @@ const ResetPassword = () => {
         <>
           <h1>Request sent</h1>
           <p>
-            Please follow the instructions in your email (<em>{resetPass}</em>)
-            to set your new password.
+            If there is an account associated with the provided email address,
+            you will be receiving instructions shortly to set your new password.
           </p>
           <Links>
             <a href="/">Back</a>
