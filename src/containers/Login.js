@@ -1,6 +1,7 @@
 import React from 'react'
 import { Login } from '../components/Login'
 import { ResetPassword } from '../components/ResetPassword'
+import { SetPassword } from '../components/SetPassword'
 import {
   BackgroundImg,
   StyledLogin,
@@ -12,7 +13,6 @@ import background from '../assets/images/login-background.jpg'
 const LoginPage = ({ location }) => {
   // eslint-disable-next-line react/prop-types
   const params = new URLSearchParams(location.search)
-  const forgotPassParam = params.get('forgotPassword')
   return (
     <>
       <BackgroundImg>
@@ -28,7 +28,19 @@ const LoginPage = ({ location }) => {
       </BackgroundImg>
       <StyledLogin>
         <FormWrapper>
-          {forgotPassParam !== null ? <ResetPassword /> : <Login />}
+          {(() => {
+            if (params.get('forgotpassword') !== null) {
+              return <ResetPassword location={location} />
+            }
+            if (
+              params.get('setpassword') !== null &&
+              params.get('token') &&
+              params.get('tokenId')
+            ) {
+              return <SetPassword location={location} />
+            }
+            return <Login />
+          })()}
         </FormWrapper>
       </StyledLogin>
     </>
