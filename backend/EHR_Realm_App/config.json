@@ -1,16 +1,7 @@
 {
-    "app_id": "ehr_realm_app_test-jquik",
     "config_version": 20200603,
-    "name": "EHR_Realm_App_Test",
-    "location": "US-VA",
-    "deployment_model": "GLOBAL",
     "security": {},
-    "hosting": {
-        "enabled": false,
-        "app_default_domain": "ehr-realm-app-test-jquik-krrhy.mongodbstitch.com",
-        "default_error_path": "",
-        "default_error_code": "404"
-    },
+    "hosting": {},
     "custom_user_data_config": {
         "enabled": true,
         "mongo_service_name": "mongodb-atlas",
