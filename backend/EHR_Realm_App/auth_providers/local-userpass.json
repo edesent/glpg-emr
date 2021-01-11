@@ -4,7 +4,7 @@
     "config": {
         "autoConfirm": true,
         "resetPasswordSubject": "Generic Reset Password",
-        "resetPasswordUrl": "https://dev.glpg.cloud/ResetPassword",
+        "resetPasswordUrl": "https://pr-50.d2fgv7rjyhwl1t.amplifyapp.com/?setpassword",
         "runConfirmationFunction": false
     },
     "disabled": false
