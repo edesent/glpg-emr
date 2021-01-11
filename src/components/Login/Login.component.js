@@ -50,7 +50,7 @@ const Login = () => {
         type="password"
       />
       <Links>
-        <a href="/?forgotPassword">Forgot password?</a>
+        <a href="/?forgotpassword">Forgot password?</a>
         <button>Login</button>
       </Links>
     </form>
