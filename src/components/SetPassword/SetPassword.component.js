@@ -30,6 +30,7 @@ const SetPassword = ({ location }) => {
       )
       if (pwd) return
     } catch (error) {
+      console.log(error)
       alert.error('Error setting password')
     }
   }
