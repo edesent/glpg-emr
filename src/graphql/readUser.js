@@ -9,6 +9,7 @@ function readUserData(email) {
           Role
           FirstName
           LastName
+          Email
           _id
         }
       }
