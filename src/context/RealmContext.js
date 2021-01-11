@@ -48,6 +48,9 @@ export const RealmAppProvider = ({ appId, children }) => {
     setUserAuthenticated,
     logIn,
     logOut,
+    settings: {
+      IdleTimeout: process.env.REACT_APP_IDLETIMEOUT,
+    },
   }
   return (
     <RealmAppContext.Provider value={wrapped}>
