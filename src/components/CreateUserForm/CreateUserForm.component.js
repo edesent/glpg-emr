@@ -7,7 +7,10 @@ const createUserForm = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const settingsApp = useSettingsApp()
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [userCreated, setUserCreated] = useState()
+  const [userCreated, setUserCreated] = useState(null)
+  const closeUserCreatedAlert = () => {
+    setUserCreated()
+  }
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const { register, handleSubmit } = useForm()
@@ -18,7 +21,6 @@ const createUserForm = () => {
     const newUser = await addUser(data)
     setUserCreated(newUser)
   }
-
   // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
     if (userCreated?.data?.createdUser) {
@@ -100,7 +102,10 @@ const createUserForm = () => {
         </form>
       </div>
       {userCreated?.data?.createdUser && (
-        <div className="form-Message">
+        <div
+          className="form-Message"
+          style={{ position: 'fixed', left: '390px' }}
+        >
           <span>
             <b className="capitalize">Success!</b> A user with the details below
             has been created.
@@ -110,7 +115,7 @@ const createUserForm = () => {
             {userCreated?.data?.createdUser.FirstName}{' '}
             {userCreated?.data?.createdUser.LastName}
           </span>
-          <button>
+          <button onClick={closeUserCreatedAlert}>
             <span>×</span>
           </button>
         </div>
