@@ -36,6 +36,9 @@
                 "LastName": {
                     "write": true
                 },
+                "MobilePhone": {
+                    "write": true
+                },
                 "Password": {
                     "write": true
                 },
@@ -72,6 +75,9 @@
                 "bsonType": "string"
             },
             "LastName": {
+                "bsonType": "string"
+            },
+            "MobilePhone": {
                 "bsonType": "string"
             },
             "Password": {
