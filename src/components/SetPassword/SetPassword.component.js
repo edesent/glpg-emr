@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { useForm } from 'react-hook-form'
 import { useAlert } from 'react-alert'
@@ -9,6 +10,7 @@ const SetPassword = ({ location }) => {
   const app = useRealmApp()
   const alert = useAlert()
   const { register, handleSubmit, errors } = useForm()
+  const [passSuccess, setPassSuccess] = useState(false)
 
   const queryParameter = (data) => {
     const search = new URLSearchParams(location.search)
@@ -28,9 +30,10 @@ const SetPassword = ({ location }) => {
         tokenId,
         password
       )
+      setPassSuccess(true)
       if (pwd) return
     } catch (error) {
-      console.log(error)
+      setPassSuccess(false)
       alert.error('Error setting password')
     }
   }
@@ -40,21 +43,35 @@ const SetPassword = ({ location }) => {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <h1>Set password</h1>
-      {Object.entries(errors).length !== 0 && (
-        <>{alert.error('You forgot to specify a password.')}</>
+    <>
+      {!passSuccess ? (
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <h1>Set password</h1>
+          {Object.entries(errors).length !== 0 && (
+            <>{alert.error('You forgot to specify a password.')}</>
+          )}
+          <Input
+            label="Password"
+            name="password"
+            register={register({ required: true })}
+            type="password"
+          />
+          <Links>
+            <button>Set Password</button>
+          </Links>
+        </form>
+      ) : (
+        <>
+          <h1>Password reset successful</h1>
+          <p>
+            Please head back to the home page and log in with your new password.
+          </p>
+          <Links>
+            <a href="/">Back</a>
+          </Links>
+        </>
       )}
-      <Input
-        label="Password"
-        name="password"
-        register={register({ required: true })}
-        type="password"
-      />
-      <Links>
-        <button>Set Password</button>
-      </Links>
-    </form>
+    </>
   )
 }
 
