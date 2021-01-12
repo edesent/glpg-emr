@@ -2,7 +2,7 @@ import { useIdleTimer } from 'react-idle-timer'
 import { useRealmApp } from '../context/RealmContext'
 
 const IdleTimer = () => {
-  const { app, setUserAuthenticated } = useRealmApp()
+  const { app, setUserAuthenticated, settings } = useRealmApp()
 
   const handleOnIdle = () => {
     // eslint-disable-next-line no-restricted-globals
@@ -14,7 +14,7 @@ const IdleTimer = () => {
   }
 
   useIdleTimer({
-    timeout: 1000 * 60 * 15, // TODO: this needs to be in a configuration file, this is in milliseconds
+    timeout: settings.IdleTimeout ?? 1000 * 60 * 15, // TODO: Read this from database eventually, this is in milliseconds
     onIdle: handleOnIdle,
   })
 
