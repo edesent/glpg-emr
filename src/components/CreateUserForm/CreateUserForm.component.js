@@ -34,7 +34,7 @@ const createUserForm = () => {
     const userData = {
       FirstName: data.FirstName,
       LastName: data.LastName,
-      Email: data.Email,
+      Email: data.Email.toLowerCase(),
       MobilePhone: data.MobilePhone,
       Role: auth[0],
       Authorization: {
@@ -80,7 +80,7 @@ const createUserForm = () => {
       >
         <div className="form-header">
           <h3>Create a User</h3>
-          <p>With this form an Administrator can create a new user.</p>
+          <p>With this form an administrator can create a new user.</p>
         </div>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="form-FirstName">
