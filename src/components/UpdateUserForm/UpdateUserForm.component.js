@@ -1,21 +1,22 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { ObjectId } from 'bson'
+// import { ObjectId } from 'bson'
 import useReadUser from '../../graphql/useReadUser'
 import { useSettingsApp } from '../../context/AppContext'
 import useUsers from '../../graphql/useUsers'
 
 const updateUserForm = ({ match }) => {
   const settingsApp = useSettingsApp()
-
+  const [createdUser, setCreateUser] = useState(false)
   const { updateUser } = useUsers()
   // Required by form-hooks
   const { register, handleSubmit } = useForm()
   const updateAnUser = async (data) => {
     settingsApp.setGraphqlLoading(true)
     const auth = data.Role.split('|')
-    const id = new ObjectId(auth[1])
+    console.log(data.UserID)
+    const id = data.UserID
     const userData = {
       id,
       data: {
@@ -29,9 +30,8 @@ const updateUserForm = ({ match }) => {
         },
       },
     }
-    console.log(userData)
     const updatedUser = await updateUser(userData)
-    console.log(updatedUser)
+    setCreateUser(updatedUser)
   }
 
   const onSubmit = (data) => {
@@ -49,8 +49,10 @@ const updateUserForm = ({ match }) => {
   }
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const userData = useReadUser(cleanEmail)
+  // eslint-disable-next-line no-underscore-dangle
   console.log(userData)
-  if (userData.loading) {
+
+  if (userData.loading || settingsApp.graphqlLoading || createdUser?.loading) {
     return 'Loading...'
   }
   if (cleanEmail === false)
