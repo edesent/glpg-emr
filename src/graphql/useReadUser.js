@@ -1,7 +1,6 @@
 import { useQuery, gql } from '@apollo/client'
 
-function readUserData(email) {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
+function useReadUserByEmail(email) {
   const { data, loading, error } = useQuery(
     gql`
       query($em: String!) {
@@ -9,6 +8,7 @@ function readUserData(email) {
           Role
           FirstName
           LastName
+          Email
           _id
         }
       }
@@ -21,17 +21,15 @@ function readUserData(email) {
 
   // If the query has finished, return the tasks from the result data
   // Otherwise, return an empty list
-  const userData = data ?? []
-  return { userData, loading }
+  const readUser = data ?? []
+  return { readUser, loading }
 }
-
-const readUser = (user) => {
-  const { userData, loading } = readUserData(user)
+const useReadUser = (data) => {
+  const { readUser, loading } = useReadUserByEmail(data)
 
   return {
+    readUser,
     loading,
-    userData,
   }
 }
-
-export default readUser
+export default useReadUser

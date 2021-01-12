@@ -4,6 +4,7 @@ import { transitions, positions, Provider as AlertProvider } from 'react-alert'
 import { RealmAppProvider } from './context/RealmContext'
 import { RealmApolloProvider } from './context/ApolloContext'
 import { UserAuth } from './context/UserAuthContext'
+import { UseAppSettings } from './context/AppContext'
 import Routes from './routes/Routes'
 import GlobalStyle from './assets/styles/globalStyles'
 
@@ -33,7 +34,9 @@ function App() {
         <RealmAppProvider appId={APP_ID}>
           <UserAuth>
             <RealmApolloProvider>
-              <Routes />
+              <UseAppSettings>
+                <Routes />
+              </UseAppSettings>
             </RealmApolloProvider>
           </UserAuth>
         </RealmAppProvider>
