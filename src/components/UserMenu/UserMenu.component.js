@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import useReadUser from '../../graphql/useReadUser'
 import { useRealmApp } from '../../context/RealmContext'
-import readUser from '../../graphql/readUser'
 import {
   StyledUserMenu,
   Menu,
@@ -11,11 +11,12 @@ import {
 } from './UserMenu.styles'
 
 const UserMenu = () => {
-  const app = useRealmApp()
   const [userMenuOpen, setUserMenuOpen] = useState(false)
-  const { userData, loading } = readUser(app.currentUser.profile.email)
-  if (loading) return 'Loading...'
-  if (userData.authorizationUser === null) return 'No Data..'
+  const app = useRealmApp()
+  const user = useReadUser(app.currentUser.profile.email)
+
+  if (user?.loading) return 'Loading...'
+  if (!user?.readUser?.authorizationUser) return 'No Data..'
   return (
     <StyledUserMenu>
       <Menu
@@ -37,9 +38,9 @@ const UserMenu = () => {
         </Avatar>
 
         <div className="role-name">
-          <span>{userData.authorizationUser.Role}</span>
-          {userData.authorizationUser.FirstName}{' '}
-          {userData.authorizationUser.LastName}
+          <span>{user?.readUser?.authorizationUser?.Role}</span>
+          {user.readUser.authorizationUser.FirstName}{' '}
+          {user.readUser.authorizationUser.LastName}
         </div>
 
         <svg

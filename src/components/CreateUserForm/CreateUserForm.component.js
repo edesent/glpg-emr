@@ -1,27 +1,43 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import React, { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import useUsers from '../../graphql/useUsers'
+import { useRealmApp } from '../../context/RealmContext'
 import { useSettingsApp } from '../../context/AppContext'
 
 const createUserForm = () => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const settingsApp = useSettingsApp()
-  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const app = useRealmApp()
   const [userCreated, setUserCreated] = useState(null)
   const closeUserCreatedAlert = () => {
     setUserCreated()
   }
-
-  // eslint-disable-next-line react-hooks/rules-of-hooks
+  // Simple Random Password Generator
+  const generatePassword = () => {
+    const buf = new Uint8Array(12)
+    window.crypto.getRandomValues(buf)
+    const thePassword = btoa(String.fromCharCode.apply(null, buf))
+    return thePassword
+  }
   const { register, handleSubmit } = useForm()
-  // eslint-disable-next-line react-hooks/rules-of-hooks
+
   const { addUser } = useUsers()
 
   const createAnUser = async (data) => {
-    const newUser = await addUser(data)
-    setUserCreated(newUser)
+    try {
+      // Create a User via the Form
+      await app.emailPasswordAuth.registerUser(data.Email, generatePassword())
+      // If that worked reset password
+      await app.emailPasswordAuth.sendResetPasswordEmail(data.Email)
+      // Create the user profile in mongo
+      const newUser = await addUser(data)
+      // trigger the message
+      setUserCreated(newUser)
+    } catch (error) {
+      alert(`There was an Error creating your user ${error}`)
+    }
   }
-  // eslint-disable-next-line react-hooks/rules-of-hooks
+
   useEffect(() => {
     if (userCreated?.data?.createdUser) {
       // console.log(userCreated.data)
