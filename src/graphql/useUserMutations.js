@@ -14,22 +14,23 @@ const AddUserMutation = gql`
 `
 
 const UpdateUserMutation = gql`
-  mutation createUser {
-    insertOneAuthorizationUser(
-      data: {
-        FirstName: "TestfName"
-        LastName: "TestlName"
-        Email: "test@test.com"
-        Role: "Administrator"
-      }
+  mutation UpdateUser(
+    $userId: ObjectId!
+    $updates: AuthorizationUserUpdateInput!
+  ) {
+    updatedUser: updateOneAuthorizationUser(
+      query: { _id: $userId }
+      set: $updates
     ) {
       FirstName
       LastName
       _id
+      Email
+      MobilePhone
+      Role
     }
   }
 `
-
 // We need a function for each action we want to do inside this class
 
 // eslint-disable-next-line no-unused-vars
@@ -59,11 +60,22 @@ function useAddUser(user) {
   return addUser
 }
 
-function useUpdateUser(user) {
-  const [updateUserMutation] = useMutation(UpdateUserMutation)
+// eslint-disable-next-line no-unused-vars
+function useUpdateUser(updates) {
+  const settingsApp = useSettingsApp()
+  // eslint-disable-next-line no-shadow
+  const triggerUpdateUserMessage = () => {
+    settingsApp.setGraphqlLoading(false)
+  }
+
+  const [updateUserMutation] = useMutation(UpdateUserMutation, {
+    onCompleted: triggerUpdateUserMessage,
+  })
+  // eslint-disable-next-line no-shadow
   const updateUser = async (updates) => {
+    console.log(updates.id)
     const { updatedUser } = await updateUserMutation({
-      variables: { userId: user.id, updates },
+      variables: { userId: updates.id, updates: updates.data },
     })
     return updatedUser
   }
