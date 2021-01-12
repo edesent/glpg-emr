@@ -34,6 +34,7 @@ const createUserForm = () => {
       // trigger the message
       setUserCreated(newUser)
     } catch (error) {
+      // eslint-disable-next-line no-alert
       alert(`There was an Error creating your user ${error}`)
     }
   }
