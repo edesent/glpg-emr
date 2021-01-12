@@ -1,14 +1,15 @@
 {
-    "collection": "authorization.permissions",
+    "collection": "configuration.appsettings",
     "database": "ehr",
     "roles": [
         {
             "name": "default",
             "apply_when": {},
             "fields": {
-                "_id": {},
-                "description": {},
-                "name": {}
+                "Description": {},
+                "Name": {},
+                "Value": {},
+                "_id": {}
             },
             "read": true,
             "insert": true,
@@ -19,16 +20,19 @@
     ],
     "schema": {
         "properties": {
+            "Description": {
+                "bsonType": "string"
+            },
+            "Name": {
+                "bsonType": "string"
+            },
+            "Value": {
+                "bsonType": "string"
+            },
             "_id": {
                 "bsonType": "objectId"
-            },
-            "description": {
-                "bsonType": "string"
-            },
-            "name": {
-                "bsonType": "string"
             }
         },
-        "title": "authorization.permission"
+        "title": "configuration.appsetting"
     }
 }

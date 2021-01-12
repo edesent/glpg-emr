@@ -36,12 +36,16 @@
                 "LastName": {
                     "write": true
                 },
+                "MobilePhone": {
+                    "write": true
+                },
                 "Password": {
                     "write": true
                 },
                 "Role": {
                     "write": true
-                }
+                },
+                "_id": {}
             },
             "read": true,
             "write": true,
@@ -71,6 +75,9 @@
                 "bsonType": "string"
             },
             "LastName": {
+                "bsonType": "string"
+            },
+            "MobilePhone": {
                 "bsonType": "string"
             },
             "Password": {
