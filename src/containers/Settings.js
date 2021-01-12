@@ -9,7 +9,6 @@ const SettingsPage = ({ match }) => {
   return (
     <Layout>
       <Submenu title="Settings" />
-      {/* This allows update user */}
       {match?.params?.job === 'updateuser' ? (
         <UpdateUserForm match={match} />
       ) : (
