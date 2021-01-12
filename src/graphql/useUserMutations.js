@@ -74,10 +74,14 @@ function useUpdateUser(updates) {
   // eslint-disable-next-line no-shadow
   const updateUser = async (updates) => {
     console.log(updates.id)
-    const { updatedUser } = await updateUserMutation({
+    const { loading, data, error } = await updateUserMutation({
       variables: { userId: updates.id, updates: updates.data },
     })
-    return updatedUser
+    if (error) {
+      throw new Error(`Failed to update user data: ${error.message}`)
+    }
+    console.log(data)
+    return { loading, data, error }
   }
   return updateUser
 }
