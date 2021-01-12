@@ -12,7 +12,7 @@ const AddUserMutation = gql`
     }
   }
 `
-
+// Not Working
 const UpdateUserMutation = gql`
   mutation UpdateUser(
     $userId: ObjectId!
