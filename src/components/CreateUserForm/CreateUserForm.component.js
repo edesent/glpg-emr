@@ -1,14 +1,17 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import useUsers from '../../graphql/useUsers'
 import { useRealmApp } from '../../context/RealmContext'
 import { useSettingsApp } from '../../context/AppContext'
 
 const createUserForm = () => {
+  // We Need App & Settings Hooks
   const settingsApp = useSettingsApp()
   const app = useRealmApp()
+  // We need some states for conformation message
   const [userCreated, setUserCreated] = useState(null)
+  // We need a function to close the confirmation message
   const closeUserCreatedAlert = () => {
     setUserCreated()
   }
@@ -19,33 +22,52 @@ const createUserForm = () => {
     const thePassword = btoa(String.fromCharCode.apply(null, buf))
     return thePassword
   }
+  // Required by form-hooks
   const { register, handleSubmit } = useForm()
-
   const { addUser } = useUsers()
 
+  // We need a simple Function that creates all the users
   const createAnUser = async (data) => {
+    // This sets the loading indicator when the function starts
+    settingsApp.setGraphqlLoading(true)
+    const auth = data.Role.split('|')
+    const userData = {
+      FirstName: data.FirstName,
+      LastName: data.LastName,
+      Email: data.Email,
+      MobilePhone: data.MobilePhone,
+      Role: auth[0],
+      Authorization: {
+        Groups: auth[1],
+      },
+    }
     try {
-      // Create a User via the Form
-      await app.emailPasswordAuth.registerUser(data.Email, generatePassword())
-      // If that worked reset password
-      await app.emailPasswordAuth.sendResetPasswordEmail(data.Email)
+      // Create a new AppUser via the Form
+      await app.emailPasswordAuth.registerUser(
+        userData.Email,
+        generatePassword()
+      )
       // Create the user profile in mongo
-      const newUser = await addUser(data)
-      // trigger the message
+      const newUser = await addUser(userData)
       setUserCreated(newUser)
+      // If that worked reset password
+      await app.emailPasswordAuth.sendResetPasswordEmail(userData.Email)
+      // trigger the message
     } catch (error) {
       // eslint-disable-next-line no-alert
       alert(`There was an Error creating your user ${error}`)
     }
   }
 
-  useEffect(() => {
-    if (userCreated?.data?.createdUser) {
-      // console.log(userCreated.data)
-    }
-  }, [userCreated])
+  // useEffect(() => {
+  //   if (userCreated?.data?.createdUser) {
+  //     // console.log(userCreated.data)
+  //   }
+  // }, [userCreated])
 
   const onSubmit = (data) => {
+    // eslint-disable-next-line prefer-destructuring
+
     createAnUser(data)
   }
   // if (errors) return `There were errors: ${errors}`
@@ -105,11 +127,21 @@ const createUserForm = () => {
             <label htmlFor="Role">User Role:</label>
             <div className="Role">
               <select id="Role" name="Role" ref={register({ required: true })}>
-                <option>Administrator</option>
-                <option>Billing</option>
-                <option>Verifications</option>
-                <option>Scheduler</option>
-                <option>Therapist</option>
+                <option value="Administrator|5fb836e7f98feea55da5e968">
+                  Administrator
+                </option>
+                <option value="Billing|5fb83716f98feea55da5e96a">
+                  Billing
+                </option>
+                <option value="Verifications|5fb836fff98feea55da5e969">
+                  Verifications
+                </option>
+                <option value="Scheduler|5fb8372cf98feea55da5e96b">
+                  Scheduler
+                </option>
+                <option value="Therapist|5fb8369ff98feea55da5e967">
+                  Therapist
+                </option>
               </select>
             </div>
           </div>

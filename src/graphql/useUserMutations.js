@@ -49,8 +49,6 @@ function useAddUser(user) {
   })
   // eslint-disable-next-line no-shadow
   const addUser = async (user) => {
-    // This sets the loading indicator when the function starts
-    settingsApp.setGraphqlLoading(true)
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const theUser = await addUserMutation({
       variables: { us: user },
