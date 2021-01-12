@@ -17,6 +17,7 @@ export default function Routes() {
       <AuthenticatedRoute component={DashboardPage} exact path="/dashboard" />
       <AuthenticatedRoute component={PatientsPage} exact path="/patients" />
       <AuthenticatedRoute component={SchedulePage} exact path="/schedule" />
+      <AuthenticatedRoute component={SettingsPage} exact path="/settings" />
       <AuthenticatedRoute
         component={SettingsPage}
         path="/settings/:job/:identifier"
