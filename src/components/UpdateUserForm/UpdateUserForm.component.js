@@ -15,6 +15,7 @@ const updateUserForm = ({ match }) => {
   const updateAnUser = async (data) => {
     settingsApp.setGraphqlLoading(true)
     const auth = data.Role.split('|')
+    console.log(data.UserID)
     const id = data.UserID
     const userData = {
       id,
@@ -49,7 +50,7 @@ const updateUserForm = ({ match }) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const userData = useReadUser(cleanEmail)
   // eslint-disable-next-line no-underscore-dangle
-  // console.log(userData)
+  console.log(userData)
 
   if (userData.loading || settingsApp.graphqlLoading || createdUser?.loading) {
     return 'Loading...'

@@ -9,6 +9,7 @@ function useReadUserByEmail(email) {
           FirstName
           LastName
           Email
+          MobilePhone
           _id
         }
       }
