@@ -19,8 +19,6 @@ const SetPassword = ({ location }) => {
     return null
   }
 
-  // console.log(queryParameter('token'))
-
   async function setPassword(password) {
     try {
       const token = queryParameter('token')

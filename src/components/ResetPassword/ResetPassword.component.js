@@ -12,7 +12,9 @@ const ResetPassword = () => {
 
   async function passwordReset(email) {
     try {
-      const reset = await app.emailPasswordAuth.sendResetPasswordEmail(email)
+      const reset = await app.emailPasswordAuth.sendResetPasswordEmail(
+        email.toLowerCase()
+      )
       setResetPass(true)
       if (reset) return
     } catch (error) {

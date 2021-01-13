@@ -5,8 +5,7 @@ import useUsers from '../../graphql/useUsers'
 import { useRealmApp } from '../../context/RealmContext'
 import { useSettingsApp } from '../../context/AppContext'
 
-const createUserForm = ({ match }) => {
-  console.log(match)
+const createUserForm = () => {
   // We Need App & Settings Hooks
   const settingsApp = useSettingsApp()
   const app = useRealmApp()
@@ -59,12 +58,6 @@ const createUserForm = ({ match }) => {
       alert(`There was an Error creating your user ${error}`)
     }
   }
-
-  // useEffect(() => {
-  //   if (userCreated?.data?.createdUser) {
-  //     // console.log(userCreated.data)
-  //   }
-  // }, [userCreated])
 
   const onSubmit = (data) => {
     // eslint-disable-next-line prefer-destructuring

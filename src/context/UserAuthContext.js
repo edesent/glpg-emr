@@ -15,7 +15,6 @@ export const UserAuth = ({ children }) => {
   async function onLoad() {
     try {
       await app.currentUser
-      // console.log(app.currentUser)
       if (app.currentUser) {
         app.setUserAuthenticated(true)
       }
