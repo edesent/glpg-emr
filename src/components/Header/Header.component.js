@@ -5,7 +5,6 @@ import { StyledHeader } from './Header.styles'
 const Header = () => {
   return (
     <StyledHeader>
-      <input type="text" />
       <UserMenu />
     </StyledHeader>
   )
