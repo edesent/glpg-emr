@@ -1,7 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import logo from '../../assets/images/logo.svg'
-import IdleTimer from '../IdleTimer'
 import { StyledHeader, Logo, Links, StyledLogout } from './SidebarMenu.styles'
 
 const SidebarMenu = () => {
@@ -85,7 +84,6 @@ const SidebarMenu = () => {
           />
         </svg>
       </StyledLogout>
-      <IdleTimer />
     </StyledHeader>
   )
 }
