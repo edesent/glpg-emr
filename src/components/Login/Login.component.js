@@ -14,7 +14,10 @@ const Login = () => {
   const alert = useAlert()
 
   async function userLogin(email, password) {
-    const credentials = Realm.Credentials.emailPassword(email, password)
+    const credentials = Realm.Credentials.emailPassword(
+      email.toLowerCase(),
+      password
+    )
     try {
       const user = await app.logIn(credentials)
       if (user) return
