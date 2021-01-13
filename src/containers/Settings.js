@@ -4,16 +4,19 @@ import Layout from '../components/layout'
 import { Submenu } from '../components/Submenu'
 import { UpdateUserForm } from '../components/UpdateUserForm'
 import { CreateUserForm } from '../components/CreateUserForm'
+import { ManageProfilesForm } from '../components/Forms/ManageProfilesForm'
 
 const SettingsPage = ({ match }) => {
   return (
     <Layout>
       <Submenu title="Settings" />
-      {match?.params?.job === 'updateuser' ? (
-        <UpdateUserForm match={match} />
-      ) : (
-        <CreateUserForm match={match} />
-      )}
+      {
+        {
+          updateuser: <UpdateUserForm match={match} />,
+          manageprofiles: <ManageProfilesForm />,
+          createuser: <CreateUserForm match={match} />,
+        }[match?.params?.job]
+      }
     </Layout>
   )
 }

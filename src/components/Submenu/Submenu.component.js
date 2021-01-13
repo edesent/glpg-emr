@@ -7,7 +7,7 @@ const Submenu = ({ title }) => {
     <StyledSubmenu>
       <h1>{title}</h1>
       <SubLinks>
-        <a href="/">Link</a>
+        <a href="/settings/manageprofiles">Manage Profiles</a>
         <a href="/">Link</a>
         <a href="/">Link</a>
         <a href="/">Link</a>

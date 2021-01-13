@@ -20,7 +20,7 @@ export default function Routes() {
       <AuthenticatedRoute component={SettingsPage} exact path="/settings" />
       <AuthenticatedRoute
         component={SettingsPage}
-        path="/settings/:job/:identifier"
+        path="/settings/:job/:identifier?"
       />
       <AuthenticatedRoute component={MessagesPage} exact path="/messages" />
       <Route component={NotFound} />
