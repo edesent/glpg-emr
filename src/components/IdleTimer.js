@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import { useIdleTimer } from 'react-idle-timer'
 import { useRealmApp } from '../context/RealmContext'
 
