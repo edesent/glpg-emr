@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import Logout from '../Logout'
+import Logout from '../../Logout'
 
 export const StyledHeader = styled.aside`
   position: fixed;

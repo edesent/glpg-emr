@@ -7,10 +7,10 @@ import {
   ChatOutline,
   LogoutOutline,
 } from 'heroicons-react'
-import logo from '../../assets/images/logo.svg'
-import { StyledHeader, Logo, Links, StyledLogout } from './SidebarMenu.styles'
+import logo from '../../../assets/images/logo.svg'
+import { StyledHeader, Logo, Links, StyledLogout } from './MainNav.styles'
 
-const SidebarMenu = () => {
+const MainNav = () => {
   return (
     <StyledHeader>
       <Logo>
@@ -39,4 +39,4 @@ const SidebarMenu = () => {
   )
 }
 
-export default SidebarMenu
+export default MainNav

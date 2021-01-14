@@ -1,11 +1,11 @@
 import React from 'react'
 import Layout from '../components/layout'
-import { Submenu } from '../components/Submenu'
+import { SubNav } from '../components/Nav/SubNav'
 
 const SchedulePage = () => {
   return (
     <Layout>
-      <Submenu title="Schedule" />
+      <SubNav title="Schedule" />
     </Layout>
   )
 }

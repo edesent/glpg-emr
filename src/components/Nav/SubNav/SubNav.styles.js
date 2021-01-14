@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const StyledSubmenu = styled.aside`
+export const StyledSubNav = styled.aside`
   position: fixed;
   top: 0;
   left: 90px;

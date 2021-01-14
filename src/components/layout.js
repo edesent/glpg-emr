@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import IdleTimer from './IdleTimer'
-import { SidebarMenu } from './SidebarMenu'
+import { MainNav } from './Nav/MainNav'
 import { Header } from './Header'
 import { Footer } from './Footer'
 
@@ -8,7 +8,7 @@ const Layout = ({ children }) => {
   return (
     <>
       <IdleTimer />
-      <SidebarMenu />
+      <MainNav />
       <main>
         <Header />
         <div>{children}</div>
