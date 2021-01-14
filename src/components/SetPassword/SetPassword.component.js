@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { useForm } from 'react-hook-form'
 import { useAlert } from 'react-alert'
 import { useRealmApp } from '../../context/RealmContext'
-import { Input } from '../Forms/Input'
+import { Input } from '../Fields/Input'
 import { Links } from '../Login/Login.styles'
 
 const SetPassword = ({ location }) => {

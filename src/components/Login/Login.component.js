@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom'
 import { useAlert } from 'react-alert'
 import { useRealmApp } from '../../context/RealmContext'
 import { Error, Links } from './Login.styles'
-import { Input } from '../Forms/Input'
+import { Input } from '../Fields/Input'
 
 const Login = () => {
   // hooks
