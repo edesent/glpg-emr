@@ -42,6 +42,10 @@ const GlobalStyle = createGlobalStyle`
     text-transform: none;
     font-weight: 500;
   }
+
+  .container-wrapper {
+    padding: 90px 50px 50px;
+  }
 `
 
 export default GlobalStyle

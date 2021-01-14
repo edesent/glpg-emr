@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useRealmApp } from '../../context/RealmContext'
 import { Error, Links } from '../Login/Login.styles'
-import { Input } from '../Forms/Input'
+import { Input } from '../Fields/Input'
 
 // eslint-disable-next-line react/prop-types
 const ResetPassword = () => {

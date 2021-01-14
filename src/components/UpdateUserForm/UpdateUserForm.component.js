@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
-// import { ObjectId } from 'bson'
 import useReadUser from '../../graphql/useReadUser'
 import { useSettingsApp } from '../../context/AppContext'
 import useUsers from '../../graphql/useUsers'
@@ -53,20 +52,14 @@ const updateUserForm = ({ match }) => {
   }
   if (cleanEmail === false)
     return (
-      <div
-        className="form-wrapper"
-        style={{ position: 'fixed', top: '90px', left: '390px' }}
-      >
+      <div className="form-wrapper">
         <h2>You did not supply a valid email please try again.</h2>
       </div>
     )
 
   if (userData?.readUser?.authorizationUser === null)
     return (
-      <div
-        className="form-wrapper"
-        style={{ position: 'fixed', top: '90px', left: '390px' }}
-      >
+      <div className="form-wrapper">
         <h2>
           No user found with the email of:{' '}
           {match.params.identifier.toLowerCase()}{' '}
@@ -76,10 +69,7 @@ const updateUserForm = ({ match }) => {
     )
   return (
     <>
-      <div
-        className="form-wrapper"
-        style={{ position: 'fixed', top: '90px', left: '390px' }}
-      >
+      <div className="form-wrapper">
         <h2>
           Update User {userData?.readUser?.authorizationUser?.FirstName}{' '}
           {userData?.readUser?.authorizationUser?.LastName}

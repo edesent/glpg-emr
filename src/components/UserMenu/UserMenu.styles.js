@@ -3,7 +3,8 @@ import Logout from '../Logout'
 
 export const StyledUserMenu = styled.div`
   position: relative;
-  justify-self: end;
+  float: right;
+  margin-right: 40px;
 `
 
 export const Menu = styled.menu`

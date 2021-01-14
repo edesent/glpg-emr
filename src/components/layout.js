@@ -1,20 +1,31 @@
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
 import IdleTimer from './IdleTimer'
 import { MainNav } from './Nav/MainNav'
-import { Header } from './Header'
+import { UserMenu } from './UserMenu'
 import { Footer } from './Footer'
+
+const Main = styled.div`
+  display: grid;
+  grid-template-columns: 90px 1fr;
+`
+
+const Children = styled.div`
+  display: grid;
+  grid-template-columns: 300px 1fr;
+`
 
 const Layout = ({ children }) => {
   return (
-    <>
+    <Main>
       <IdleTimer />
       <MainNav />
       <main>
-        <Header />
-        <div>{children}</div>
+        <UserMenu />
+        <Children>{children}</Children>
         <Footer />
       </main>
-    </>
+    </Main>
   )
 }
 

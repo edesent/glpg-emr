@@ -44,9 +44,9 @@ const UserMenu = () => {
         <ChevronDown size="12" />
       </Menu>
       <Dropdown className={userMenuOpen ? `is-open` : ``}>
-        <Link onClick={(e) => e.preventDefault} to="/">
+        <Link title="My Account" to="/settings">
           <CogOutline size="18" />
-          <span>My Account</span>
+          <span>Settings</span>
         </Link>
         <StyledLogout>
           <LogoutOutline size="18" />

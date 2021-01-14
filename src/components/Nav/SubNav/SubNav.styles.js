@@ -1,13 +1,9 @@
 import styled from 'styled-components'
 
 export const StyledSubNav = styled.aside`
-  position: fixed;
-  top: 0;
-  left: 90px;
-  bottom: 0;
+  height: 100vh;
   background: #f4f7ff;
   border-right: 1px solid #e1e6f1;
-  width: 300px;
 
   h1 {
     height: 90px;
