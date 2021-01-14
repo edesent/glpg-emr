@@ -11,7 +11,7 @@ const SettingsPage = ({ match }) => {
   return (
     <Layout>
       <SubNav title="Settings">
-        <NavLink title="My Account" to={`${path}/manageprofiles`}>
+        <NavLink title="My Account" to={path}>
           Account
         </NavLink>
         <a href="/settings">Schedule</a>
@@ -21,13 +21,20 @@ const SettingsPage = ({ match }) => {
           Create User
         </NavLink>
       </SubNav>
-      {
-        {
-          updateuser: <UpdateUserForm match={match} />,
-          manageprofiles: <ManageProfilesForm />,
-          createuser: <CreateUserForm match={match} />,
-        }[match?.params?.job]
-      }
+      <div className="container-wrapper">
+        {match.path === path ? (
+          <ManageProfilesForm />
+        ) : (
+          <>
+            {
+              {
+                updateuser: <UpdateUserForm match={match} />,
+                createuser: <CreateUserForm match={match} />,
+              }[match?.params?.job]
+            }
+          </>
+        )}
+      </div>
     </Layout>
   )
 }
