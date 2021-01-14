@@ -2,11 +2,7 @@ import styled from 'styled-components'
 import Logout from '../../Logout'
 
 export const StyledHeader = styled.aside`
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: 90px;
+  height: 100vh;
   border-right: 1px solid #e1e6f1;
 `
 

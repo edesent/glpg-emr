@@ -68,10 +68,7 @@ const createUserForm = () => {
   if (settingsApp.graphqlLoading) return 'Loading...'
   return (
     <>
-      <div
-        className="form-wrapper"
-        style={{ position: 'fixed', top: '90px', left: '390px' }}
-      >
+      <div className="form-wrapper">
         <div className="form-header">
           <h3>Create a User</h3>
           <p>With this form an administrator can create a new user.</p>

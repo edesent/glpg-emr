@@ -47,26 +47,16 @@ const ManageProfilesForm = () => {
 
   return (
     <>
-      <div
-        className="form-wrapper"
-        style={{
-          position: 'fixed',
-          top: '90px',
-          left: '400px',
-          padding: '25px',
-        }}
-      >
-        {isAdminUser ? createUser : null}
-        <table>
-          <tr>
-            <th style={{ width: '25%', textAlign: 'left' }}>First Name</th>
-            <th style={{ width: '25%', textAlign: 'left' }}>Last Name</th>
-            <th style={{ width: '25%', textAlign: 'left' }}>Email</th>
-            <th style={{ width: '25%', textAlign: 'left' }}></th>
-          </tr>
-          {listUsers}
-        </table>
-      </div>
+      {isAdminUser ? createUser : null}
+      <table>
+        <tr>
+          <th style={{ width: '25%', textAlign: 'left' }}>First Name</th>
+          <th style={{ width: '25%', textAlign: 'left' }}>Last Name</th>
+          <th style={{ width: '25%', textAlign: 'left' }}>Email</th>
+          <th style={{ width: '25%', textAlign: 'left' }}></th>
+        </tr>
+        {listUsers}
+      </table>
     </>
   )
 }

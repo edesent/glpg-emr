@@ -24,39 +24,36 @@ const UserMenu = () => {
   if (user?.loading) return 'Loading...'
   if (!user?.readUser?.authorizationUser) return 'No Data..'
   return (
-    <>
-      <h2>SubNav Title</h2>
-      <StyledUserMenu>
-        <Menu
-          onClick={() => {
-            setUserMenuOpen(!userMenuOpen)
-          }}
-        >
-          <Avatar>
-            {/* 👇 TODO: This SVG will be a fallback for users that do not have specified avatars */}
-            <UserOutline size="32" />
-          </Avatar>
+    <StyledUserMenu>
+      <Menu
+        onClick={() => {
+          setUserMenuOpen(!userMenuOpen)
+        }}
+      >
+        <Avatar>
+          {/* 👇 TODO: This SVG will be a fallback for users that do not have specified avatars */}
+          <UserOutline size="32" />
+        </Avatar>
 
-          <div className="role-name">
-            <span>{user?.readUser?.authorizationUser?.Role}</span>
-            {user.readUser.authorizationUser.FirstName}{' '}
-            {user.readUser.authorizationUser.LastName}
-          </div>
+        <div className="role-name">
+          <span>{user?.readUser?.authorizationUser?.Role}</span>
+          {user.readUser.authorizationUser.FirstName}{' '}
+          {user.readUser.authorizationUser.LastName}
+        </div>
 
-          <ChevronDown size="12" />
-        </Menu>
-        <Dropdown className={userMenuOpen ? `is-open` : ``}>
-          <Link title="My Account" to="/settings">
-            <CogOutline size="18" />
-            <span>Settings</span>
-          </Link>
-          <StyledLogout>
-            <LogoutOutline size="18" />
-            <span>Logout</span>
-          </StyledLogout>
-        </Dropdown>
-      </StyledUserMenu>
-    </>
+        <ChevronDown size="12" />
+      </Menu>
+      <Dropdown className={userMenuOpen ? `is-open` : ``}>
+        <Link title="My Account" to="/settings">
+          <CogOutline size="18" />
+          <span>Settings</span>
+        </Link>
+        <StyledLogout>
+          <LogoutOutline size="18" />
+          <span>Logout</span>
+        </StyledLogout>
+      </Dropdown>
+    </StyledUserMenu>
   )
 }
 
