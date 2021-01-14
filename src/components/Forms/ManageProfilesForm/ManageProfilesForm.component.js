@@ -33,11 +33,9 @@ const ManageProfilesForm = () => {
   ))
 
   const createUser = (
-    <div style={{ padding: '0px 0px 20px 0px' }}>
-      <Links>
-        <a href={`/settings/createuser`}>Create new User</a>
-      </Links>
-    </div>
+    <Links>
+      <a href={`/settings/createuser`}>Create new User</a>
+    </Links>
   )
 
   const isAdminUser =

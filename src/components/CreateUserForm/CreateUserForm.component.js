@@ -142,10 +142,7 @@ const createUserForm = () => {
         </form>
       </div>
       {userCreated?.data?.createdUser && (
-        <div
-          className="form-Message"
-          style={{ position: 'fixed', left: '390px' }}
-        >
+        <div className="form-Message">
           <span>
             <b className="capitalize">Success!</b> A user with the details below
             has been created.
