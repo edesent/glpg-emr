@@ -1,5 +1,5 @@
-import React from 'react'
 import PropTypes from 'prop-types'
+import { NavLink } from 'react-router-dom'
 import Layout from '../components/layout'
 import { SubNav } from '../components/Nav/SubNav'
 import { UpdateUserForm } from '../components/UpdateUserForm'
@@ -9,7 +9,14 @@ import { ManageProfilesForm } from '../components/Forms/ManageProfilesForm'
 const SettingsPage = ({ match }) => {
   return (
     <Layout>
-      <SubNav title="Settings" />
+      <SubNav title="Settings">
+        <NavLink title="My Account" to="/settings/manageprofiles">
+          Account
+        </NavLink>
+        <a href="/settings">Schedule</a>
+        <a href="/settings">Activity</a>
+        <a href="/settings">Reset Password</a>
+      </SubNav>
       {
         {
           updateuser: <UpdateUserForm match={match} />,
