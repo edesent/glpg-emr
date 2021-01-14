@@ -1,11 +1,11 @@
 import React from 'react'
 import Layout from '../components/layout'
-import { Submenu } from '../components/Submenu'
+import { SubNav } from '../components/Nav/SubNav'
 
 const DashboardPage = () => {
   return (
     <Layout>
-      <Submenu title="Dashboard" />
+      <SubNav title="Dashboard" />
     </Layout>
   )
 }

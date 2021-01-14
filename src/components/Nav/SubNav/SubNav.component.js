@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { StyledSubmenu, SubLinks } from './Submenu.styles'
+import { StyledSubNav, SubLinks } from './SubNav.styles'
 
-const Submenu = ({ title }) => {
+const SubNav = ({ title }) => {
   return (
-    <StyledSubmenu>
+    <StyledSubNav>
       <h1>{title}</h1>
       <SubLinks>
         <a href="/settings/manageprofiles">Manage Profiles</a>
@@ -12,12 +12,12 @@ const Submenu = ({ title }) => {
         <a href="/">Link</a>
         <a href="/">Link</a>
       </SubLinks>
-    </StyledSubmenu>
+    </StyledSubNav>
   )
 }
 
-Submenu.propTypes = {
+SubNav.propTypes = {
   title: PropTypes.string.isRequired,
 }
 
-export default Submenu
+export default SubNav
