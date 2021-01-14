@@ -10,16 +10,9 @@ import { UseAppSettings } from './context/AppContext'
 import Routes from './routes/Routes'
 import GlobalStyle from './assets/styles/globalStyles'
 
-// alert options
-const options = {
-  position: positions.TOP_RIGHT,
-  timeout: 5000,
-  offset: '30px',
-  transition: transitions.SCALE,
-}
-
 // sentry options
 Sentry.init({
+  environment: process.env.NODE_ENV,
   dsn:
     'https://2d106614b2614ccd92c72b0e544c5b6f@o469068.ingest.sentry.io/5592808',
   autoSessionTracking: true,
@@ -29,6 +22,14 @@ Sentry.init({
   // for finer control
   tracesSampleRate: 1.0,
 })
+
+// alert options
+const options = {
+  position: positions.TOP_RIGHT,
+  timeout: 5000,
+  offset: '30px',
+  transition: transitions.SCALE,
+}
 
 function App() {
   const APP_ID = process.env.REACT_APP_REALMAPP
