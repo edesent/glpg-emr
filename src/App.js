@@ -1,6 +1,8 @@
 import React from 'react'
 import AlertTemplate from 'react-alert-template-basic'
 import { transitions, positions, Provider as AlertProvider } from 'react-alert'
+import * as Sentry from '@sentry/react'
+import { Integrations } from '@sentry/tracing'
 import { RealmAppProvider } from './context/RealmContext'
 import { RealmApolloProvider } from './context/ApolloContext'
 import { UserAuth } from './context/UserAuthContext'
@@ -15,6 +17,18 @@ const options = {
   offset: '30px',
   transition: transitions.SCALE,
 }
+
+// sentry options
+Sentry.init({
+  dsn:
+    'https://2d106614b2614ccd92c72b0e544c5b6f@o469068.ingest.sentry.io/5592808',
+  autoSessionTracking: true,
+  integrations: [new Integrations.BrowserTracing()],
+
+  // We recommend adjusting this value in production, or using tracesSampler
+  // for finer control
+  tracesSampleRate: 1.0,
+})
 
 function App() {
   const APP_ID = process.env.REACT_APP_REALMAPP
