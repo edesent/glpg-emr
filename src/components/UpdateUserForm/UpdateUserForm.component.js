@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
-// import { ObjectId } from 'bson'
 import useReadUser from '../../graphql/useReadUser'
 import { useSettingsApp } from '../../context/AppContext'
 import useUsers from '../../graphql/useUsers'
