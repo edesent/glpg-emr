@@ -1,21 +1,54 @@
-/* eslint-disable no-alert */
 import { useIdleTimer } from 'react-idle-timer'
+import { useAlert, positions } from 'react-alert'
 import { useRealmApp } from '../context/RealmContext'
 
 const IdleTimer = () => {
-  const { app, setUserAuthenticated, settings } = useRealmApp()
+  const { currentUser, setUserAuthenticated, settings } = useRealmApp()
+  const alert = useAlert()
+  const alertTimeout = 60 * 1000 // this is 60 seconds
+  const countDownTimer = alertTimeout / 1000 // shows the timer in 60 seconds
+  let isStayLoggedIn = false
+  let alertProps = null
 
-  const handleOnIdle = () => {
-    // eslint-disable-next-line no-restricted-globals
-    if (!confirm('Would you like to stay logged in?')) {
-      // TODO: create a popup that can be on a timer to log someone out
-      app?.currentUser?.logOut()
+  const stayLoggedIn = () => {
+    isStayLoggedIn = true
+    alertProps.close()
+  }
+
+  const logOut = () => {
+    currentUser.logOut()
+    setUserAuthenticated(false)
+    alertProps.close()
+  }
+
+  const onClose = () => {
+    if (!isStayLoggedIn) {
+      currentUser.logOut()
       setUserAuthenticated(false)
     }
+
+    isStayLoggedIn = false
+  }
+
+  const messageFragment = (
+    <div>
+      <div>Would you like to stay logged in?</div>
+      <div>You will be logged out in: {countDownTimer} seconds</div>
+      <button onClick={stayLoggedIn}>Yes</button>
+      <button onClick={logOut}>No</button>
+    </div>
+  )
+
+  const handleOnIdle = () => {
+    alertProps = alert.show(messageFragment, {
+      timeout: alertTimeout,
+      position: positions.MIDDLE,
+      onClose,
+    })
   }
 
   useIdleTimer({
-    timeout: settings.IdleTimeout ?? 1000 * 60 * 15, // TODO: Read this from database eventually, this is in milliseconds
+    timeout: settings.IdleTimeout ?? 15 * 60 * 1000, // TODO: Read this from database eventually, this is in milliseconds
     onIdle: handleOnIdle,
   })
 
