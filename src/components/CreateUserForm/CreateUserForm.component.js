@@ -3,10 +3,12 @@ import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import useUsers from '../../graphql/useUsers'
 import GroupDropdown from './GroupListFormDropdown'
+import useReadAllOrOneGroups from '../../graphql/useReadGroups'
 import { useRealmApp } from '../../context/RealmContext'
 import { useSettingsApp } from '../../context/AppContext'
 
 const createUserForm = () => {
+  const groups = useReadAllOrOneGroups()
   // We Need App & Settings Hooks
   const settingsApp = useSettingsApp()
   const app = useRealmApp()
@@ -119,11 +121,7 @@ const createUserForm = () => {
             <label htmlFor="Role">User Role:</label>
             <div className="Role">
               <select id="Role" name="Role" ref={register({ required: true })}>
-                <GroupDropdown
-                  groups={groups}
-                  register={register}
-                  userRole={userRole}
-                />
+                <GroupDropdown groups={groups} register={register} />
               </select>
             </div>
           </div>
