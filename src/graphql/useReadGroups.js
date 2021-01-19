@@ -21,7 +21,8 @@ const readAGroup = gql`
 `
 
 function useReadGroups(name = null) {
-  const { data, loading, error } = useQuery(name ? allGroups : readAGroup, {
+  console.log(name)
+  const { data, loading, error } = useQuery(name ? readAGroup : allGroups, {
     variables: { name },
   })
   if (error) {
@@ -30,14 +31,14 @@ function useReadGroups(name = null) {
 
   // If the query has finished, return the tasks from the result data
   // Otherwise, return an empty list
-  const readUser = data ?? []
-  return { readUser, loading }
+  const readGroup = data ?? []
+  return { readGroup, loading }
 }
 const useReadAllOrOneGroups = (data) => {
-  const { readUser, loading } = useReadGroups(data)
+  const { readGroup, loading } = useReadGroups(data)
 
   return {
-    readUser,
+    readGroup,
     loading,
   }
 }

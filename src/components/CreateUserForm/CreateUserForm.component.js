@@ -86,7 +86,6 @@ const createUserForm = () => {
               type="text"
             />
           </div>
-
           <div className="form-LastName">
             <label htmlFor="LastName">Last Name:</label>
             <input
@@ -96,7 +95,6 @@ const createUserForm = () => {
               type="text"
             />
           </div>
-
           <div className="form-Email">
             <label htmlFor="Email">Email Address:</label>
             <input
@@ -106,7 +104,6 @@ const createUserForm = () => {
               type="email"
             />
           </div>
-
           <div className="form-Mobile">
             <label htmlFor="MobilePhone">Mobile Phone:</label>
             <input
@@ -116,15 +113,7 @@ const createUserForm = () => {
               type="tel"
             />
           </div>
-
-          <div className="form-Role">
-            <label htmlFor="Role">User Role:</label>
-            <div className="Role">
-              <select id="Role" name="Role" ref={register({ required: true })}>
-                <GroupDropdown groups={groups} register={register} />
-              </select>
-            </div>
-          </div>
+          <GroupDropdown groups={groups} register={register} />
           <div className="form-Footer">
             <button type="submit">Create User</button>
           </div>

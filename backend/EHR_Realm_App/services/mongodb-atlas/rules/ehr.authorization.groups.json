@@ -20,6 +20,9 @@
   ],
   "schema": {
     "properties": {
+      "Desc": {
+        "bsonType": "string"
+      },
       "Name": {
         "bsonType": "string"
       },
