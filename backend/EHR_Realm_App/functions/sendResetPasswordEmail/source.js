@@ -1,6 +1,6 @@
 // look up in database if use is valid
 const isValidUser = async (username) => {
-  const userCollection = context.services
+  const userCollection = await context.services
     .get('mongodb-atlas')
     .db('ehr')
     .collection('authorization.users')
@@ -60,28 +60,21 @@ const sendEmail = (user, token, tokenId) => {
 
   const subject = templateEngine(data, context.values.get('ResetEmailSubject'))
   const body = templateEngine(data, context.values.get('ResetEmailBody'))
-  console.log(subject)
-  console.log(body)
+  // TODO: Add call for email server
 
   return true
 }
 
 exports = async ({ token, tokenId, username, password }) => {
   // Make sure user is valid in the database
-  console.log(`isValidUser ${username}`)
   const user = await isValidUser(username)
-  console.log(`isValidUser ${username} end`)
 
   // check if the user has requested a password reset too often recently
-  console.log(`isEmailRequestCool ${username}`)
   const isRequestCool = await isEmailRequestCool(user)
-  console.log(`isEmailRequestCool ${username} end`)
 
   if (user && isRequestCool) {
     // send a message to the user in some way so that the user can confirm themselves
-    console.log(`sendEmail ${username}`)
     const msgSendSuccessful = sendEmail(user, token, tokenId)
-    console.log(`sendEmail ${username} end`)
 
     if (msgSendSuccessful) {
       return { status: 'pending' }
@@ -89,4 +82,9 @@ exports = async ({ token, tokenId, username, password }) => {
   }
 
   return { status: 'fail' }
+}
+
+// ! Used for allowing the function above to be exported for Unit Tests
+if (typeof module === 'object') {
+  module.exports = exports
 }
