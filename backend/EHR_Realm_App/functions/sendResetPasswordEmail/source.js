@@ -46,7 +46,7 @@ const templateEngine = (data, template) => {
 }
 
 // send email to user with link of token and tokenId
-const sendEmail = (user, token, tokenId) => {
+const sendEmail = async (user, token, tokenId) => {
   const domainName = context.values.get('DomainName')
   const linkForReset = `${domainName}/?setpassword=&token=${token}&tokenId=${tokenId}`
 
@@ -60,28 +60,63 @@ const sendEmail = (user, token, tokenId) => {
 
   const subject = templateEngine(data, context.values.get('ResetEmailSubject'))
   const body = templateEngine(data, context.values.get('ResetEmailBody'))
-  // TODO: Add call for email server
+
+  const ses = context.services.get('aws-ses').ses('us-east-1')
+  const result = await ses.SendEmail({
+    Source: 'no-reply@test.glpg.cloud',
+    Destination: { ToAddresses: [data.email] },
+    Message: {
+      Body: {
+        Html: {
+          Charset: 'UTF-8',
+          Data: body,
+        },
+      },
+      Subject: {
+        Charset: 'UTF-8',
+        Data: subject,
+      },
+    },
+  })
+
+  if (!result?.MessageId) {
+    throw new Error('The email was not sent')
+  }
 
   return true
 }
 
 exports = async ({ token, tokenId, username, password }) => {
-  // Make sure user is valid in the database
-  const user = await isValidUser(username)
+  let description = ''
 
-  // check if the user has requested a password reset too often recently
-  const isRequestCool = await isEmailRequestCool(user)
+  try {
+    // Make sure user is valid in the database
+    const user = await isValidUser(username)
 
-  if (user && isRequestCool) {
-    // send a message to the user in some way so that the user can confirm themselves
-    const msgSendSuccessful = sendEmail(user, token, tokenId)
+    // check if the user has requested a password reset too often recently
+    const isRequestCool = await isEmailRequestCool(user)
 
-    if (msgSendSuccessful) {
-      return { status: 'pending' }
+    if (user && isRequestCool) {
+      // send a message to the user in some way so that the user can confirm themselves
+      const msgSendSuccessful = await sendEmail(user, token, tokenId)
+
+      if (msgSendSuccessful) {
+        return { status: 'pending' }
+      }
+    } else {
+      description = !isRequestCool
+        ? 'You have requested a reset already.  Check your email.'
+        : 'Invalid request.'
     }
+  } catch (error) {
+    description = `There was an error: ${error}`
+    console.error(error)
   }
 
-  return { status: 'fail' }
+  return {
+    status: 'fail',
+    description,
+  }
 }
 
 // ! Used for allowing the function above to be exported for Unit Tests
