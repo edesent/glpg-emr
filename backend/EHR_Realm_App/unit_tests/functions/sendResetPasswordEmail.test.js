@@ -110,7 +110,7 @@ describe('sendResetPasswordEmail tests', () => {
     expect(result.status).toBe('fail')
   })
 
-  test('User has requested email after 5 minutes', async () => {
+  test('User has requested reset email after 5 minutes', async () => {
     // Arrange
     resultUser.LastResetDate = helpers.addMinutes(new Date(), -5)
 
@@ -124,7 +124,7 @@ describe('sendResetPasswordEmail tests', () => {
     )
   })
 
-  test('User has requested email after 35 minutes', async () => {
+  test('User has requested reset email after 35 minutes', async () => {
     // Arrange
     resultUser.LastResetDate = helpers.addMinutes(new Date(), -35)
 
@@ -135,7 +135,7 @@ describe('sendResetPasswordEmail tests', () => {
     expect(result.status).toBe('pending')
   })
 
-  test('Function returns pending', async () => {
+  test('User has requested reset email for the first time (i.e. LastResetDate is null)', async () => {
     // Arrange
 
     // Act
