@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import useUsers from '../../graphql/useUsers'
+import GroupDropdown from './GroupListFormDropdown'
 import { useRealmApp } from '../../context/RealmContext'
 import { useSettingsApp } from '../../context/AppContext'
 
@@ -118,21 +119,11 @@ const createUserForm = () => {
             <label htmlFor="Role">User Role:</label>
             <div className="Role">
               <select id="Role" name="Role" ref={register({ required: true })}>
-                <option value="Administrator|5fb836e7f98feea55da5e968">
-                  Administrator
-                </option>
-                <option value="Billing|5fb83716f98feea55da5e96a">
-                  Billing
-                </option>
-                <option value="Verifications|5fb836fff98feea55da5e969">
-                  Verifications
-                </option>
-                <option value="Scheduler|5fb8372cf98feea55da5e96b">
-                  Scheduler
-                </option>
-                <option value="Therapist|5fb8369ff98feea55da5e967">
-                  Therapist
-                </option>
+                <GroupDropdown
+                  groups={groups}
+                  register={register}
+                  userRole={userRole}
+                />
               </select>
             </div>
           </div>
