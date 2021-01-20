@@ -2,10 +2,13 @@
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import useUsers from '../../graphql/useUsers'
+import GroupDropdown from './GroupListFormDropdown'
+import useReadAllOrOneGroups from '../../graphql/useReadGroups'
 import { useRealmApp } from '../../context/RealmContext'
 import { useSettingsApp } from '../../context/AppContext'
 
 const createUserForm = () => {
+  const groups = useReadAllOrOneGroups()
   // We Need App & Settings Hooks
   const settingsApp = useSettingsApp()
   const app = useRealmApp()
@@ -87,7 +90,6 @@ const createUserForm = () => {
               type="text"
             />
           </div>
-
           <div className="form-LastName">
             <label htmlFor="LastName">Last Name:</label>
             <input
@@ -97,7 +99,6 @@ const createUserForm = () => {
               type="text"
             />
           </div>
-
           <div className="form-Email">
             <label htmlFor="Email">Email Address:</label>
             <input
@@ -107,7 +108,6 @@ const createUserForm = () => {
               type="email"
             />
           </div>
-
           <div className="form-Mobile">
             <label htmlFor="MobilePhone">Mobile Phone:</label>
             <input
@@ -117,29 +117,7 @@ const createUserForm = () => {
               type="tel"
             />
           </div>
-
-          <div className="form-Role">
-            <label htmlFor="Role">User Role:</label>
-            <div className="Role">
-              <select id="Role" name="Role" ref={register({ required: true })}>
-                <option value="Administrator|5fb836e7f98feea55da5e968">
-                  Administrator
-                </option>
-                <option value="Billing|5fb83716f98feea55da5e96a">
-                  Billing
-                </option>
-                <option value="Verifications|5fb836fff98feea55da5e969">
-                  Verifications
-                </option>
-                <option value="Scheduler|5fb8372cf98feea55da5e96b">
-                  Scheduler
-                </option>
-                <option value="Therapist|5fb8369ff98feea55da5e967">
-                  Therapist
-                </option>
-              </select>
-            </div>
-          </div>
+          <GroupDropdown groups={groups} register={register} />
           <div className="form-Footer">
             <button type="submit">Create User</button>
           </div>
