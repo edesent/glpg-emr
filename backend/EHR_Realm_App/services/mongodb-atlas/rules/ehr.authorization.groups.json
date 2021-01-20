@@ -1,37 +1,41 @@
 {
-    "collection": "authorization.groups",
-    "database": "ehr",
-    "roles": [
-        {
-            "name": "default",
-            "apply_when": {},
-            "fields": {
-                "Name": {},
-                "Permissions": {},
-                "_id": {}
-            },
-            "read": true,
-            "insert": true,
-            "delete": true,
-            "search": true,
-            "additional_fields": {}
-        }
-    ],
-    "schema": {
-        "properties": {
-            "Name": {
-                "bsonType": "string"
-            },
-            "Permissions": {
-                "bsonType": "array",
-                "items": {
-                    "bsonType": "objectId"
-                }
-            },
-            "_id": {
-                "bsonType": "objectId"
-            }
-        },
-        "title": "authorization.group"
+  "collection": "authorization.groups",
+  "database": "ehr",
+  "roles": [
+    {
+      "name": "default",
+      "apply_when": {},
+      "fields": {
+        "Desc": {},
+        "Name": {},
+        "Permissions": {},
+        "_id": {}
+      },
+      "read": true,
+      "insert": true,
+      "delete": true,
+      "search": true,
+      "additional_fields": {}
     }
+  ],
+  "schema": {
+    "properties": {
+      "Desc": {
+        "bsonType": "string"
+      },
+      "Name": {
+        "bsonType": "string"
+      },
+      "Permissions": {
+        "bsonType": "array",
+        "items": {
+          "bsonType": "objectId"
+        }
+      },
+      "_id": {
+        "bsonType": "objectId"
+      }
+    },
+    "title": "authorization.group"
+  }
 }

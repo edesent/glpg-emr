@@ -2,8 +2,9 @@ import { useIdleTimer } from 'react-idle-timer'
 import { useAlert, positions } from 'react-alert'
 import { useRealmApp } from '../context/RealmContext'
 
-const IdleTimer = () => {
-  const { currentUser, setUserAuthenticated, settings } = useRealmApp()
+const IdleTimer = ({ settings }) => {
+  const { currentUser, setUserAuthenticated } = useRealmApp()
+  const idleTimerValue = settings[0].Value
   const alert = useAlert()
   const alertTimeout = 60 * 1000 // this is 60 seconds
   const countDownTimer = alertTimeout / 1000 // shows the timer in 60 seconds
@@ -46,9 +47,8 @@ const IdleTimer = () => {
       onClose,
     })
   }
-
   useIdleTimer({
-    timeout: settings.IdleTimeout ?? 15 * 60 * 1000, // TODO: Read this from database eventually, this is in milliseconds
+    timeout: idleTimerValue ?? 15 * 60 * 1000, // TODO: Read this from database eventually, this is in milliseconds
     onIdle: handleOnIdle,
   })
 

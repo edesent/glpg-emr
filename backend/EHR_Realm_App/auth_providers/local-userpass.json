@@ -3,9 +3,11 @@
     "type": "local-userpass",
     "config": {
         "autoConfirm": true,
+        "resetFunctionName": "sendResetPasswordEmail",
         "resetPasswordSubject": "Generic Reset Password",
         "resetPasswordUrl": "https://test.glpg.cloud/?setpassword",
-        "runConfirmationFunction": false
+        "runConfirmationFunction": false,
+        "runResetFunction": true
     },
     "disabled": false
 }

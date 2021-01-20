@@ -1,5 +1,6 @@
-import { useContext, createContext, useState } from 'react'
+import { useContext, createContext, useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
+import useSettings from '../graphql/getSettings'
 
 // We need a contexts for App Settings
 const AppSettingsContext = createContext()
@@ -14,13 +15,20 @@ export const useSettingsApp = () => {
 }
 // This can be expanded but I threw in some details
 export const UseAppSettings = ({ children }) => {
-  const [appSettings, setAppSettings] = useState({ timeout: 120 })
+  const [settings, setSettings] = useState(null)
+  const appSettings = useSettings()
   const [graphqlLoading, setGraphqlLoading] = useState(false)
-  const [readUser, setReadUser] = useState()
+  const [readUser, setReadUser] = useState(null)
+
+  useEffect(() => {
+    if (appSettings?.appSettings) {
+      setSettings(appSettings.appSettings)
+    }
+  }, [appSettings.loading]) // eslint-disable-line
 
   const wrapper = {
-    ...appSettings,
-    setAppSettings,
+    ...settings,
+    setSettings,
     graphqlLoading,
     setGraphqlLoading,
     readUser,
