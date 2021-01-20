@@ -17,7 +17,8 @@ const isEmailRequestCool = async (user) => {
   if (!user) return false // user doesnt exist
 
   const lastResetDate = user.LastResetDate
-  const dateThreshold = addMinutes(new Date(), -30)
+  const emailResetTimeout = context.values.get('EmailResetTimeout')
+  const dateThreshold = addMinutes(new Date(), -emailResetTimeout)
 
   if (!lastResetDate || dateThreshold > lastResetDate) {
     const userCollection = context.services
