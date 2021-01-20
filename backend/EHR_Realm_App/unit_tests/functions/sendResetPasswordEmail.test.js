@@ -36,6 +36,8 @@ beforeEach(() => {
   valuesObject = {
     ResetEmailSubject: helpers.makeRandomString(10),
     ResetEmailBody: helpers.makeRandomString(10),
+    NewUserEmailSubject: helpers.makeRandomString(10),
+    NewUserEmailBody: helpers.makeRandomString(10),
     DomainName: domain,
   }
 
@@ -145,8 +147,40 @@ describe('sendResetPasswordEmail tests', () => {
     expect(result.status).toBe('pending')
   })
 
-  test('SendEmail gets body and subject', async () => {
+  test('SendEmail sends to a new user', async () => {
     // Arrange
+    // when LastResetDate is null, then the user new.  This is the default value
+    mockSes = (location) => {
+      return {
+        SendEmail: (option) => {
+          // to assert, we need to do it in the callback
+          expect(option).toBeDefined()
+          expect(option.Message.Body.Html.Data).toBe(
+            valuesObject.NewUserEmailBody
+          )
+          expect(option.Message.Subject.Data).toBe(
+            valuesObject.NewUserEmailSubject
+          )
+
+          return new Promise((resolve, reject) => {
+            resolve({ MessageId: '123456' })
+          })
+        },
+      }
+    }
+
+    // Act
+    const result = await subject({ token, tokenId, username, password })
+
+    // Assert
+    expect(result.status).toBe('pending')
+  })
+
+  test('SendEmail sends to an existing user', async () => {
+    // Arrange
+    // when LastResetDate is set, then the user is old and already exists.
+    resultUser.LastResetDate = helpers.addMinutes(new Date(), -35)
+
     mockSes = (location) => {
       return {
         SendEmail: (option) => {
@@ -199,12 +233,14 @@ describe('sendResetPasswordEmail tests', () => {
 
       // This is the value to use based on the test case.
       const value = getTestCaseValue(testValue.Name)
+
       // this is the value we expect the body and subject is
-      const expectedBody = `${valuesObject.ResetEmailBody}${value}`
-      const expectedSubject = `${valuesObject.ResetEmailSubject}${value}`
+      const expectedBody = `${valuesObject.NewUserEmailBody}${value}`
+      const expectedSubject = `${valuesObject.NewUserEmailSubject}${value}`
+
       // this is the template we should use
-      valuesObject.ResetEmailBody = `${valuesObject.ResetEmailBody}<% ${testValue.Name} %>`
-      valuesObject.ResetEmailSubject = `${valuesObject.ResetEmailSubject}<% ${testValue.Name} %>`
+      valuesObject.NewUserEmailBody = `${valuesObject.NewUserEmailBody}<% ${testValue.Name} %>`
+      valuesObject.NewUserEmailSubject = `${valuesObject.NewUserEmailSubject}<% ${testValue.Name} %>`
 
       mockSes = (location) => {
         return {

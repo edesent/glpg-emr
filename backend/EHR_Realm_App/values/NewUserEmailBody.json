@@ -1,0 +1,5 @@
+{
+    "name": "NewUserEmailBody",
+    "value": "\u003c% firstName %\u003e \u003c% lastName %\u003e Hello!  Let's set up your password. Here is the link \u003c% resetLink %\u003e",
+    "from_secret": false
+}

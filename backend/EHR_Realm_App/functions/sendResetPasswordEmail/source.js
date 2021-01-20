@@ -28,6 +28,7 @@ const isEmailRequestCool = async (user) => {
       { Email: user.Email },
       { $set: { LastResetDate: new Date() } }
     )
+
     return true
   }
 
@@ -58,8 +59,14 @@ const sendEmail = async (user, token, tokenId) => {
     resetLink: linkForReset,
   }
 
-  const subject = templateEngine(data, context.values.get('ResetEmailSubject'))
-  const body = templateEngine(data, context.values.get('ResetEmailBody'))
+  const emailSubjectKey = user.LastResetDate
+    ? 'ResetEmailSubject'
+    : 'NewUserEmailSubject'
+  const emailBodyKey = user.LastResetDate
+    ? 'ResetEmailBody'
+    : 'NewUserEmailBody'
+  const subject = templateEngine(data, context.values.get(emailSubjectKey))
+  const body = templateEngine(data, context.values.get(emailBodyKey))
 
   const ses = context.services.get('aws-ses').ses('us-east-1')
   const result = await ses.SendEmail({
