@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import IdleTimer from './IdleTimer'
+import { useSettingsApp } from '../context/AppContext'
 import { MainNav } from './Nav/MainNav'
 import { UserMenu } from './UserMenu'
 import { Footer } from './Footer'
@@ -16,9 +17,16 @@ const Children = styled.div`
 `
 
 const Layout = ({ children }) => {
+  const settings = useSettingsApp()
+
   return (
     <Main>
-      <IdleTimer />
+      {settings?.configurationAppsettings ? (
+        <IdleTimer settings={settings.configurationAppsettings} />
+      ) : (
+        'Loading...'
+      )}
+
       <MainNav />
       <main>
         <UserMenu />
