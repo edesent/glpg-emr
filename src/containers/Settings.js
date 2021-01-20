@@ -5,6 +5,7 @@ import { SubNav } from '../components/Nav/SubNav'
 import { UpdateUserForm } from '../components/UpdateUserForm'
 import { CreateUserForm } from '../components/CreateUserForm'
 import { ManageProfilesForm } from '../components/Forms/ManageProfilesForm'
+import ResetPasswordLink from '../components/ResetPasswordLink/ResetPasswordLink.component'
 
 const SettingsPage = ({ match }) => {
   const path = '/settings'
@@ -16,7 +17,7 @@ const SettingsPage = ({ match }) => {
         </NavLink>
         <a href="/settings">Schedule</a>
         <a href="/settings">Activity</a>
-        <a href="/settings">Reset Password</a>
+        <ResetPasswordLink />
         <NavLink title="My Account" to={`${path}/createuser`}>
           Create User
         </NavLink>
