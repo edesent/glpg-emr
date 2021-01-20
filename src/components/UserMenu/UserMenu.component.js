@@ -15,13 +15,19 @@ import {
   Dropdown,
   StyledLogout,
 } from './UserMenu.styles'
+import Loading from '../Loading'
 
 const UserMenu = () => {
   const [userMenuOpen, setUserMenuOpen] = useState(false)
   const app = useRealmApp()
   const user = useReadUser(app.currentUser.profile.email)
 
-  if (user?.loading) return 'Loading...'
+  if (user?.loading)
+    return (
+      <StyledUserMenu>
+        <Loading />
+      </StyledUserMenu>
+    )
   if (!user?.readUser?.authorizationUser) return 'No Data..'
   return (
     <StyledUserMenu>
