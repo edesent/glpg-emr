@@ -1,0 +1,5 @@
+{
+    "name": "NewUserEmailSubject",
+    "value": "\u003c% firstName %\u003e \u003c% lastName %\u003e, welcome to GLPG EHR!",
+    "from_secret": false
+}

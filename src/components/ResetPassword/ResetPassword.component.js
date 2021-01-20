@@ -12,8 +12,10 @@ const ResetPassword = () => {
 
   async function passwordReset(email) {
     try {
-      const reset = await app.emailPasswordAuth.sendResetPasswordEmail(
-        email.toLowerCase()
+      const reset = await app.emailPasswordAuth.callResetPasswordFunction(
+        email.toLowerCase(),
+        '123456', // Use a real password if the user is supplying it. (also need to add logic to backend)
+        null // these are options
       )
       setResetPass(true)
       if (reset) return

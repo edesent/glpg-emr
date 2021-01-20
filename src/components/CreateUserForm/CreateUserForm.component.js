@@ -54,7 +54,11 @@ const createUserForm = () => {
       const newUser = await addUser(userData)
       setUserCreated(newUser)
       // If that worked reset password
-      await app.emailPasswordAuth.sendResetPasswordEmail(userData.Email)
+      await app.emailPasswordAuth.callResetPasswordFunction(
+        userData.Email.toLowerCase(),
+        '123456', // Use a real password if the user is supplying it. (also need to add logic to backend)
+        null // these are options
+      )
       // trigger the message
     } catch (error) {
       // eslint-disable-next-line no-alert

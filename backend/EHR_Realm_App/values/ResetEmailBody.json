@@ -1,0 +1,5 @@
+{
+    "name": "ResetEmailBody",
+    "value": "\u003c% firstName %\u003e \u003c% lastName %\u003e has requested a password change for \u003c% domainName %\u003e. Here is the link \u003c% resetLink %\u003e",
+    "from_secret": false
+}
