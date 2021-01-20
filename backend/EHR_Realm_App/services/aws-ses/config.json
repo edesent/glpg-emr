@@ -1,0 +1,11 @@
+{
+    "name": "aws-ses",
+    "type": "aws",
+    "config": {
+        "accessKeyId": "AKIA4N3QYEKVXJ56ELNY"
+    },
+    "secret_config": {
+        "secretAccessKey": "aws-secretAccessKey"
+    },
+    "version": 1
+}
