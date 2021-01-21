@@ -5,7 +5,8 @@ import useReadUser from '../../../graphql/useReadUser'
 import { useSettingsApp } from '../../../context/AppContext'
 import useUsers from '../../../graphql/useUsers'
 
-const updateUserForm = ({ match }) => {
+// eslint-disable-next-line react/prop-types
+const UpdateUserForm = ({ match }) => {
   const settingsApp = useSettingsApp()
   const [createdUser, setCreateUser] = useState(false)
   const { updateUser } = useUsers()
@@ -36,6 +37,7 @@ const updateUserForm = ({ match }) => {
     updateAnUser(data)
   }
 
+  // eslint-disable-next-line react/prop-types
   let cleanEmail = match.params.identifier.toLowerCase()
   function validEmail(email) {
     const regexp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -62,6 +64,7 @@ const updateUserForm = ({ match }) => {
       <div className="form-wrapper">
         <h2>
           No user found with the email of:{' '}
+          {/* eslint-disable-next-line react/prop-types */}
           {match.params.identifier.toLowerCase()}{' '}
         </h2>
         <div>Would you like to Create a User?</div>
@@ -171,4 +174,4 @@ const updateUserForm = ({ match }) => {
     </>
   )
 }
-export default updateUserForm
+export default UpdateUserForm
