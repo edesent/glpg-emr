@@ -1,14 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { StyledSubNav, SubLinks } from './SubNav.styles'
+import { StyledNav } from './SubNav.styles'
 
-const SubNav = ({ title, children }) => {
-  return (
-    <StyledSubNav>
-      <h1>{title}</h1>
-      <SubLinks>{children}</SubLinks>
-    </StyledSubNav>
-  )
+const SubNav = ({ children }) => {
+  return <StyledNav>{children}</StyledNav>
 }
 
 SubNav.propTypes = {
