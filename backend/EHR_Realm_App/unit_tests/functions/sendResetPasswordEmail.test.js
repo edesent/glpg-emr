@@ -126,7 +126,7 @@ describe('sendResetPasswordEmail tests', () => {
     const result = await subject({ token, tokenId, username, password })
 
     // Assert
-    expect(result.status).toBe('fail')
+    expect(result.status).toBe('pending')
     expect(result.description).toBe(
       'You have requested a reset already.  Check your email.'
     )
