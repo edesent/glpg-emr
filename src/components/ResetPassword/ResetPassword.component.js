@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { Link } from 'react-router-dom'
 import { useRealmApp } from '../../context/RealmContext'
 import { Error, Links } from '../Login/Login.styles'
 import { Input } from '../Fields/Input'
@@ -43,7 +44,9 @@ const ResetPassword = () => {
             type="email"
           />
           <Links>
-            <a href="/">Back</a>
+            <Link title="Back" to="/">
+              Back
+            </Link>
             <button>Get New Password</button>
           </Links>
         </form>
@@ -55,7 +58,7 @@ const ResetPassword = () => {
             you will be receiving instructions shortly to set your new password.
           </p>
           <Links>
-            <a href="/">Back</a>
+            <Link to="/">Back</Link>
           </Links>
         </>
       )}

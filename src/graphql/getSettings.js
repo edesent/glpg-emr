@@ -15,6 +15,7 @@ function useAppSettings(email) {
     variables: { em: email },
   })
   if (error) {
+    // TODO: Remove debugging tools from production
     console.log(`Failed to fetch user data: ${error.message}`)
   }
 

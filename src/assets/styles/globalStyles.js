@@ -6,6 +6,10 @@ const GlobalStyle = createGlobalStyle`
 
   ${Normalize}
 
+  :root {
+    --color__gray--light: #F0F4F8;
+  }
+
   *,
   *::before,
   *::after {

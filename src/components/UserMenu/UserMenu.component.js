@@ -50,7 +50,7 @@ const UserMenu = () => {
         <ChevronDown size="12" />
       </Menu>
       <Dropdown className={userMenuOpen ? `is-open` : ``}>
-        <Link title="My Account" to="/settings">
+        <Link title="My Account" to="/account">
           <CogOutline size="18" />
           <span>Settings</span>
         </Link>
