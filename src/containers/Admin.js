@@ -10,6 +10,9 @@ const AdminPage = ({ match }) => {
   return (
     <Layout>
       <SubNav title="Administration">
+        <NavLink title="Manage Users" to={path}>
+          Overview
+        </NavLink>
         <NavLink title="Manage Users" to={`${path}/users`}>
           Manage Users
         </NavLink>
