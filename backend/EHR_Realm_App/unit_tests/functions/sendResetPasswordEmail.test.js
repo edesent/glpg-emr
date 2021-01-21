@@ -6,6 +6,7 @@ let token
 let tokenId
 let username
 let password
+let resetTimeout
 
 let firstName
 let lastName
@@ -17,6 +18,7 @@ let userData
 let valuesObject
 
 beforeEach(() => {
+  resetTimeout = helpers.makeRandomInt(1)
   token = helpers.makeRandomString(10)
   tokenId = helpers.makeRandomString(10)
   username = helpers.makeRandomString(10)
@@ -39,6 +41,7 @@ beforeEach(() => {
     NewUserEmailSubject: helpers.makeRandomString(10),
     NewUserEmailBody: helpers.makeRandomString(10),
     DomainName: domain,
+    EmailResetTimeout: resetTimeout,
   }
 
   mockFindUsers = (obj) => {
@@ -112,23 +115,29 @@ describe('sendResetPasswordEmail tests', () => {
     expect(result.status).toBe('fail')
   })
 
-  test('User has requested reset email after 5 minutes', async () => {
+  test('User has requested reset email too soon', async () => {
     // Arrange
-    resultUser.LastResetDate = helpers.addMinutes(new Date(), -5)
+    resultUser.LastResetDate = helpers.addMinutes(
+      new Date(),
+      -(resetTimeout - 1)
+    )
 
     // Act
     const result = await subject({ token, tokenId, username, password })
 
     // Assert
-    expect(result.status).toBe('fail')
+    expect(result.status).toBe('pending')
     expect(result.description).toBe(
       'You have requested a reset already.  Check your email.'
     )
   })
 
-  test('User has requested reset email after 35 minutes', async () => {
+  test('User has requested reset email', async () => {
     // Arrange
-    resultUser.LastResetDate = helpers.addMinutes(new Date(), -35)
+    resultUser.LastResetDate = helpers.addMinutes(
+      new Date(),
+      -(resetTimeout + 1)
+    )
 
     // Act
     const result = await subject({ token, tokenId, username, password })

@@ -17,7 +17,8 @@ const isEmailRequestCool = async (user) => {
   if (!user) return false // user doesnt exist
 
   const lastResetDate = user.LastResetDate
-  const dateThreshold = addMinutes(new Date(), -30)
+  const emailResetTimeout = context.values.get('EmailResetTimeout')
+  const dateThreshold = addMinutes(new Date(), -emailResetTimeout)
 
   if (!lastResetDate || dateThreshold > lastResetDate) {
     const userCollection = context.services
@@ -103,18 +104,28 @@ exports = async ({ token, tokenId, username, password }) => {
     // check if the user has requested a password reset too often recently
     const isRequestCool = await isEmailRequestCool(user)
 
-    if (user && isRequestCool) {
+    // if the user is valid and hasnt requested a reset in the timeout period
+    // then send an email.
+    //
+    // if the request has been made before the timeout period, then
+    // return pending, but do not send a new email.
+    if (user) {
+      if (!isRequestCool) {
+        return {
+          status: 'pending',
+          description: 'You have requested a reset already.  Check your email.',
+        }
+      }
       // send a message to the user in some way so that the user can confirm themselves
       const msgSendSuccessful = await sendEmail(user, token, tokenId)
 
       if (msgSendSuccessful) {
         return { status: 'pending' }
       }
-    } else {
-      description = !isRequestCool
-        ? 'You have requested a reset already.  Check your email.'
-        : 'Invalid request.'
     }
+
+    // user is not found, but dont tell the user that.
+    description = 'Invalid request.'
   } catch (error) {
     description = `There was an error: ${error}`
     console.error(error)
