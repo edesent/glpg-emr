@@ -5,7 +5,7 @@ import { Header } from '../components/Header'
 import { SubNav } from '../components/Nav/SubNav'
 import { UpdateUserForm } from '../components/Forms/UpdateUser'
 import { ManageAccountsForm } from '../components/Forms/ManageAccounts'
-import ResetPasswordLink from '../components/ResetPasswordLink/ResetPasswordLink.component'
+import { ResetPasswordLink } from '../components/ResetPasswordLink'
 
 const AccountPage = ({ match }) => {
   const path = '/account'
