@@ -21,7 +21,7 @@ const readAGroup = gql`
 `
 
 function useReadGroups(name = null) {
-  // ! We need to remove debugging tools from production
+  // TODO: Remove debugging tools from production
   console.log(name)
   const { data, loading, error } = useQuery(name ? readAGroup : allGroups, {
     variables: { name },
