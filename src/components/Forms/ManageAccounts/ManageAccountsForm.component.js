@@ -15,7 +15,7 @@ const getAllUserQueries = gql`
   }
 `
 
-const ManageProfilesForm = () => {
+const ManageAccountsForm = () => {
   const { data, loading, error } = useQuery(getAllUserQueries)
   if (loading || error) return 'Loading...'
 
@@ -59,4 +59,4 @@ const ManageProfilesForm = () => {
   )
 }
 
-export default ManageProfilesForm
+export default ManageAccountsForm
