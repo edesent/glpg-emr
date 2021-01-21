@@ -1,0 +1,13 @@
+import { UserMenu } from '../UserMenu'
+import { StyledHeader } from './Header.styles'
+
+// eslint-disable-next-line react/prop-types
+const Header = ({ title, children }) => (
+  <StyledHeader>
+    <UserMenu />
+    <h1>{title}</h1>
+    {children}
+  </StyledHeader>
+)
+
+export default Header
