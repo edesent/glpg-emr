@@ -1,9 +1,9 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import useReadUser from '../../graphql/useReadUser'
-import { useSettingsApp } from '../../context/AppContext'
-import useUsers from '../../graphql/useUsers'
+import useReadUser from '../../../graphql/useReadUser'
+import { useSettingsApp } from '../../../context/AppContext'
+import useUsers from '../../../graphql/useUsers'
 
 const updateUserForm = ({ match }) => {
   const settingsApp = useSettingsApp()
