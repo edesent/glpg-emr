@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import IdleTimer from './IdleTimer'
 import { useSettingsApp } from '../context/AppContext'
 import { MainNav } from './Nav/MainNav'
-import { UserMenu } from './UserMenu'
 import { Footer } from './Footer'
 
 const Main = styled.div`
@@ -11,26 +10,17 @@ const Main = styled.div`
   grid-template-columns: 90px 1fr;
 `
 
-const Children = styled.div`
-  display: grid;
-  grid-template-columns: 300px 1fr;
-`
-
 const Layout = ({ children }) => {
-  const settings = useSettingsApp()
+  const { configurationAppsettings } = useSettingsApp()
 
   return (
     <Main>
-      {settings?.configurationAppsettings ? (
-        <IdleTimer settings={settings.configurationAppsettings} />
-      ) : (
-        'Loading...'
-      )}
-
       <MainNav />
       <main>
-        <UserMenu />
-        <Children>{children}</Children>
+        {configurationAppsettings && (
+          <IdleTimer settings={configurationAppsettings} />
+        )}
+        {children}
         <Footer />
       </main>
     </Main>
