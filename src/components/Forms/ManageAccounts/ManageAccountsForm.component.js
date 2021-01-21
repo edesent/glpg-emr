@@ -1,5 +1,5 @@
 import { useQuery, gql } from '@apollo/client'
-import React from 'react'
+import { Link } from 'react-router-dom'
 import { Links } from '../../Login/Login.styles'
 
 const getAllUserQueries = gql`
@@ -26,7 +26,9 @@ const ManageAccountsForm = () => {
       <td>{user.Email}</td>
       <td>
         <Links>
-          <a href={`/settings/updateuser/${user.Email}`}>Manage Profile</a>
+          <Link title="Activity" to={`/account/updateuser/${user.Email}`}>
+            Manage Account
+          </Link>
         </Links>
       </td>
     </tr>
@@ -34,7 +36,7 @@ const ManageAccountsForm = () => {
 
   const createUser = (
     <Links>
-      <a href={`/settings/createuser`}>Create new User</a>
+      <a href={`/account/createuser`}>Create new User</a>
     </Links>
   )
 

@@ -7,16 +7,20 @@ import { CreateUserForm } from '../components/Forms/CreateUser'
 import { ManageAccountsForm } from '../components/Forms/ManageAccounts'
 import ResetPasswordLink from '../components/ResetPasswordLink/ResetPasswordLink.component'
 
-const SettingsPage = ({ match }) => {
-  const path = '/settings'
+const AccountPage = ({ match }) => {
+  const path = '/account'
   return (
     <Layout>
-      <SubNav title="Settings">
-        <NavLink title="My Account" to={path}>
+      <SubNav title="Account Settings">
+        <NavLink title="Account" to={path}>
           Account
         </NavLink>
-        <a href="/settings">Schedule</a>
-        <a href="/settings">Activity</a>
+        <NavLink title="Schedule" to="/account">
+          Schedule
+        </NavLink>
+        <NavLink title="Activity" to="/account">
+          Activity
+        </NavLink>
         <ResetPasswordLink />
         <NavLink title="My Account" to={`${path}/createuser`}>
           Create User
@@ -40,7 +44,8 @@ const SettingsPage = ({ match }) => {
   )
 }
 
-export default SettingsPage
-SettingsPage.propTypes = {
+AccountPage.propTypes = {
   match: PropTypes.object,
 }
+
+export default AccountPage
