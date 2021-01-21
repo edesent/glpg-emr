@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { useAlert } from 'react-alert'
 import { useRealmApp } from '../../context/RealmContext'
@@ -65,7 +66,9 @@ const SetPassword = ({ location }) => {
             Please head back to the home page and log in with your new password.
           </p>
           <Links>
-            <a href="/">Back</a>
+            <Link title="Back" to="/">
+              Back
+            </Link>
           </Links>
         </>
       )}

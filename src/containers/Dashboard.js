@@ -9,8 +9,12 @@ const DashboardPage = () => {
         <NavLink title="Dashboard" to="/dashboard">
           Today
         </NavLink>
-        <a href="/dashboard">Patient Notes</a>
-        <a href="/dashboard">Custom Tasks</a>
+        <NavLink title="Patient Notes" to="/dashboard">
+          Patient Notes
+        </NavLink>
+        <NavLink title="Custom Tasks" to="/dashboard">
+          Custom Tasks
+        </NavLink>
       </SubNav>
     </Layout>
   )

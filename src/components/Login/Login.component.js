@@ -1,6 +1,6 @@
 import * as Realm from 'realm-web'
 import { useForm } from 'react-hook-form'
-import { useHistory } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { useAlert } from 'react-alert'
 import { useRealmApp } from '../../context/RealmContext'
 import { Error, Links } from './Login.styles'
@@ -53,7 +53,9 @@ const Login = () => {
         type="password"
       />
       <Links>
-        <a href="/?forgotpassword">Forgot password?</a>
+        <Link title="Forgot password" to="/?forgotpassword">
+          Forgot password?
+        </Link>
         <button>Login</button>
       </Links>
     </form>

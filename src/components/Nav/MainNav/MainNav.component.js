@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import {
   ViewGridOutline,
   UsersOutline,
@@ -14,9 +14,9 @@ const MainNav = () => {
   return (
     <StyledHeader>
       <Logo>
-        <a href="/">
+        <Link to="/">
           <img alt="Great Lakes Psychology Group" src={logo} />
-        </a>
+        </Link>
       </Logo>
       <Links>
         <NavLink title="Dashboard" to="/dashboard">

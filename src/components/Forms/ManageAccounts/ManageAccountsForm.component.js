@@ -36,7 +36,9 @@ const ManageAccountsForm = () => {
 
   const createUser = (
     <Links>
-      <a href={`/account/createuser`}>Create new User</a>
+      <Link title="Create User" to={`/admin/users/new`}>
+        Create User
+      </Link>
     </Links>
   )
 
