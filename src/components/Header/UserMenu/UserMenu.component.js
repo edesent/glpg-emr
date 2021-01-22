@@ -6,8 +6,8 @@ import {
   CogOutline,
   LogoutOutline,
 } from 'heroicons-react'
-import useReadUser from '../../graphql/useReadUser'
-import { useRealmApp } from '../../context/RealmContext'
+import useReadUser from '../../../graphql/useReadUser'
+import { useRealmApp } from '../../../context/RealmContext'
 import {
   StyledUserMenu,
   Menu,
@@ -15,7 +15,7 @@ import {
   Dropdown,
   StyledLogout,
 } from './UserMenu.styles'
-import Loading from '../Loading'
+import Loading from '../../Loading'
 
 const UserMenu = () => {
   const [userMenuOpen, setUserMenuOpen] = useState(false)
@@ -40,16 +40,17 @@ const UserMenu = () => {
           {/* 👇 TODO: This SVG will be a fallback for users that do not have specified avatars */}
           <UserOutline size="32" />
         </Avatar>
-
+        <div className="chevron">
+          <ChevronDown size="12" />
+        </div>
+      </Menu>
+      <Dropdown className={userMenuOpen ? `is-open` : ``}>
         <div className="role-name">
           <span>{user?.readUser?.authorizationUser?.Role}</span>
           {user.readUser.authorizationUser.FirstName}{' '}
           {user.readUser.authorizationUser.LastName}
         </div>
 
-        <ChevronDown size="12" />
-      </Menu>
-      <Dropdown className={userMenuOpen ? `is-open` : ``}>
         <Link title="My Account" to="/account">
           <CogOutline size="18" />
           <span>Settings</span>

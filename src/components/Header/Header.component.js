@@ -1,5 +1,5 @@
 import { SearchBar } from '../SearchBar'
-import { UserMenu } from '../UserMenu'
+import { UserMenu } from './UserMenu'
 import { StyledHeader, GridTop } from './Header.styles'
 
 // eslint-disable-next-line react/prop-types
