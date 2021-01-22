@@ -1,39 +1,37 @@
 import styled from 'styled-components'
-import Logout from '../Logout'
+import Logout from '../../Logout'
 
 export const StyledUserMenu = styled.div`
   position: relative;
-  float: right;
-  margin-right: 40px;
+  justify-self: end;
 `
 
 export const Menu = styled.menu`
-  display: grid;
-  grid-template-columns: 40px 1fr 10px;
-  align-items: center;
-  column-gap: 20px;
+  margin: 0;
   cursor: pointer;
+  position: relative;
+  display: inline-block;
 
-  .role-name {
-    font-weight: 600;
-
-    span {
-      display: block;
-      color: #a0aec0;
-      font-size: 0.75rem;
-    }
-
-    div {
-    }
+  .chevron {
+    position: absolute;
+    bottom: -3px;
+    right: -3px;
+    background: var(--color__gray--light);
+    height: 16px;
+    width: 16px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 `
 
 export const Avatar = styled.div`
-  width: 40px;
-  height: 40px;
-  padding: 5px;
+  width: 50px;
+  height: 50px;
+  padding: 8px;
   background-color: #0f5ef7;
-  border-radius: 20px;
+  border-radius: 25px;
 
   svg {
     width: 100%;
@@ -47,6 +45,7 @@ export const Dropdown = styled.div`
   background-color: #fff;
   border-radius: 10px;
   padding: 30px;
+  width: 220px;
   visibility: hidden;
   opacity: 0;
   transition: all 0.15s linear;
@@ -54,9 +53,20 @@ export const Dropdown = styled.div`
     0 10px 10px -5px rgba(0, 0, 0, 0.04);
 
   &.is-open {
-    top: 100%;
+    top: calc(100% + 10px);
     visibility: visible;
     opacity: 1;
+  }
+
+  .role-name {
+    font-weight: 600;
+    margin-bottom: 20px;
+
+    span {
+      display: block;
+      color: #a0aec0;
+      font-size: 0.75rem;
+    }
   }
 
   a {
@@ -64,7 +74,7 @@ export const Dropdown = styled.div`
     align-items: center;
     font-size: 14px;
     font-weight: 500;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 
     svg {
       width: 18px;
@@ -78,6 +88,7 @@ export const Dropdown = styled.div`
 `
 
 export const StyledLogout = styled(Logout)`
+  cursor: pointer;
   display: flex;
   align-items: center;
   font-size: 14px;
