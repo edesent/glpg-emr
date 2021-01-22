@@ -1,6 +1,14 @@
 {
   "collection": "authorization.groups",
   "database": "ehr",
+  "relationships": {
+    "Permissions": {
+      "ref": "#/relationship/mongodb-atlas/ehr/authorization.permissions",
+      "source_key": "Permissions",
+      "foreign_key": "_id",
+      "is_list": true
+    }
+  },
   "roles": [
     {
       "name": "default",

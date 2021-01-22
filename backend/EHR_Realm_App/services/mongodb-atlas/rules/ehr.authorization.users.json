@@ -1,6 +1,14 @@
 {
   "collection": "authorization.users",
   "database": "ehr",
+  "relationships": {
+    "Authorization.Groups": {
+      "ref": "#/relationship/mongodb-atlas/ehr/authorization.groups",
+      "source_key": "Authorization.Groups",
+      "foreign_key": "_id",
+      "is_list": true
+    }
+  },
   "filters": [
     {
       "name": "CanAdminViewUsers",

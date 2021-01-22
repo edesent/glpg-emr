@@ -1,10 +1,24 @@
 import { useQuery, gql } from '@apollo/client'
 import { Link } from 'react-router-dom'
+import { useRealmApp } from '../../../context/RealmContext'
 import { Links } from '../../Login/Login.styles'
+import { ResetPasswordLink } from '../../ResetPasswordLink'
+import UserDetails from '../UserDetails/UserDetails.component'
 
 const getAllUserQueries = gql`
   query {
     authorizationUsers {
+      Authorization {
+        Groups {
+          Name
+          Desc
+          Permissions {
+            _id
+            name
+            description
+          }
+        }
+      }
       FirstName
       LastName
       Email
@@ -16,23 +30,32 @@ const getAllUserQueries = gql`
 `
 
 const ManageAccountsForm = () => {
+  const app = useRealmApp()
   const { data, loading, error } = useQuery(getAllUserQueries)
+  const email = app.currentUser.profile.email.toLowerCase()
+
   if (loading || error) return 'Loading...'
 
-  const listUsers = data.authorizationUsers.map((user) => (
-    <tr key={user}>
-      <td>{user.FirstName}</td>
-      <td>{user.LastName}</td>
-      <td>{user.Email}</td>
-      <td>
-        <Links>
-          <Link title="Activity" to={`/account/updateuser/${user.Email}`}>
-            Manage Account
-          </Link>
-        </Links>
-      </td>
-    </tr>
-  ))
+  const [thisUser] = data.authorizationUsers.filter(
+    ({ Email }) => Email === email
+  )
+
+  const listUsers = data.authorizationUsers.map(
+    ({ _id: id, FirstName, LastName, Email }) => (
+      <tr key={id}>
+        <td>{FirstName}</td>
+        <td>{LastName}</td>
+        <td>{Email}</td>
+        <td>
+          <Links>
+            <Link title="Activity" to={`/account/updateuser/${Email}`}>
+              Manage Account
+            </Link>
+          </Links>
+        </td>
+      </tr>
+    )
+  )
 
   const createUser = (
     <Links>
@@ -49,7 +72,13 @@ const ManageAccountsForm = () => {
 
   return (
     <>
-      {isAdminUser ? createUser : null}
+      <div>
+        {isAdminUser ? createUser : null}
+        <ResetPasswordLink />
+      </div>
+      <div>
+        <UserDetails User={thisUser} />
+      </div>
       <table>
         <tr>
           <th style={{ width: '25%', textAlign: 'left' }}>First Name</th>
