@@ -6,6 +6,7 @@ export const StyledHeader = styled.header`
 
   h1 {
     margin: 20px 0 0;
+    padding-bottom: 20px;
   }
 `
 

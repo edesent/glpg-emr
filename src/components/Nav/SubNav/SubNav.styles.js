@@ -1,8 +1,6 @@
 import styled from 'styled-components'
 
 export const StyledNav = styled.nav`
-  margin-top: 20px;
-
   a {
     color: var(--color__gray);
     display: inline-block;
