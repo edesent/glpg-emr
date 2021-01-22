@@ -1,6 +1,6 @@
 import { useQuery, gql } from '@apollo/client'
 
-function readPermissionsByGroup(group) {
+function useReadPermissionsByGroup(group) {
   const { data, loading, error } = useQuery(
     gql`
       query authorizationPermissions($permissionIds: [ObjectId]) {
@@ -25,7 +25,7 @@ function readPermissionsByGroup(group) {
 
 const useReadPermissions = () => {
   return {
-    readPermissionsByGroup,
+    readPermissionsByGroup: useReadPermissionsByGroup,
   }
 }
 export default useReadPermissions

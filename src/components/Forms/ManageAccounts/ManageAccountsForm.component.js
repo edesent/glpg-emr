@@ -1,10 +1,23 @@
 import { useQuery, gql } from '@apollo/client'
 import { Link } from 'react-router-dom'
+import ViewGroup from '../ViewGroup/ViewGroup.component'
+import { useRealmApp } from '../../../context/RealmContext'
 import { Links } from '../../Login/Login.styles'
 
 const getAllUserQueries = gql`
   query {
     authorizationUsers {
+      Authorization {
+        Groups {
+          Name
+          Desc
+          Permissions {
+            _id
+            name
+            description
+          }
+        }
+      }
       FirstName
       LastName
       Email
@@ -16,8 +29,14 @@ const getAllUserQueries = gql`
 `
 
 const ManageAccountsForm = () => {
+  const app = useRealmApp()
   const { data, loading, error } = useQuery(getAllUserQueries)
+  const email = app.currentUser.profile.email.toLowerCase()
+
   if (loading || error) return 'Loading...'
+
+  const thisUser = data.authorizationUsers.filter((u) => u.Email === email)
+  const thisGroup = thisUser[0]?.Authorization?.Groups[0]
 
   const listUsers = data.authorizationUsers.map((user) => (
     <tr key={user}>
@@ -49,6 +68,9 @@ const ManageAccountsForm = () => {
 
   return (
     <>
+      <div>
+        <ViewGroup Group={thisGroup} />
+      </div>
       {isAdminUser ? createUser : null}
       <table>
         <tr>
