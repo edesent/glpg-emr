@@ -3,10 +3,14 @@ import useReadUser from '../../graphql/useReadUser'
 import { useRealmApp } from '../../context/RealmContext'
 
 const SyncUpdateProfile = ({ userId, email }) => {
-  console.log(userId, email)
   const app = useRealmApp()
   const { updateUser } = useUsers()
   const { readUser } = useReadUser(email)
+
+  const getCustomData = async () => {
+    return app.currentUser.refreshCustomData()
+  }
+
   if (readUser.authorizationUser) {
     const { _id: pId } = readUser.authorizationUser
     const userData = {
@@ -16,7 +20,7 @@ const SyncUpdateProfile = ({ userId, email }) => {
       },
     }
     updateUser(userData)
-    app.currentUser.refreshCustomData()
+    getCustomData()
 
     // Todo: Send to model
     return 'Profile Updated...'

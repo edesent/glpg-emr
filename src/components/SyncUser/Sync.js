@@ -13,8 +13,6 @@ const SyncUserProfile = () => {
       />
     )
   }
-  console.log('skipped usersync')
-
   return null
 }
 
