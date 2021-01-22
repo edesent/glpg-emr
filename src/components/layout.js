@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import SyncUserProfile from './Sync'
 import IdleTimer from './IdleTimer'
 import { useSettingsApp } from '../context/AppContext'
 import { MainNav } from './Nav/MainNav'
@@ -15,6 +16,7 @@ const Layout = ({ children }) => {
 
   return (
     <Main>
+      <SyncUserProfile />
       <MainNav />
       <main>
         {configurationAppsettings && (
