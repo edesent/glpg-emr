@@ -36,23 +36,27 @@ const ManageAccountsForm = () => {
 
   if (loading || error) return 'Loading...'
 
-  const thisUser = data.authorizationUsers.filter((u) => u.Email === email)
-  const thisGroup = thisUser[0]?.Authorization?.Groups[0]
+  const [thisUser] = data.authorizationUsers.filter(
+    ({ Email }) => Email === email
+  )
+  const [thisGroup] = thisUser?.Authorization?.Groups
 
-  const listUsers = data.authorizationUsers.map((user) => (
-    <tr key={user}>
-      <td>{user.FirstName}</td>
-      <td>{user.LastName}</td>
-      <td>{user.Email}</td>
-      <td>
-        <Links>
-          <Link title="Activity" to={`/account/updateuser/${user.Email}`}>
-            Manage Account
-          </Link>
-        </Links>
-      </td>
-    </tr>
-  ))
+  const listUsers = data.authorizationUsers.map(
+    ({ _id: id, FirstName, LastName, Email }) => (
+      <tr key={id}>
+        <td>{FirstName}</td>
+        <td>{LastName}</td>
+        <td>{Email}</td>
+        <td>
+          <Links>
+            <Link title="Activity" to={`/account/updateuser/${Email}`}>
+              Manage Account
+            </Link>
+          </Links>
+        </td>
+      </tr>
+    )
+  )
 
   const createUser = (
     <Links>

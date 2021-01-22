@@ -1,32 +1,32 @@
-/* eslint-disable no-underscore-dangle */
 /* eslint-disable react/prop-types */
 import React from 'react'
 
 const ViewGroup = ({ Group }) => {
   if (!Group) return null
+  const { _id: groupId, Name, Desc: Description, Permissions } = Group
 
   return (
     <div style={{ padding: '25px' }}>
-      <div key={Group._id}>
-        <label htmlFor={Group.Name}>Name</label>
-        <div>{Group.Name}</div>
+      <div key={groupId}>
+        <label htmlFor={Name}>Name</label>
+        <div>{Name}</div>
       </div>
       <div>
-        <label htmlFor={Group.Description}>Description</label>
-        <div>{Group.Desc}</div>
+        <label htmlFor={Description}>Description</label>
+        <div>{Description}</div>
       </div>
       <div>
-        <label htmlFor={Group.Permissions}>Permissions</label>
+        <label htmlFor={Permissions}>Permissions</label>
         <div>
-          {Group.Permissions.map((permission) => (
-            <div key={permission._id}>
+          {Permissions.map(({ _id: permissionId, name, description }) => (
+            <div key={permissionId}>
               <div>
-                <label htmlFor={permission.name}>Name</label>
-                <div>{permission.name}</div>
+                <label htmlFor={name}>Name</label>
+                <div>{name}</div>
               </div>
               <div>
-                <label htmlFor={permission.description}>Description</label>
-                <div>{permission.description}</div>
+                <label htmlFor={description}>Description</label>
+                <div>{description}</div>
               </div>
             </div>
           ))}
