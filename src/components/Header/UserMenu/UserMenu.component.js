@@ -18,8 +18,8 @@ import {
 const UserMenu = () => {
   const [userMenuOpen, setUserMenuOpen] = useState(false)
   const app = useRealmApp()
-  const userProfile = app.currentUser.customData
-  console.log(app.currentUser.customData)
+  const { FirstName, LastName, Role } = app?.currentUser?.customData
+  // console.log(app.currentUser.customData)
 
   return (
     <StyledUserMenu>
@@ -38,10 +38,10 @@ const UserMenu = () => {
       </Menu>
       <Dropdown className={userMenuOpen ? `is-open` : ``}>
         <div className="role-name">
-          <span>{userProfile?.Role}</span>
-          {userProfile?.FirstName}
+          <span>{Role}</span>
+          {FirstName}
           {` `}
-          {userProfile?.LastName}
+          {LastName}
         </div>
 
         <Link title="My Account" to="/account">
