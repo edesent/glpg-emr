@@ -4,14 +4,11 @@ import SyncUpdate from './SyncUpdate'
 const SyncUserProfile = () => {
   const app = useRealmApp()
   const { Email } = app?.currentUser?.customData
+  const { email } = app?.currentUser.profile
+  const userId = app?.currentUser?.id
 
-  if (!Email && app?.currentUser?.id && app?.currentUser.profile) {
-    return (
-      <SyncUpdate
-        email={app?.currentUser.profile.email}
-        userId={app?.currentUser?.id}
-      />
-    )
+  if (!Email && userId && email) {
+    return <SyncUpdate email={email} userId={userId} />
   }
   return null
 }
