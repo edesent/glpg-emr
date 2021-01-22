@@ -21,6 +21,7 @@ const UserMenu = () => {
   const [userMenuOpen, setUserMenuOpen] = useState(false)
   const app = useRealmApp()
   const user = useReadUser(app.currentUser.profile.email)
+  const { FirstName, LastName, Role } = user?.readUser?.authorizationUser
 
   if (user?.loading)
     return (
@@ -46,9 +47,10 @@ const UserMenu = () => {
       </Menu>
       <Dropdown className={userMenuOpen ? `is-open` : ``}>
         <div className="role-name">
-          <span>{user?.readUser?.authorizationUser?.Role}</span>
-          {user.readUser.authorizationUser.FirstName}{' '}
-          {user.readUser.authorizationUser.LastName}
+          <span>{Role}</span>
+          {FirstName}
+          {` `}
+          {LastName}
         </div>
 
         <Link title="My Account" to="/account">
