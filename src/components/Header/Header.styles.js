@@ -5,7 +5,7 @@ export const StyledHeader = styled.header`
   background-color: var(--color__gray--light);
 
   h1 {
-    margin: 0;
+    margin: 20px 0 0;
   }
 `
 

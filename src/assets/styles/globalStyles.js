@@ -7,7 +7,14 @@ const GlobalStyle = createGlobalStyle`
   ${Normalize}
 
   :root {
+    --color__blue: #456CAC;
+    --color__blue--dark: #203357;
+    --color__blue--light: #7D9FE4;
+    --color__blue--extralight: #E3F0FF;
+    --color__gray: #829AB1;
     --color__gray--light: #F0F4F8;
+    --color__brown: #60495A;
+    --color__yellow: #F4CF0D;
   }
 
   *,
