@@ -20,6 +20,9 @@ build
 .env.test.local
 .env.production.local
 
+# vscode
+.vscode
+
 # misc
 *.excalidraw
 .DS_Store
