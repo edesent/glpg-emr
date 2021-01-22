@@ -7,12 +7,12 @@ import {
   ChatOutline,
   LogoutOutline,
 } from 'heroicons-react'
-import logo from '../../../assets/images/logo.svg'
-import { StyledHeader, Logo, Links, StyledLogout } from './MainNav.styles'
+import logo from '../../../assets/images/logo-white.svg'
+import { StyledNav, Logo, Links, StyledLogout } from './MainNav.styles'
 
 const MainNav = () => {
   return (
-    <StyledHeader>
+    <StyledNav>
       <Logo>
         <Link to="/">
           <img alt="Great Lakes Psychology Group" src={logo} />
@@ -20,22 +20,22 @@ const MainNav = () => {
       </Logo>
       <Links>
         <NavLink title="Dashboard" to="/dashboard">
-          <ViewGridOutline size="32" />
+          <ViewGridOutline size="24" />
         </NavLink>
         <NavLink title="Patients" to="/patients">
-          <UsersOutline size="32" />
+          <UsersOutline size="24" />
         </NavLink>
         <NavLink title="Schedule" to="/schedule">
-          <CalendarOutline size="32" />
+          <CalendarOutline size="24" />
         </NavLink>
         <NavLink title="Messages" to="/messages">
-          <ChatOutline size="32" />
+          <ChatOutline size="24" />
         </NavLink>
       </Links>
       <StyledLogout>
-        <LogoutOutline size="32" />
+        <LogoutOutline size="24" />
       </StyledLogout>
-    </StyledHeader>
+    </StyledNav>
   )
 }
 

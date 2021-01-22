@@ -1,13 +1,12 @@
 import styled from 'styled-components'
 import Logout from '../../Logout'
 
-export const StyledHeader = styled.aside`
+export const StyledNav = styled.aside`
   height: 100vh;
-  border-right: 1px solid #e1e6f1;
+  background-color: var(--color__blue--dark);
 `
 
 export const Logo = styled.div`
-  border-bottom: 1px solid #f2f3f6;
   width: 90px;
   height: 90px;
   display: flex;
@@ -22,23 +21,52 @@ export const Logo = styled.div`
 
 export const Links = styled.div`
   margin-top: 50px;
-
-  svg {
-    max-width: 32px;
-    max-height: 32px;
-    margin: 0 auto;
-  }
+  display: grid;
+  row-gap: 25px;
 
   a {
-    width: 90px;
-    height: 90px;
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.1);
+
+    &:not(.active):hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
 
     &.active {
-      background: #f4f7ff;
+      background-color: var(--color__blue--extraLight);
+
+      &:nth-of-type(1) {
+        background-color: #fff9e0;
+      }
+
+      &:nth-of-type(2) {
+        background-color: #d7e9ff;
+      }
+
+      &:nth-of-type(3) {
+        background-color: #ffd7e0;
+      }
+
+      &:nth-of-type(4) {
+        background-color: #d7ffec;
+      }
+
+      svg path {
+        stroke: var(--color__blue--dark);
+      }
+    }
+
+    svg {
+      path {
+        stroke: var(--color__gray);
+      }
     }
   }
 `
@@ -46,14 +74,20 @@ export const Links = styled.div`
 export const StyledLogout = styled(Logout)`
   position: fixed;
   bottom: 0;
-  border-top: 1px solid #f2f3f6;
   display: block;
   height: 90px;
   width: 90px;
   outline: 0;
   background: none;
+  cursor: pointer;
 
-  svg {
-    max-width: 24px;
+  &:hover {
+    svg path {
+      stroke: #fff;
+    }
+  }
+
+  svg path {
+    stroke: var(--color__gray);
   }
 `
