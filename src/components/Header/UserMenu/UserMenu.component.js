@@ -6,7 +6,6 @@ import {
   CogOutline,
   LogoutOutline,
 } from 'heroicons-react'
-import useReadUser from '../../../graphql/useReadUser'
 import { useRealmApp } from '../../../context/RealmContext'
 import {
   StyledUserMenu,
@@ -15,20 +14,12 @@ import {
   Dropdown,
   StyledLogout,
 } from './UserMenu.styles'
-import Loading from '../../Loading'
 
 const UserMenu = () => {
   const [userMenuOpen, setUserMenuOpen] = useState(false)
   const app = useRealmApp()
-  const user = useReadUser(app.currentUser.profile.email)
+  const userProfile = app.currentUser.customData
 
-  if (user?.loading)
-    return (
-      <StyledUserMenu>
-        <Loading />
-      </StyledUserMenu>
-    )
-  if (!user?.readUser?.authorizationUser) return 'No Data..'
   return (
     <StyledUserMenu>
       <Menu
@@ -46,10 +37,10 @@ const UserMenu = () => {
       </Menu>
       <Dropdown className={userMenuOpen ? `is-open` : ``}>
         <div className="role-name">
-          <span>{user?.readUser?.authorizationUser.Role}</span>
-          {user?.readUser?.authorizationUser.FirstName}
+          <span>{userProfile?.Role}</span>
+          {userProfile?.FirstName}
           {` `}
-          {user?.readUser?.authorizationUser.LastName}
+          {userProfile?.LastName}
         </div>
 
         <Link title="My Account" to="/account">
