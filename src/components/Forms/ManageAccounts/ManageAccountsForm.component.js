@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import ViewGroup from '../ViewGroup/ViewGroup.component'
 import { useRealmApp } from '../../../context/RealmContext'
 import { Links } from '../../Login/Login.styles'
+import { ResetPasswordLink } from '../../ResetPasswordLink'
 
 const getAllUserQueries = gql`
   query {
@@ -69,9 +70,12 @@ const ManageAccountsForm = () => {
   return (
     <>
       <div>
+        {isAdminUser ? createUser : null}
+        <ResetPasswordLink />
+      </div>
+      <div>
         <ViewGroup Group={thisGroup} />
       </div>
-      {isAdminUser ? createUser : null}
       <table>
         <tr>
           <th style={{ width: '25%', textAlign: 'left' }}>First Name</th>
