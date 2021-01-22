@@ -1,9 +1,9 @@
 import { useQuery, gql } from '@apollo/client'
 import { Link } from 'react-router-dom'
-import ViewGroup from '../ViewGroup/ViewGroup.component'
 import { useRealmApp } from '../../../context/RealmContext'
 import { Links } from '../../Login/Login.styles'
 import { ResetPasswordLink } from '../../ResetPasswordLink'
+import UserDetails from '../UserDetails/UserDetails.component'
 
 const getAllUserQueries = gql`
   query {
@@ -39,7 +39,6 @@ const ManageAccountsForm = () => {
   const [thisUser] = data.authorizationUsers.filter(
     ({ Email }) => Email === email
   )
-  const [thisGroup] = thisUser?.Authorization?.Groups
 
   const listUsers = data.authorizationUsers.map(
     ({ _id: id, FirstName, LastName, Email }) => (
@@ -78,7 +77,7 @@ const ManageAccountsForm = () => {
         <ResetPasswordLink />
       </div>
       <div>
-        <ViewGroup Group={thisGroup} />
+        <UserDetails User={thisUser} />
       </div>
       <table>
         <tr>
