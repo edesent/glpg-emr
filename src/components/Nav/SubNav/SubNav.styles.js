@@ -1,10 +1,8 @@
 import styled from 'styled-components'
 
 export const StyledNav = styled.nav`
-  margin-top: 30px;
-
   a {
-    color: #829ab1;
+    color: var(--color__gray);
     display: inline-block;
     padding: 10px 0 15px;
 

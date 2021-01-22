@@ -30,7 +30,7 @@ const UserMenu = () => {
       >
         <Avatar>
           {/* 👇 TODO: This SVG will be a fallback for users that do not have specified avatars */}
-          <UserOutline size="32" />
+          <UserOutline size="24" />
         </Avatar>
         <div className="chevron">
           <ChevronDown size="12" />
