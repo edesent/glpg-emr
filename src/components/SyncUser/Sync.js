@@ -8,8 +8,8 @@ const SyncUserProfile = () => {
   if (!Email && app?.currentUser?.id && app?.currentUser.profile) {
     return (
       <SyncUpdate
-        userId={app?.currentUser?.id}
         email={app?.currentUser.profile.email}
+        userId={app?.currentUser?.id}
       />
     )
   }
