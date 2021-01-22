@@ -11,14 +11,11 @@ const GroupDropdown = ({ groups, register }) => {
       <label htmlFor="Role">User Role:</label>
       <div className="Role">
         <select id="Role" name="Role" ref={register({ required: true })}>
-          {groups?.readGroup?.authorizationGroups?.map(function (role, key) {
-            return (
-              // eslint-disable-next-line no-underscore-dangle
-              <option key={key} value={`${role.Name}|${role._id}`}>
-                {capitalize(role.Name)}
-              </option>
-            )
-          })}
+          {groups?.readGroup?.authorizationGroups?.map(({ Name, _id }, key) => (
+            <option key={key} value={`${Name}|${_id}`}>
+              {capitalize(Name)}
+            </option>
+          ))}
         </select>
       </div>
     </div>

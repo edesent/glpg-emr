@@ -16,6 +16,7 @@ function useAppSettings(email) {
   })
   if (error) {
     // TODO: Remove debugging tools from production
+    // eslint-disable-next-line no-console
     console.log(`Failed to fetch user data: ${error.message}`)
   }
 
