@@ -13,7 +13,7 @@ export const StyledSearch = styled.div`
     width: 18px;
 
     path {
-      stroke: #829ab1;
+      stroke: var(--color__gray);
     }
   }
 
@@ -28,7 +28,7 @@ export const StyledSearch = styled.div`
       font-size: 14px;
       position: relative;
       top: -1px;
-      color: #829ab1;
+      color: var(--color__gray);
     }
   }
 `

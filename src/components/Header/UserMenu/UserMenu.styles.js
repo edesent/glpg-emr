@@ -23,6 +23,10 @@ export const Menu = styled.menu`
     display: flex;
     align-items: center;
     justify-content: center;
+
+    svg path {
+      stroke: var(--color__blue--dark);
+    }
   }
 `
 
@@ -30,11 +34,14 @@ export const Avatar = styled.div`
   width: 50px;
   height: 50px;
   padding: 8px;
-  background-color: #0f5ef7;
+  background-color: var(--color__blue--light);
   border-radius: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  svg {
-    width: 100%;
+  svg path {
+    stroke: var(--color__gray--light);
   }
 `
 
