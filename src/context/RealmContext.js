@@ -30,6 +30,7 @@ export const RealmAppProvider = ({ appId, children }) => {
     await app.logIn(credentials)
     // We need to sync app.currentUser to currentUser
     setCurrentUser(app.currentUser)
+    await app.currentUser.refreshCustomData()
     // We need to sync authenticated user Bool
     setUserAuthenticated(true)
   }
