@@ -14,3 +14,9 @@ export const GridTop = styled.div`
   grid-template-columns: 3fr 1fr;
   align-items: center;
 `
+
+export const GridRight = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 50px;
+  align-items: center;
+`
