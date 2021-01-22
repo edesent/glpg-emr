@@ -65,6 +65,18 @@ const ManageAccountsForm = () => {
     </Links>
   )
 
+  const adminTableManagement = (
+    <table>
+      <tr>
+        <th style={{ width: '25%', textAlign: 'left' }}>First Name</th>
+        <th style={{ width: '25%', textAlign: 'left' }}>Last Name</th>
+        <th style={{ width: '25%', textAlign: 'left' }}>Email</th>
+        <th style={{ width: '25%', textAlign: 'left' }}></th>
+      </tr>
+      {listUsers}
+    </table>
+  )
+
   const isAdminUser =
     data.authorizationUsers.length > 1 ||
     (data.authorizationUsers.length === 1 &&
@@ -79,15 +91,7 @@ const ManageAccountsForm = () => {
       <div>
         <UserDetails User={thisUser} />
       </div>
-      <table>
-        <tr>
-          <th style={{ width: '25%', textAlign: 'left' }}>First Name</th>
-          <th style={{ width: '25%', textAlign: 'left' }}>Last Name</th>
-          <th style={{ width: '25%', textAlign: 'left' }}>Email</th>
-          <th style={{ width: '25%', textAlign: 'left' }}></th>
-        </tr>
-        {listUsers}
-      </table>
+      {isAdminUser ? adminTableManagement : null}
     </>
   )
 }
