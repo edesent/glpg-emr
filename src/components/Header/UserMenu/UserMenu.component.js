@@ -19,7 +19,7 @@ const UserMenu = () => {
   const [userMenuOpen, setUserMenuOpen] = useState(false)
   const app = useRealmApp()
   const { FirstName, LastName, Role } = app?.currentUser?.customData
-  // console.log(app.currentUser.customData)
+  console.log(app.currentUser.customData)
 
   return (
     <StyledUserMenu>

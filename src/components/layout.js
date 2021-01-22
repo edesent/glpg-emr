@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import SyncUserProfile from './Sync'
+import SyncUserProfile from './SyncUser/Sync'
 import IdleTimer from './IdleTimer'
 import { useSettingsApp } from '../context/AppContext'
 import { MainNav } from './Nav/MainNav'

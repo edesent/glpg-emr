@@ -3,13 +3,18 @@ import SyncUpdate from './SyncUpdate'
 
 const SyncUserProfile = () => {
   const app = useRealmApp()
-  const { email: Email } = app?.currentUser?.customData
-  const { _id: userId } = app?.currentUser
+  const { Email } = app?.currentUser?.customData
 
-  if (!Email) {
-    return <SyncUpdate UserId={userId} />
+  if (!Email && app?.currentUser?.id && app?.currentUser.profile) {
+    return (
+      <SyncUpdate
+        userId={app?.currentUser?.id}
+        email={app?.currentUser.profile.email}
+      />
+    )
   }
-  console.log('Skipped Update')
+  console.log('skipped usersync')
+
   return null
 }
 
