@@ -88,6 +88,7 @@ export const Dropdown = styled.div`
 `
 
 export const StyledLogout = styled(Logout)`
+  cursor: pointer;
   display: flex;
   align-items: center;
   font-size: 14px;
