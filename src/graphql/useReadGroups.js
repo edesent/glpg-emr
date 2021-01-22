@@ -22,6 +22,7 @@ const readAGroup = gql`
 
 function useReadGroups(name = null) {
   // TODO: Remove debugging tools from production
+  // eslint-disable-next-line no-console
   console.log(name)
   const { data, loading, error } = useQuery(name ? readAGroup : allGroups, {
     variables: { name },
