@@ -5,12 +5,19 @@ export const StyledHeader = styled.header`
   background-color: var(--color__gray--light);
 
   h1 {
-    margin: 0;
+    margin: 20px 0 0;
+    padding-bottom: 20px;
   }
 `
 
 export const GridTop = styled.div`
   display: grid;
   grid-template-columns: 3fr 1fr;
+  align-items: center;
+`
+
+export const GridRight = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 50px;
   align-items: center;
 `
