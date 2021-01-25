@@ -22,15 +22,50 @@ function useReadUserByEmail(email) {
 
   // If the query has finished, return the tasks from the result data
   // Otherwise, return an empty list
-  const readUser = data ?? []
-  return { readUser, loading }
+  const authorizationUser = data ?? []
+  return { authorizationUser, loading }
 }
-const useReadUser = (data) => {
-  const { readUser, loading } = useReadUserByEmail(data)
+const getUserByIdQuery = gql`
+  query($userId: ObjectId!) {
+    authorizationUser(query: { _id: $userId }) {
+      Authorization {
+        Groups {
+          Name
+          Desc
+          Permissions {
+            _id
+            name
+            description
+          }
+        }
+      }
+      FirstName
+      LastName
+      Email
+      MobilePhone
+      Role
+      _id
+    }
+  }
+`
 
+const useReadUserById = (id) => {
+  const { data, loading, error } = useQuery(getUserByIdQuery, {
+    variables: { userId: id },
+  })
+  if (error) {
+    throw new Error(`Failed to fetch user data: ${error.message}`)
+  }
+
+  // If the query has finished, return the tasks from the result data
+  // Otherwise, return an empty list
+  const authorizationUser = data ?? []
+  return { authorizationUser, loading }
+}
+
+export default function useReadUserBy(data) {
   return {
-    readUser,
-    loading,
+    readUserByEmail: useReadUserByEmail(data),
+    readUserById: useReadUserById(data),
   }
 }
-export default useReadUser

@@ -1,97 +1,76 @@
-import { useQuery, gql } from '@apollo/client'
-import { Link } from 'react-router-dom'
 import { useRealmApp } from '../../context/RealmContext'
-import { Links } from '../Login/Login.styles'
-import { ResetPasswordLink } from '../ResetPasswordLink'
-import UserDetails from '../Forms/UserDetails/UserDetails.component'
 
-const getAllUserQueries = gql`
-  query {
-    authorizationUsers {
-      Authorization {
-        Groups {
-          Name
-          Desc
-          Permissions {
-            _id
-            name
-            description
-          }
-        }
-      }
-      FirstName
-      LastName
-      Email
-      MobilePhone
-      Role
-      _id
-    }
-  }
-`
+import { ResetPasswordLink } from '../ResetPasswordLink'
+import readUserById from '../../graphql/useReadUser'
+import UserDetails from '../Forms/UserDetails/UserDetails.component'
 
 const ViewAccount = () => {
   const app = useRealmApp()
-  const { data, loading, error } = useQuery(getAllUserQueries)
-  const email = app.currentUser.profile.email.toLowerCase()
+  // eslint-disable-next-line no-underscore-dangle
 
-  if (loading || error) return 'Loading...'
+  // eslint-disable-next-line no-underscore-dangle
+  const userId = app.currentUser.customData._id
 
-  const [thisUser] = data.authorizationUsers.filter(
-    ({ Email }) => Email === email
-  )
+  const { readUserById: user } = readUserById(userId)
 
-  const listUsers = data.authorizationUsers.map(
-    ({ _id: id, FirstName, LastName, Email }) => (
-      <tr key={id}>
-        <td>{FirstName}</td>
-        <td>{LastName}</td>
-        <td>{Email}</td>
-        <td>
-          <Links>
-            <Link title="Activity" to={`/account/updateuser/${Email}`}>
-              Manage Account
-            </Link>
-          </Links>
-        </td>
-      </tr>
-    )
-  )
+  if (user.loading) return 'Loading...'
 
-  const createUser = (
-    <Links>
-      <Link title="Create User" to={`/admin/users/new`}>
-        Create User
-      </Link>
-    </Links>
-  )
+  // const [thisUser] = authorizationUser.authorizationUsers.filter(
+  //   ({ Email }) => Email === email
+  // )
 
-  const adminTableManagement = (
-    <table>
-      <tr>
-        <th style={{ width: '25%', textAlign: 'left' }}>First Name</th>
-        <th style={{ width: '25%', textAlign: 'left' }}>Last Name</th>
-        <th style={{ width: '25%', textAlign: 'left' }}>Email</th>
-        <th style={{ width: '25%', textAlign: 'left' }}></th>
-      </tr>
-      {listUsers}
-    </table>
-  )
+  // const listUsers = authorizationUser.authorizationUsers.map(
+  //   ({ _id: id, FirstName, LastName, Email }) => (
+  //     <tr key={id}>
+  //       <td>{FirstName}</td>
+  //       <td>{LastName}</td>
+  //       <td>{Email}</td>
+  //       <td>
+  //         <Links>
+  //           <Link title="Activity" to={`/account/updateuser/${Email}`}>
+  //             Manage Account
+  //           </Link>
+  //         </Links>
+  //       </td>
+  //     </tr>
+  //   )
+  // )
 
-  const isAdminUser =
-    data.authorizationUsers.length > 1 ||
-    (data.authorizationUsers.length === 1 &&
-      data.authorizationUsers.Role === 'Administrator')
+  // const createUser = (
+  //   <Links>
+  //     <Link title="Create User" to={`/admin/users/new`}>
+  //       Create User
+  //     </Link>
+  //   </Links>
+  // )
+
+  // const adminTableManagement = (
+  //   <table>
+  //     <tr>
+  //       <th style={{ width: '25%', textAlign: 'left' }}>First Name</th>
+  //       <th style={{ width: '25%', textAlign: 'left' }}>Last Name</th>
+  //       <th style={{ width: '25%', textAlign: 'left' }}>Email</th>
+  //       <th style={{ width: '25%', textAlign: 'left' }}></th>
+  //     </tr>
+  //     {listUsers}
+  //   </table>
+  // )
+
+  // const isAdminUser =
+  //   authorizationUser.authorizationUser.length > 1 ||
+  //   (authorizationUser.authorizationUser.length === 1 &&
+  //     authorizationUser.authorizationUser.Role === 'Administrator')
 
   return (
     <>
       <div>
-        {isAdminUser ? createUser : null}
+        {/* {isAdminUser ? createUser : null} */}
         <ResetPasswordLink />
       </div>
       <div>
-        <UserDetails User={thisUser} />
+        <UserDetails User={user.authorizationUser.authorizationUser} />
       </div>
-      {isAdminUser ? adminTableManagement : null}
+      {/* {isAdminUser ? adminTableManagement : null} */}
     </>
   )
 }
