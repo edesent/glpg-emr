@@ -1,20 +1,14 @@
 /* eslint-disable react/prop-types */
 import React from 'react'
 
-const ViewGroup = ({ Group, onViewUser }) => {
+const ViewGroup = ({ Group }) => {
   if (!Group) return 'No Group Details'
 
   const { _id: groupId, Name, Desc: Description, Permissions } = Group
 
-  const onUserDetail = () => {
-    onViewUser()
-  }
-
   return (
-    <div style={{ padding: '25px' }}>
-      <div>
-        <button onClick={onUserDetail}>View User Details</button>
-      </div>
+    <div style={{ padding: '25px', backgroundColor: '#eee' }}>
+      <h3>Permissions</h3>
       <div key={groupId}>
         <label htmlFor={Name}>Name</label>
         <div>{Name}</div>
