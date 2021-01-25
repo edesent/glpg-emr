@@ -32,6 +32,7 @@ const getUserByIdQuery = gql`
         Groups {
           Name
           Desc
+          _id
           Permissions {
             _id
             name

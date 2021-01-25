@@ -18,7 +18,7 @@ const UserDetails = ({ User }) => {
   }
 
   return editUser ? (
-    <UpdateUserForm user={User} />
+    <UpdateUserForm setEditUser={setEditUser} user={User} />
   ) : (
     <>
       <ViewUserProfile

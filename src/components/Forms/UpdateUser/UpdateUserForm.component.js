@@ -7,8 +7,7 @@ import useUsers from '../../../graphql/useUsers'
 import GroupDropdown from '../CreateUser/GroupListFormDropdown'
 
 // eslint-disable-next-line react/prop-types
-const UpdateUserForm = ({ user }) => {
-  console.log(user?.Authorization.Groups[0].Name)
+const UpdateUserForm = ({ user, setEditUser }) => {
   const settingsApp = useSettingsApp()
   const [createdUser, setCreateUser] = useState(false)
   const { updateUser } = useUsers()
@@ -34,7 +33,9 @@ const UpdateUserForm = ({ user }) => {
     const updatedUser = await updateUser(userData)
     setCreateUser(updatedUser)
   }
-
+  const goBack = () => {
+    setEditUser(false)
+  }
   const onSubmit = (data) => {
     updateAnUser(data)
   }
@@ -48,11 +49,15 @@ const UpdateUserForm = ({ user }) => {
       <div className="form-wrapper">
         <h2>No user found.</h2>
         <div>Would you like to Create a User?</div>
+        <button onClick={goBack}>Go Back</button>
       </div>
     )
   return (
     <>
       <div className="form-wrapper">
+        <div style={{ float: 'right' }}>
+          <button onClick={goBack}>Go Back</button>
+        </div>
         <h2>
           Update User {user?.FirstName} {user?.LastName}
         </h2>
@@ -112,15 +117,12 @@ const UpdateUserForm = ({ user }) => {
               type="tel"
             />
           </div>
-          {user?.Authorization?.Groups?.Name === 'administrator' && (
-            <>
-              <div>groups</div>
-              <GroupDropdown
-                register={register}
-                // eslint-disable-next-line jsx-a11y/aria-role
-                role={user?.Authorization?.Groups?.Name}
-              />
-            </>
+          {user.Authorization.Groups[0].Name === 'administrator' && (
+            <GroupDropdown
+              register={register}
+              // eslint-disable-next-line jsx-a11y/aria-role
+              userGroup={user?.Authorization?.Groups[0]}
+            />
           )}
 
           <div className="form-Footer">
