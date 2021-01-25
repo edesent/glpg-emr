@@ -4,7 +4,7 @@ import Layout from '../components/layout'
 import { Header } from '../components/Header'
 import { SubNav } from '../components/Nav/SubNav'
 import { UpdateUserForm } from '../components/Forms/UpdateUser'
-import { ManageAccountsForm } from '../components/Forms/ManageAccounts'
+import { ViewAccount } from '../components/ViewAccount'
 
 const AccountPage = ({ match }) => {
   const path = '/account'
@@ -25,7 +25,7 @@ const AccountPage = ({ match }) => {
       </Header>
       <div className="container-wrapper">
         {match.path === path ? (
-          <ManageAccountsForm />
+          <ViewAccount />
         ) : (
           <>
             {

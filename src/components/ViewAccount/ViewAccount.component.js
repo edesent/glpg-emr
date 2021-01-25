@@ -1,9 +1,9 @@
 import { useQuery, gql } from '@apollo/client'
 import { Link } from 'react-router-dom'
-import { useRealmApp } from '../../../context/RealmContext'
-import { Links } from '../../Login/Login.styles'
-import { ResetPasswordLink } from '../../ResetPasswordLink'
-import UserDetails from '../UserDetails/UserDetails.component'
+import { useRealmApp } from '../../context/RealmContext'
+import { Links } from '../Login/Login.styles'
+import { ResetPasswordLink } from '../ResetPasswordLink'
+import UserDetails from '../Forms/UserDetails/UserDetails.component'
 
 const getAllUserQueries = gql`
   query {
@@ -29,7 +29,7 @@ const getAllUserQueries = gql`
   }
 `
 
-const ManageAccountsForm = () => {
+const ViewAccount = () => {
   const app = useRealmApp()
   const { data, loading, error } = useQuery(getAllUserQueries)
   const email = app.currentUser.profile.email.toLowerCase()
@@ -96,4 +96,4 @@ const ManageAccountsForm = () => {
   )
 }
 
-export default ManageAccountsForm
+export default ViewAccount
