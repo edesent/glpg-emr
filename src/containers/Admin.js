@@ -4,7 +4,7 @@ import Layout from '../components/layout'
 import { Header } from '../components/Header'
 import { SubNav } from '../components/Nav/SubNav'
 import { CreateUserForm } from '../components/Forms/CreateUser'
-import { ViewAccount } from '../components/ViewAccount'
+import { ViewUsersList } from '../components/ViewUsersList'
 
 const AdminPage = ({ match }) => {
   const path = '/admin'
@@ -30,7 +30,7 @@ const AdminPage = ({ match }) => {
           <>
             {
               {
-                users: <ViewAccount />,
+                users: <ViewUsersList />,
                 new: <CreateUserForm match={match} />,
               }[match?.params?.job]
             }
