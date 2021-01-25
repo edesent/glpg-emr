@@ -13,9 +13,7 @@ const ViewUserProfile = ({ user, group, setEditUser }) => {
           // eslint-disable-next-line react/jsx-key
           <div>
             <label htmlFor={key}>{key}</label>
-            <div key={key} name={key}>
-              {user[key]}
-            </div>
+            <div name={key}>{user[key]}</div>
           </div>
         ))}
       </div>

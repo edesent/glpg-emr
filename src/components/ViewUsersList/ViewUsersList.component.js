@@ -61,13 +61,15 @@ const ViewUsersList = () => {
 
   const adminTableManagement = (
     <table>
-      <tr>
-        <th style={{ width: '25%', textAlign: 'left' }}>First Name</th>
-        <th style={{ width: '25%', textAlign: 'left' }}>Last Name</th>
-        <th style={{ width: '25%', textAlign: 'left' }}>Email</th>
-        <th style={{ width: '25%', textAlign: 'left' }}></th>
-      </tr>
-      {listUsers}
+      <thead>
+        <tr>
+          <th style={{ width: '25%', textAlign: 'left' }}>First Name</th>
+          <th style={{ width: '25%', textAlign: 'left' }}>Last Name</th>
+          <th style={{ width: '25%', textAlign: 'left' }}>Email</th>
+          <th style={{ width: '25%', textAlign: 'left' }}></th>
+        </tr>
+      </thead>
+      <tbody>{listUsers}</tbody>
     </table>
   )
 
