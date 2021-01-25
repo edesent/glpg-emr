@@ -15,7 +15,6 @@ const UpdateUserForm = ({ user, setEditUser }) => {
   const { register, handleSubmit } = useForm()
   const updateAnUser = async (data) => {
     settingsApp.setGraphqlLoading(true)
-    console.log(data.Role)
     const auth = data.Role.split('|')
     const id = data.UserID
     const userData = {
