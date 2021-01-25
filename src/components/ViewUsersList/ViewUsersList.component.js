@@ -53,7 +53,7 @@ const ViewUsersList = () => {
 
   const createUser = (
     <Links>
-      <Link title="Create User" to={`/admin/users/new`}>
+      <Link title="Create User" to="/admin/users/new">
         Create User
       </Link>
     </Links>
