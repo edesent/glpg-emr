@@ -4,9 +4,11 @@ import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useSettingsApp } from '../../../context/AppContext'
 import useUsers from '../../../graphql/useUsers'
+import GroupDropdown from '../CreateUser/GroupListFormDropdown'
 
 // eslint-disable-next-line react/prop-types
 const UpdateUserForm = ({ user }) => {
+  console.log(user?.Authorization.Groups[0].Name)
   const settingsApp = useSettingsApp()
   const [createdUser, setCreateUser] = useState(false)
   const { updateUser } = useUsers()
@@ -110,37 +112,17 @@ const UpdateUserForm = ({ user }) => {
               type="tel"
             />
           </div>
+          {user?.Authorization?.Groups?.Name === 'administrator' && (
+            <>
+              <div>groups</div>
+              <GroupDropdown
+                register={register}
+                // eslint-disable-next-line jsx-a11y/aria-role
+                role={user?.Authorization?.Groups?.Name}
+              />
+            </>
+          )}
 
-          <div className="form-Role">
-            <label htmlFor="Role">User Role:</label>
-            <div className="Role">
-              <select
-                defaultValue={
-                  // eslint-disable-next-line prefer-template
-                  user?.Role + '|' + user?.Groups
-                }
-                id="Role"
-                name="Role"
-                ref={register({ required: true })}
-              >
-                <option value="Administrator|5fb836e7f98feea55da5e968">
-                  Administrator
-                </option>
-                <option value="Billing|5fb83716f98feea55da5e96a">
-                  Billing
-                </option>
-                <option value="Verifications|5fb836fff98feea55da5e969">
-                  Verifications
-                </option>
-                <option value="Scheduler|5fb8372cf98feea55da5e96b">
-                  Scheduler
-                </option>
-                <option value="Therapist|5fb8369ff98feea55da5e967">
-                  Therapist
-                </option>
-              </select>
-            </div>
-          </div>
           <div className="form-Footer">
             <button type="submit">Update User</button>
           </div>

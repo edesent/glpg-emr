@@ -5,7 +5,7 @@ import ViewUserProfile from './ViewUserProfile/ViewUserProfile.component'
 
 const UserDetails = ({ User }) => {
   const [editUser, setEditUser] = useState(false)
-  console.log(User)
+  // console.log(User)
   if (!User) return 'No User Details'
 
   const { Authorization } = User
@@ -18,10 +18,7 @@ const UserDetails = ({ User }) => {
   }
 
   return editUser ? (
-    <>
-      <div>Edit user Profile</div>
-      <UpdateUserForm user={User} />
-    </>
+    <UpdateUserForm user={User} />
   ) : (
     <>
       <ViewUserProfile
