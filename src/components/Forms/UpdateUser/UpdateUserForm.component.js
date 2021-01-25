@@ -26,7 +26,9 @@ const UpdateUserForm = ({ user, setEditUser }) => {
         MobilePhone: data.MobilePhone,
         Role: auth[0],
         Authorization: {
-          Groups: auth[1],
+          Groups: {
+            link: auth[1],
+          },
         },
       },
     }
