@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState } from 'react'
-import ViewGroup from '../ViewGroup/ViewGroup.component'
+import ViewGroup from '../../ViewAccount/ViewGroup/ViewGroup.component'
 
 const UserDetails = ({ User }) => {
   const [state, setState] = useState({ isGroupView: false })
