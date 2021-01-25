@@ -1,12 +1,12 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import useReadUser from '../../../graphql/useReadUser'
 import { useSettingsApp } from '../../../context/AppContext'
 import useUsers from '../../../graphql/useUsers'
 
 // eslint-disable-next-line react/prop-types
-const UpdateUserForm = ({ match }) => {
+const UpdateUserForm = ({ user }) => {
   const settingsApp = useSettingsApp()
   const [createdUser, setCreateUser] = useState(false)
   const { updateUser } = useUsers()
@@ -37,36 +37,14 @@ const UpdateUserForm = ({ match }) => {
     updateAnUser(data)
   }
 
-  // eslint-disable-next-line react/prop-types
-  let cleanEmail = match.params.identifier.toLowerCase()
-  function validEmail(email) {
-    const regexp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-    return regexp.test(email)
-  }
-  // email validation
-  if (!validEmail(cleanEmail)) {
-    cleanEmail = false
-  }
-  const userData = useReadUser(cleanEmail)
-
-  if (userData.loading || settingsApp.graphqlLoading || createdUser?.loading) {
+  if (user.loading || settingsApp.graphqlLoading || createdUser?.loading) {
     return 'Loading...'
   }
-  if (cleanEmail === false)
-    return (
-      <div className="form-wrapper">
-        <h2>You did not supply a valid email please try again.</h2>
-      </div>
-    )
 
-  if (userData?.readUser?.authorizationUser === null)
+  if (user === null)
     return (
       <div className="form-wrapper">
-        <h2>
-          No user found with the email of:{' '}
-          {/* eslint-disable-next-line react/prop-types */}
-          {match.params.identifier.toLowerCase()}{' '}
-        </h2>
+        <h2>No user found.</h2>
         <div>Would you like to Create a User?</div>
       </div>
     )
@@ -74,15 +52,14 @@ const UpdateUserForm = ({ match }) => {
     <>
       <div className="form-wrapper">
         <h2>
-          Update User {userData?.readUser?.authorizationUser?.FirstName}{' '}
-          {userData?.readUser?.authorizationUser?.LastName}
+          Update User {user?.FirstName} {user?.LastName}
         </h2>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="form-id" style={{ display: 'none' }}>
             <label htmlFor="UserID">User ID:</label>
             <input
               // eslint-disable-next-line no-underscore-dangle
-              defaultValue={userData?.readUser?.authorizationUser?._id}
+              defaultValue={user?._id}
               id="UserID"
               name="UserID"
               readOnly
@@ -93,7 +70,7 @@ const UpdateUserForm = ({ match }) => {
           <div className="form-FirstName">
             <label htmlFor="FirstName">First Name:</label>
             <input
-              defaultValue={userData?.readUser?.authorizationUser?.FirstName}
+              defaultValue={user?.FirstName}
               id="FirstName"
               name="FirstName"
               ref={register({ required: true })}
@@ -104,7 +81,7 @@ const UpdateUserForm = ({ match }) => {
           <div className="form-LastName">
             <label htmlFor="LastName">Last Name:</label>
             <input
-              defaultValue={userData?.readUser?.authorizationUser?.LastName}
+              defaultValue={user?.LastName}
               id="LastName"
               name="LastName"
               ref={register({ required: true })}
@@ -115,7 +92,7 @@ const UpdateUserForm = ({ match }) => {
           <div className="form-Email">
             <label htmlFor="Email">Email Address:</label>
             <input
-              defaultValue={userData?.readUser?.authorizationUser?.Email}
+              defaultValue={user?.Email}
               id="Email"
               name="Email"
               ref={register({ required: true })}
@@ -126,7 +103,7 @@ const UpdateUserForm = ({ match }) => {
           <div className="form-Mobile">
             <label htmlFor="MobilePhone">Mobile Phone:</label>
             <input
-              defaultValue={userData?.readUser?.authorizationUser?.MobilePhone}
+              defaultValue={user?.MobilePhone}
               id="MobilePhone"
               name="MobilePhone"
               ref={register({ required: true })}
@@ -140,9 +117,7 @@ const UpdateUserForm = ({ match }) => {
               <select
                 defaultValue={
                   // eslint-disable-next-line prefer-template
-                  userData?.readUser?.authorizationUser?.Role +
-                  '|' +
-                  userData?.readUser?.authorizationUser?.Authorization?.Groups
+                  user?.Role + '|' + user?.Groups
                 }
                 id="Role"
                 name="Role"
